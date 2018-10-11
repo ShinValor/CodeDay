@@ -23,3 +23,5 @@ yarn-error.log*
 # Python
 __pycache__
 *.pyc
+
+apikeys.txt

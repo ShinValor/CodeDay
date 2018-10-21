@@ -1,0 +1,22 @@
+{
+  "name": "codeday",
+  "version": "1.0.0",
+  "description": "Cuny Tech Prep Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShinValor/CodeDay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShinValor/CodeDay/issues"
+  },
+  "homepage": "https://github.com/ShinValor/CodeDay#readme",
+  "dependencies": {
+    "unirest": "^0.5.1"
+  }
+}

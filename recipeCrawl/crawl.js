@@ -22,7 +22,7 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
   	console.log(result.headers);
   	if (result.status === 200) {
   		var content = JSON.stringify(result.body,null,2);
-  		fs.writeFile("./recipeCrawl/recipe.txt", content);
+  		fs.writeFile("./recipeCrawl/recipe.json", content);
   	}
   	else {
   		throw err;

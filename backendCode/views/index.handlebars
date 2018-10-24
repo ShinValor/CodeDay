@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <form action="/posts" method="post" >
+      <textarea style="resize:none" name="post" class="form-control" placeholder="Blog text" rows="4"></textarea>
+      <textarea style="resize:none" name="author" class="form-control" placeholder="Author" row="1"></textarea>
+      <button type="submit" class="btn btn-primary pull-right">Post</button>
+    </form>
+  </div>
+</div>
+{{#each posts}}
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Post: {{ post }}
+        </div>
+          <div class="panel-body">
+          Author: {{ author }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}
+

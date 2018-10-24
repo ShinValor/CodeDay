@@ -5,15 +5,34 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
+  res.render('index')
+  /*
   res.json({
     msg: "Successful GET to '/' route"
-  });
+  });*/
 });
 
 router.post('/', (req, res) => {
+
+  var info = {};
+
+  if (req.body.recipeName){
+    info['recipeName'] = req.body.recipeName;
+    console.log(req.body.recipeName);
+  }
+
+  if (req.body.recipeUrl){
+    info['recipeUrl'] = req.body.recipeUrl;
+    console.log(req.body.recipeUrl);
+  }
+
+  res.render('index',{recipeName:info['recipeName'],recipeUrl:info['recipeUrl']});
+
+  /*
   res.json({
     msg: "Successful POST to '/' route"
   });
+  */
 });
 
 router.put('/:id', (req, res) => {

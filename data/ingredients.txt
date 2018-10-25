@@ -112,13 +112,12 @@
 # I
 "Italian seasoning (2 tsp)" : ["1 tsp dried oregano + 1/2 tsp dried basil + 1/2 tsp dried thyme"],
 
-# Kale
+# K
 "kale" : ["collard greens, turnip greens, mustard greens, spinach"],
 "ketchup (1 cup)" : ["1 cup tomato sauce + 1/4 cup granulated sugar + 3 tbsp apple cider vinegar + 1/2 tsp salt + pinch ground cloves, chili sauce, barbecue sauce"],
 "kielbasa" : ["Cajun andouille sausage, Spanish chorizo"],
 
 # L
-
 "lamb" : ["beef, pork, veal, mutton"],
 "lard (1 cup)" : ["vegetable shortening, 1 cup + 3 tbsp unsalted butter, bacon fat"],
 "leeks (chopped)" : ["chopped green onions or scallions, chopped shallots, chopped sweet or storage onions"],

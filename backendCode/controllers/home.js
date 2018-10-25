@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     console.log(req.body.recipeUrl);
   }
 
-  res.render('index',{recipeName:info['recipeName'],recipeUrl:info['recipeUrl']});
+  res.render('index',{recipeName:info['recipeName'],recipeUrl:info['recipeUrl'],recipe:null});
 
   /*
   res.json({

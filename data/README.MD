@@ -1,5 +1,12 @@
 ## How to work with psql
 https://www.manniwood.com/topics/psql.html
+https://www.tutorialspoint.com/postgresql/index.htm
+https://sqlizer.io/#/
 
 ### Task
-- I need to feed in data into database and export file.
+- Feed in data into database and export file.
+
+### Execute Script
+
+psql -U username -d myDataBase -a -f script.sql
+psql -U ctp_user -d piecemeal_development -a -f script.sql

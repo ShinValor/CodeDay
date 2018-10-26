@@ -594,7 +594,8 @@ SELECT * FROM IngredientInfo;
 SELECT * FROM IngredientSub;
 SELECT * FROM ingredients;
 
-
+/*
 DROP TABLE IngredientInfo;
 DROP TABLE IngredientSub;
 DROP TABLE ingredients;
+*/

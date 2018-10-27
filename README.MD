@@ -82,8 +82,11 @@ psql -U username dbname < dbexport.pgsql
 psql -U username dbname > dbexport.pgsql
 ```
 
-
 ### Contributors
 - Ho Ming Poon
 - Sora Greenberger
 - Excel Espina
+
+
+### Cohort
+[CUNY Tech Prep](http://cunytechprep.nyc/) is a [NYC Tech Talent Pipeline](http://www.techtalentpipeline.nyc/)

@@ -1,3 +1,20 @@
+# Install dependencies for server
+npm install
+
+# Install dependencies for client
+npm run client-install
+
+# Run the client & server with concurrently
+npm run dev
+
+# Run the Express server only
+npm run server
+
+# Run the React client only
+npm run client
+
+# Server runs on http://localhost:5000 and client on http://localhost:3000
+
 # React Express Example
 
 This project offers a simple example of how to set up a React project with Create React App and how to connect this app with an Express backend. React-Router is also used for routing.

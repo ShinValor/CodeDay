@@ -1,113 +1,132 @@
-import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   // Initialize the state
-  constructor(props){
-    super(props);
+  constructor(props) {
+    super(props)
     this.state = {
-      list: [],
       recipe: [],
-      webScrapedRecipe: []
+      webScrapedRecipe: [],
+      recipeName: "",
+      url:""
     }
     this.recipeName = React.createRef()
+    this.url = React.createRef()
   }
 
-  // Fetch the list on first mount
+  // Fetch on first mount
   componentDidMount() {
     //this.getList()
     //this.getRecipe()
     //this.getWebScrapedRecipe()
   }
 
-  // Retrieves the list of items from the Express app
-  getList = () => {
-    fetch('/home')
-    .then(res => res.json())
-    .then(list => this.setState({ list }))
-  }
-
   getRecipe = (event) => {
     event.preventDefault()
-    console.log("Recipe Name: ", this.recipeName.current.value)
+    const recipeName = this.recipeName.current.value
+    this.setState({ recipeName : recipeName })
+    // I should probably just call the API on react instead of passing it to the server and calling it
     fetch('/recipe')
     .then(res => res.json())
-    .then(recipe => this.setState({ recipe }))    
+    .then(recipe => this.setState({ recipe }))
   }
 
   getWebScrapedRecipe = (event) => {
     event.preventDefault()
-    console.log("Recipe Name: ", this.recipeName.current.value)
+    const url = this.url.current.value
+    this.setState({ url : url })
     fetch('/webScrapedRecipe')
     .then(res => res.json())
     .then(webScrapedRecipe => this.setState({ webScrapedRecipe }))     
   }
 
   render() {
-    const list = this.state.list
-    const recipes = this.state.recipe
+    const recipes = this.state.recipe.map((food) => <Link key={food.toString()} to={{pathname : "/recipe", state : { recipe : 'Hello'}}}> {food} <br/> </Link>)
     const webScrapedRecipes = this.state.webScrapedRecipe
-    //console.log("HELLO ",list)
-    //console.log("Unicorn ",recipes)
-    //console.log("Baby ",webScrapedRecipes)
-    var name = this.recipeName.current
+    const input = this.state.recipeName
+    const input2 = this.state.url
 
-    return (
-      <div className="App">
-        <h1> PieceMeal </h1>
-        <div>
-          <form onSubmit={this.getRecipe}>
-            <label>
-              <input type="text" ref={this.recipeName}/>
-            </label>
+    if (input.length || input2.length)
+    {
+      return (
+        <div className="App">
+          <h1> PieceMeal </h1>
+          <div>
+            <form onSubmit={this.getRecipe}>
+              <label>
+                Enter Food Name:
+                <br/>
+                <input type="text" ref={this.recipeName}/>
+              </label>
+              <br/>
+              <button className="button" type="submit"> Search </button>
+            </form>
             <br/>
-            <button className="button" type="submit"> Search </button>
-          </form>
+            <form onSubmit={this.getWebScrapedRecipe}>
+              <label>
+                Enter Url:
+                <br/>
+                <input type="text" ref={this.url}/>
+              </label>
+              <br/>
+              <button className="button" type="submit"> Search </button>
+            </form>
+          </div>
+          <br/>
+          <div>
+            You searched for {input}
+          </div>
+          <br/>
+          <div>
+            {recipes}
+          </div>
         </div>
-        <br/>
-        <div>
-          {/*name*/}
+      )
+    }
+    else
+    {
+      return (
+        <div className="App">
+          <h1> PieceMeal </h1>
+          <div onSubmit={this.getRecipe}>
+            <form>
+              <label>
+                Enter Food Name:
+                <br/>
+                <input type="text" ref={this.recipeName}/>
+              </label>
+              <br/>
+              <button className="button" type="submit"> Search </button>
+            </form>
+            <br/>
+            <form onSubmit={this.getWebScrapedRecipe}>
+              <label>
+                Enter Url:
+                <br/>
+                <input type="text" ref={this.url}/>
+              </label>
+              <br/>
+              <button className="button" type="submit"> Search </button>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      )      
+    }
   }
 }
-export default Home;
+export default Home
+
 
 /*
-// Link to List.js
-class Home extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1> PieceMeal </h1>
-        <Link to={'./list'}>
-          <button variant="raised">
-              My List
-          </button>
-        </Link>
-      </div>
-    );
-  }
+let obj = {"recipeName" : recipeName}
+fetch('/recipe',{
+  method: 'POST',
+  body: JSON.stringify(obj), // obj can be `string` or {object}!
+  headers:{
+    'Content-Type': 'application/json'
 }
-export default Home;
-
-
-//Check to see if any items are found
-        {recipes.length ? (
-          <div>
-            {recipes.map((recipe,i) => {
-              return(
-                <div key={i.toString()}>
-                  {recipe}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div>
-            <h2>No Recipe Found</h2>
-          </div>
-        )
-      }
-*/
+})
+.then(res => res.json())
+.then(recipe => this.setState({ recipe }))   
+*/ 

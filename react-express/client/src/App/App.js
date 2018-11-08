@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './routes/Home';
-import List from './routes/List';
+//import List from './routes/List';
+import Recipe from './routes/Recipe';
 
 class App extends Component {
   render() {
@@ -10,7 +11,8 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/list' component={List}/>
+          {/*<Route path='/list' component={List}/>*/}
+          <Route path='/recipe' component={Recipe}/>
         </Switch>
       </div>
     )

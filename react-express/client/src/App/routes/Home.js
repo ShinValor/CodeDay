@@ -17,17 +17,18 @@ class Home extends Component {
 
   // Fetch on first mount
   componentDidMount() {
-    //this.getList()
-    //this.getRecipe()
-    //this.getWebScrapedRecipe()
+
   }
 
   getRecipe = (event) => {
     event.preventDefault()
     const recipeName = this.recipeName.current.value
     this.setState({ recipeName : recipeName })
-    // I should probably just call the API on react instead of passing it to the server and calling it
-    fetch('/recipe')
+    console.log("recipeName is", recipeName)
+    fetch('http://localhost:3001/recipe',{
+      method: 'POST',
+      body: recipeName
+    })
     .then(res => res.json())
     .then(recipe => this.setState({ recipe }))
   }
@@ -42,7 +43,7 @@ class Home extends Component {
   }
 
   render() {
-    const recipes = this.state.recipe.map((food) => <Link key={food.toString()} to={{pathname : "/recipe", state : { recipe : 'Hello'}}}> {food} <br/> </Link>)
+    const recipes = this.state.recipe.map((food) => <Link key={food.toString()} to={{pathname : "/recipe", state : { recipe : food}}}> {food} <br/> </Link>)
     const webScrapedRecipes = this.state.webScrapedRecipe
     const input = this.state.recipeName
     const input2 = this.state.url

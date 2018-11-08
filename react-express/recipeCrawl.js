@@ -21,7 +21,7 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
 			return data;
 		}
 		data = parse(data);
-		fs.writeFileSync("./recipe.json", data);
+		//fs.writeFileSync("./recipe.json", data);
 	}
 	else{
 		throw err;
@@ -50,7 +50,7 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/
 			return data;
 		}
 		data = parse(data);
-		fs.writeFileSync("./recipe.json", data);
+		//fs.writeFileSync("./recipe.json", data);
 	}
 	else{
 		throw err;

@@ -26,8 +26,11 @@ class Home extends Component {
     this.setState({ recipeName : recipeName })
     console.log("recipeName is", recipeName)
     fetch('http://localhost:3001/recipe',{
-      method: 'POST',
-      body: recipeName
+      method : 'POST',
+      body : JSON.stringify({'recipeName' : recipeName}),
+      headers : {
+        'Content-Type': 'application/json'
+      }
     })
     .then(res => res.json())
     .then(recipe => this.setState({ recipe }))

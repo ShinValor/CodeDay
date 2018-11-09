@@ -4,6 +4,7 @@ const fs = require('fs')
 const unirest = require('unirest')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+
 const corsOptions = {
     credentials: true,
     origin: true
@@ -11,49 +12,53 @@ const corsOptions = {
 
 const app = express()
 
+const port = process.env.PORT || 3001
+app.listen(port)
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')))
+
 app.use(cors(corsOptions))
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 app.get('/recipe', (req,res) => {
-	console.log("recipe GET")
-	var list = ["Chicken","Rice","Egg","Bacon"]
-	res.json(list)
+	console.log("Recipe GET")
+	var recipeName = req.body.recipeName
+	console.log("Passed RecipeName: ", recipeName)
+	var listOfRecipes = ["Chicken","Rice","Egg","Bacon"]
+	res.json(listOfRecipes)
 })
 
 app.post('/recipe', (req,res) => {
-	console.log("recipe POST")
+	console.log("Recipe POST")
 	var recipeName = req.body.recipeName
 	console.log("Passed RecipeName: ", recipeName)
-	var list = ["Chicken","Rice","Egg","Bacon"]
-	res.json(list)
+	var listOfRecipes = ["Chicken","Rice","Egg","Bacon"]
+	res.json(listOfRecipes)
 })
 
 app.get('/webScrapedRecipe', (req,res) => {
-	console.log("web GET")
-	var list = ["webRecipe1", "webRecipe2", "webRecipe3"]
-	res.json(list)
+	console.log("Web GET")
+	var recipeName = req.body.recipeName
+	console.log("Passed RecipeName: ", recipeName)
+	var listOfRecipes = ["webRecipe1", "webRecipe2", "webRecipe3"]
+	res.json(listOfRecipes)
 })
 
 app.post('/webScrapedRecipe', (req,res) => {
-	console.log("web POST")
-	//var recipeName = req.body.recipeName
-	//console.log("Passed RecipeName: ", recipeName)
-	var list = ["webRecipe1", "webRecipe2", "webRecipe3"]
-	res.json(list)
+	console.log("Web POST")
+	var recipeName = req.body.recipeName
+	console.log("Passed RecipeName: ", recipeName)
+	var listOfRecipes = ["webRecipe1", "webRecipe2", "webRecipe3"]
+	res.json(listOfRecipes)
 })
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
-	console.log("NOTHING")
-	res.send("1")
-	//res.sendFile(path.join(__dirname+'/client/build/index.html'))
+	console.log("Nothing")
+	res.sendFile(path.join(__dirname+'/client/build/index.html'))
 })
-
-const port = process.env.PORT || 3001
-app.listen(port)
 
 console.log('App is listening on port ' + port)

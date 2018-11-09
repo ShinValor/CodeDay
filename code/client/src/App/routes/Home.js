@@ -33,7 +33,11 @@ class Home extends Component {
       }
     })
     .then(res => res.json())
-    .then(recipes => this.setState({ recipes }))
+    .then(recipe => {
+      this.setState({ recipes: recipe });
+      console.log(this.state.recipes);
+    })
+    //.then(recipes => this.setState({ recipes }))
   }
 
   getWebScrapedRecipe = (event) => {
@@ -46,11 +50,13 @@ class Home extends Component {
   }
 
   render() {
-    const recipes = this.state.recipes.map((recipe) => <Link key={recipe.toString()} to={{pathname : "/recipe", state : { recipe : recipe}}}> {recipe} <br/> </Link>)
+    // const recipes = this.state.recipes.map((recipe) => <Link key={recipe.toString()} to={{pathname : "/recipe", state : { recipe : recipe}}}> {recipe} <br/> </Link>)
     const webScrapedRecipes = this.state.webScrapedRecipe
     const recipeName = this.state.recipeName
     const url = this.state.url
-
+    const rec = this.state.recipes.map((recipe) => {
+      return (<li> {Object.keys(recipe)[0]} </li>)
+    })
     if (recipeName.length)
     {
       return (
@@ -83,7 +89,7 @@ class Home extends Component {
           </div>
           <br/>
           <div>
-            {recipes}
+            {rec}
           </div>
         </div>
       )

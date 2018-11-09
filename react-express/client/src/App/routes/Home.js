@@ -51,7 +51,7 @@ class Home extends Component {
     const input = this.state.recipeName
     const input2 = this.state.url
 
-    if (input.length || input2.length)
+    if (input.length)
     {
       return (
         <div className="App">
@@ -121,16 +121,4 @@ class Home extends Component {
 }
 export default Home
 
-
-/*
-let obj = {"recipeName" : recipeName}
-fetch('/recipe',{
-  method: 'POST',
-  body: JSON.stringify(obj), // obj can be `string` or {object}!
-  headers:{
-    'Content-Type': 'application/json'
-}
-})
-.then(res => res.json())
-.then(recipe => this.setState({ recipe }))   
-*/ 
+ 

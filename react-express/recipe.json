@@ -1,0 +1,111 @@
+{
+  "results": [
+    {
+      "id": 475182,
+      "title": "Skillet Steaks with Gorgonzola Herbed Butter",
+      "readyInMinutes": 25,
+      "servings": 4,
+      "image": "Skillet-Steaks-with-Gorgonzola-Herbed-Butter-475182.jpg",
+      "imageUrls": [
+        "Skillet-Steaks-with-Gorgonzola-Herbed-Butter-475182.jpg"
+      ]
+    },
+    {
+      "id": 756907,
+      "title": "Balsamic Steak Rolls",
+      "readyInMinutes": 15,
+      "servings": 4,
+      "image": "balsamic-steak-rolls-756907.jpg",
+      "imageUrls": [
+        "balsamic-steak-rolls-756907.jpg"
+      ]
+    },
+    {
+      "id": 801735,
+      "title": "Hamburger Steak with Onions and Gravy",
+      "readyInMinutes": 40,
+      "servings": 4,
+      "image": "hamburger-steak-with-onions-and-gravy-801735.jpg",
+      "imageUrls": [
+        "hamburger-steak-with-onions-and-gravy-801735.jpg"
+      ]
+    },
+    {
+      "id": 987498,
+      "title": "Instant Pot Cubed Steak and Gravy",
+      "readyInMinutes": 4,
+      "servings": 4,
+      "image": "instant-pot-cubed-steak-and-gravy-987498.jpg",
+      "imageUrls": [
+        "instant-pot-cubed-steak-and-gravy-987498.jpg"
+      ]
+    },
+    {
+      "id": 716461,
+      "title": "Grilled Steak Salad with Beets and Scallions",
+      "readyInMinutes": 45,
+      "servings": 4,
+      "image": "grilled-steak-salad-with-beets-and-scallions-716461.jpg",
+      "imageUrls": [
+        "grilled-steak-salad-with-beets-and-scallions-716461.jpg"
+      ]
+    },
+    {
+      "id": 715063,
+      "title": "Chinese Pepper Steak",
+      "readyInMinutes": 30,
+      "servings": 4,
+      "image": "chinese-pepper-steak-715063.jpg",
+      "imageUrls": [
+        "chinese-pepper-steak-715063.jpg"
+      ]
+    },
+    {
+      "id": 778543,
+      "title": "Jalapeno Steak 'n' Mushrooms",
+      "readyInMinutes": 625,
+      "servings": 6,
+      "image": "jalapeno-steak-n-mushrooms-778543.jpg",
+      "imageUrls": [
+        "jalapeno-steak-n-mushrooms-778543.jpg"
+      ]
+    },
+    {
+      "id": 576922,
+      "title": "Spicy Sriracha Steak Lettuce Wraps",
+      "readyInMinutes": 45,
+      "servings": 6,
+      "image": "Spicy-Sriracha-Steak-Lettuce-Wraps-576922.jpg",
+      "imageUrls": [
+        "Spicy-Sriracha-Steak-Lettuce-Wraps-576922.jpg"
+      ]
+    },
+    {
+      "id": 504389,
+      "title": "Cube Steaks and Gravy in the Slow Cooker",
+      "readyInMinutes": 45,
+      "servings": 8,
+      "image": "Cube-Steaks-and-Gravy-in-the-Slow-Cooker-504389.jpg",
+      "imageUrls": [
+        "Cube-Steaks-and-Gravy-in-the-Slow-Cooker-504389.jpg"
+      ]
+    },
+    {
+      "id": 841866,
+      "title": "Seared Sirloin Steaks with Roasted Potatoes & \"Creamed\" Kale",
+      "readyInMinutes": 45,
+      "servings": 4,
+      "image": "seared-sirloin-steaks-with-roasted-potatoes-creamed-kale-841866.jpg",
+      "imageUrls": [
+        "seared-sirloin-steaks-with-roasted-potatoes-creamed-kale-841866.jpg"
+      ]
+    }
+  ],
+  "baseUri": "https://spoonacular.com/recipeImages/",
+  "offset": 0,
+  "number": 10,
+  "totalResults": 973,
+  "processingTimeMs": 39,
+  "expires": 1541986172293,
+  "isStale": false
+}

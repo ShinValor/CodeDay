@@ -6,7 +6,7 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      recipe: [],
+      recipes: [],
       webScrapedRecipe: [],
       recipeName: "",
       url:""
@@ -33,7 +33,7 @@ class Home extends Component {
       }
     })
     .then(res => res.json())
-    .then(recipe => this.setState({ recipe }))
+    .then(recipes => this.setState({ recipes }))
   }
 
   getWebScrapedRecipe = (event) => {
@@ -46,12 +46,12 @@ class Home extends Component {
   }
 
   render() {
-    const recipes = this.state.recipe.map((food) => <Link key={food.toString()} to={{pathname : "/recipe", state : { recipe : food}}}> {food} <br/> </Link>)
+    const recipes = this.state.recipes.map((recipe) => <Link key={recipe.toString()} to={{pathname : "/recipe", state : { recipe : recipe}}}> {recipe} <br/> </Link>)
     const webScrapedRecipes = this.state.webScrapedRecipe
-    const input = this.state.recipeName
-    const input2 = this.state.url
+    const recipeName = this.state.recipeName
+    const url = this.state.url
 
-    if (input.length)
+    if (recipeName.length)
     {
       return (
         <div className="App">
@@ -79,7 +79,7 @@ class Home extends Component {
           </div>
           <br/>
           <div>
-            You searched for {input}
+            You searched for {recipeName}
           </div>
           <br/>
           <div>

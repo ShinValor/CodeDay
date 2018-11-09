@@ -23,6 +23,33 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+getRecipeByName = (food, callback) => {
+	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + food
+	//console.log("URL: ",url)
+	unirest.get(url)
+	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+	.end(function (result) {
+		//console.log(result.headers)
+		if (result.status === 200) {
+			var data = result.body
+			fs.writeFileSync("./jsonFiles/recipe.json", JSON.stringify(data,null,2))
+			var recipes = []
+			for (index in data['results']) {
+				var recipeName = data['results'][index]['title']
+				var recipeID = data['results'][index]['id']
+				var obj = {};
+				obj[recipeName] = recipeID;
+				recipes.push(obj)
+			}
+			callback(recipes)
+		}
+		else {
+			throw err
+		}
+	})
+}
+
 app.get('/recipe', (req,res) => {
 	console.log("Recipe GET")
 	var listOfRecipes = ["Chicken","Rice","Egg","Bacon"]
@@ -33,9 +60,9 @@ app.post('/recipe', (req,res) => {
 	console.log("Recipe POST")
 	var recipeName = req.body.recipeName
 	console.log("Passed RecipeName: ", recipeName)
-	var listOfRecipes = []
-	listOfRecipes.push(recipeName)
-	res.json(listOfRecipes)
+	getRecipeByName(recipeName,function(listOfRecipes) {
+		res.json(listOfRecipes)
+	})
 })
 
 app.get('/webScrapedRecipe', (req,res) => {

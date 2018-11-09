@@ -1,7 +1,7 @@
 {
-  "name": "piecemeal",
+  "name": "react-express-example",
   "version": "1.0.0",
-  "description": "Cuny Tech Prep Project",
+  "description": "",
   "main": "index.js",
   "author": "John Poon",
   "scripts": {

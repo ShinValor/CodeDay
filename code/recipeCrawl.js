@@ -3,7 +3,7 @@ const unirest = require('unirest')
 
 
 // Get me some recipes
-getRecipeByName = (food) => {
+getRecipeByName = (food, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + food
 	//console.log("URL: ",url)
 	unirest.get(url)
@@ -13,19 +13,28 @@ getRecipeByName = (food) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./recipe.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/recipe.json", JSON.stringify(data,null,2))
 			var recipes = []
 			for (index in data['results']) {
-				recipes.push({Recipe : data['results'][index]['title'], ID: data['results'][index]['id']})
+				var recipeName = data['results'][index]['title']
+				var recipeID = data['results'][index]['id']
+				var obj = {};
+				obj[recipeName] = recipeID;
+				recipes.push(obj)
 			}
 			//console.log(recipes)
-			return recipes
+			return callback(recipes)
 		}
 		else {
 			throw err
 		}
 	})
 }
+
+getRecipeByName("Steak",function(recipes){
+	console.log(recipes)
+})
+
 
 // Get me recipe ingredients
 getIngredientsByName = (food) => {
@@ -43,11 +52,11 @@ getInstructionByID = (id) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./instruction.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
 			var instruction = data['instructions']
-			console.log(instruction)
+			//console.log(instruction)
 			var advInstruction = data['analyzedInstructions'][0]['steps']
-			console.log(advInstruction)
+			//console.log(advInstruction)
 			return instruction,advInstruction
 		}
 		else {
@@ -67,7 +76,7 @@ subIngredientsByName = (ingredient) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./substitutesByName.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/substitutesByName.json", JSON.stringify(data,null,2))
 			var substitutes = data["substitutes"]
 			//console.log(substitutes)
 			var message = data["message"]
@@ -90,7 +99,7 @@ subIngredientsByID = (id) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./substitutesByID.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/substitutesByID.json", JSON.stringify(data,null,2))
 			var substitutes = data["substitutes"]
 			//console.log(substitutes)
 			var message = data["message"]
@@ -113,7 +122,7 @@ scrapeRecipeByUrl = (url) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./scrapeRecipe.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
 
 		}
 		else {
@@ -125,7 +134,7 @@ scrapeRecipeByUrl = (url) => {
 
 //getRecipeByName("Steak") // Done
 //getIngredientsByName()
-getInstructionByID("475182")
+//getInstructionByID("475182")
 //subIngredientsByName("butter") // Done
 //subIngredientsByID(11297) // Done
 //scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice")

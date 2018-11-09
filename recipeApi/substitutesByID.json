@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "ingredient": "fresh parsley leaves",
+  "substitutes": [
+    "1 tbsp = 1 tbsp fresh chervil"
+  ],
+  "message": "Found 1 substitutes for the ingredient."
+}

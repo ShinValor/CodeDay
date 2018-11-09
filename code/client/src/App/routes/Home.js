@@ -35,7 +35,7 @@ class Home extends Component {
     .then(res => res.json())
     .then(recipe => {
       this.setState({ recipes: recipe });
-      console.log(this.state.recipes);
+      //console.log(this.state.recipes);
     })
     //.then(recipes => this.setState({ recipes }))
   }
@@ -54,9 +54,10 @@ class Home extends Component {
     const webScrapedRecipes = this.state.webScrapedRecipe
     const recipeName = this.state.recipeName
     const url = this.state.url
-    const rec = this.state.recipes.map((recipe) => {
-      return (<li> {Object.keys(recipe)[0]} </li>)
+    const rec = this.state.recipes.map((recipe,index) => {
+      return (<Link key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> <p> {Object.keys(recipe)[0]} <br/> </p> </Link>)
     })
+
     if (recipeName.length)
     {
       return (

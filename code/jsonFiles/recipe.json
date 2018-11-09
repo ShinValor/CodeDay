@@ -1,111 +1,111 @@
 {
   "results": [
     {
-      "id": 475182,
-      "title": "Skillet Steaks with Gorgonzola Herbed Butter",
-      "readyInMinutes": 25,
-      "servings": 4,
-      "image": "Skillet-Steaks-with-Gorgonzola-Herbed-Butter-475182.jpg",
-      "imageUrls": [
-        "Skillet-Steaks-with-Gorgonzola-Herbed-Butter-475182.jpg"
-      ]
-    },
-    {
-      "id": 756907,
-      "title": "Balsamic Steak Rolls",
-      "readyInMinutes": 15,
-      "servings": 4,
-      "image": "balsamic-steak-rolls-756907.jpg",
-      "imageUrls": [
-        "balsamic-steak-rolls-756907.jpg"
-      ]
-    },
-    {
-      "id": 801735,
-      "title": "Hamburger Steak with Onions and Gravy",
-      "readyInMinutes": 40,
-      "servings": 4,
-      "image": "hamburger-steak-with-onions-and-gravy-801735.jpg",
-      "imageUrls": [
-        "hamburger-steak-with-onions-and-gravy-801735.jpg"
-      ]
-    },
-    {
-      "id": 987498,
-      "title": "Instant Pot Cubed Steak and Gravy",
-      "readyInMinutes": 4,
-      "servings": 4,
-      "image": "instant-pot-cubed-steak-and-gravy-987498.jpg",
-      "imageUrls": [
-        "instant-pot-cubed-steak-and-gravy-987498.jpg"
-      ]
-    },
-    {
-      "id": 716461,
-      "title": "Grilled Steak Salad with Beets and Scallions",
+      "id": 690978,
+      "title": "Healthy Salmon Quinoa Burgers ",
       "readyInMinutes": 45,
-      "servings": 4,
-      "image": "grilled-steak-salad-with-beets-and-scallions-716461.jpg",
+      "servings": 5,
+      "image": "healthy-salmon-quinoa-burgers-skinnytaste-690978.jpg",
       "imageUrls": [
-        "grilled-steak-salad-with-beets-and-scallions-716461.jpg"
+        "healthy-salmon-quinoa-burgers-skinnytaste-690978.jpg"
       ]
     },
     {
-      "id": 715063,
-      "title": "Chinese Pepper Steak",
+      "id": 598753,
+      "title": "Barbecue Pork Burgers",
       "readyInMinutes": 30,
       "servings": 4,
-      "image": "chinese-pepper-steak-715063.jpg",
+      "image": "Barbecue-Pork-Burgers-598753.jpg",
       "imageUrls": [
-        "chinese-pepper-steak-715063.jpg"
+        "Barbecue-Pork-Burgers-598753.jpg"
       ]
     },
     {
-      "id": 778543,
-      "title": "Jalapeno Steak 'n' Mushrooms",
-      "readyInMinutes": 625,
-      "servings": 6,
-      "image": "jalapeno-steak-n-mushrooms-778543.jpg",
-      "imageUrls": [
-        "jalapeno-steak-n-mushrooms-778543.jpg"
-      ]
-    },
-    {
-      "id": 576922,
-      "title": "Spicy Sriracha Steak Lettuce Wraps",
+      "id": 720070,
+      "title": "Chicken Parmigiana Burgers Skinnytaste",
       "readyInMinutes": 45,
-      "servings": 6,
-      "image": "Spicy-Sriracha-Steak-Lettuce-Wraps-576922.jpg",
+      "servings": 10,
+      "image": "chicken-parmigiana-burgers-skinnytaste-720070.jpg",
       "imageUrls": [
-        "Spicy-Sriracha-Steak-Lettuce-Wraps-576922.jpg"
+        "chicken-parmigiana-burgers-skinnytaste-720070.jpg"
       ]
     },
     {
-      "id": 504389,
-      "title": "Cube Steaks and Gravy in the Slow Cooker",
-      "readyInMinutes": 45,
-      "servings": 8,
-      "image": "Cube-Steaks-and-Gravy-in-the-Slow-Cooker-504389.jpg",
-      "imageUrls": [
-        "Cube-Steaks-and-Gravy-in-the-Slow-Cooker-504389.jpg"
-      ]
-    },
-    {
-      "id": 841866,
-      "title": "Seared Sirloin Steaks with Roasted Potatoes & \"Creamed\" Kale",
-      "readyInMinutes": 45,
+      "id": 895602,
+      "title": "Homemade Butter Burgers",
+      "readyInMinutes": 13,
       "servings": 4,
-      "image": "seared-sirloin-steaks-with-roasted-potatoes-creamed-kale-841866.jpg",
+      "image": "homemade-butter-burgers-895602.png",
       "imageUrls": [
-        "seared-sirloin-steaks-with-roasted-potatoes-creamed-kale-841866.jpg"
+        "homemade-butter-burgers-895602.png"
+      ]
+    },
+    {
+      "id": 688005,
+      "title": "Sweet Potato Chickpea Burgers",
+      "readyInMinutes": 40,
+      "servings": 8,
+      "image": "Sweet-Potato-Chickpea-Burgers-688005.jpg",
+      "imageUrls": [
+        "Sweet-Potato-Chickpea-Burgers-688005.jpg"
+      ]
+    },
+    {
+      "id": 574946,
+      "title": "Paleo Burgers with Caramelized Balsamic Onions & Avocado",
+      "readyInMinutes": 30,
+      "servings": 6,
+      "image": "paleo-burgers-with-caramelized-balsamic-onions-avocado-574946.jpg",
+      "imageUrls": [
+        "paleo-burgers-with-caramelized-balsamic-onions-avocado-574946.jpg"
+      ]
+    },
+    {
+      "id": 523865,
+      "title": "Jalapeno Chickpea Lentil Burgers with Sweet Mango Avocado Pico",
+      "readyInMinutes": 25,
+      "servings": 6,
+      "image": "Jalapeno-Chickpea-Lentil-Burgers-with-Sweet-Mango-Avocado-Pico-{vegan--gluten-free}-523865.png",
+      "imageUrls": [
+        "Jalapeno-Chickpea-Lentil-Burgers-with-Sweet-Mango-Avocado-Pico-{vegan--gluten-free}-523865.png"
+      ]
+    },
+    {
+      "id": 807443,
+      "title": "Deliciously Simple Cheeseburgers",
+      "readyInMinutes": 20,
+      "servings": 4,
+      "image": "deliciously-simple-cheeseburgers-807443.jpg",
+      "imageUrls": [
+        "deliciously-simple-cheeseburgers-807443.jpg"
+      ]
+    },
+    {
+      "id": 994291,
+      "title": "Low Carb Cheeseburger Bake",
+      "readyInMinutes": 35,
+      "servings": 6,
+      "image": "low-carb-cheeseburger-bake-994291.jpg",
+      "imageUrls": [
+        "low-carb-cheeseburger-bake-994291.jpg"
+      ]
+    },
+    {
+      "id": 473511,
+      "title": "Taco Burgers",
+      "readyInMinutes": 25,
+      "servings": 4,
+      "image": "Taco-Burgers-473511.jpg",
+      "imageUrls": [
+        "Taco-Burgers-473511.jpg"
       ]
     }
   ],
   "baseUri": "https://spoonacular.com/recipeImages/",
   "offset": 0,
   "number": 10,
-  "totalResults": 973,
-  "processingTimeMs": 39,
-  "expires": 1541986172293,
+  "totalResults": 989,
+  "processingTimeMs": 38,
+  "expires": 1541994847533,
   "isStale": false
 }

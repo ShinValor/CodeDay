@@ -63,10 +63,6 @@ app.post('/recipe', (req,res) => {
 	getRecipeByName(recipeName,function(listOfRecipes) {
 		res.json(listOfRecipes)
 	})
-	//var listOfRecipes = []
-	//listOfRecipes.push(recipeName)
-	//res.json(listOfRecipes)
-
 })
 
 app.get('/webScrapedRecipe', (req,res) => {

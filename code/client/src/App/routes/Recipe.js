@@ -15,12 +15,15 @@ class Recipe extends Component {
 
   render() {
     const foo = this.props.location.state.recipe
+    const bar = this.props.location.state.recipeID
 
     return (
       <div className="App">
         <h1> Your Recipe </h1>
         <div>
           {foo}
+          <br/>
+          RecipeID : {bar}
         </div>
       </div>
     )

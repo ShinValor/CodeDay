@@ -31,10 +31,11 @@ getRecipeByName = (food, callback) => {
 	})
 }
 
+/*
 getRecipeByName("Steak",function(recipes){
 	console.log(recipes)
 })
-
+*/
 
 // Get me recipe ingredients
 getIngredientsByName = (food) => {
@@ -42,7 +43,7 @@ getIngredientsByName = (food) => {
 }
 
 // Get me recipe instruction
-getInstructionByID = (id) => {
+getInstructionByID = (id, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
 	//console.log("URL: ",url)
 	unirest.get(url)
@@ -57,13 +58,17 @@ getInstructionByID = (id) => {
 			//console.log(instruction)
 			var advInstruction = data['analyzedInstructions'][0]['steps']
 			//console.log(advInstruction)
-			return instruction,advInstruction
+			return callback(advInstruction)
 		}
 		else {
 			throw err
 		}
 	})
 }
+
+getInstructionByID("475182",function(instruction){
+	console.log(instruction)
+})
 
 // Ingredient substitute by name
 subIngredientsByName = (ingredient) => {

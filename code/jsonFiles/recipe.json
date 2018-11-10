@@ -1,111 +1,110 @@
 {
   "results": [
     {
-      "id": 690978,
-      "title": "Healthy Salmon Quinoa Burgers ",
+      "id": 516818,
+      "title": "Cauliflower Crust Hawaiian Pizza",
+      "readyInMinutes": 43,
+      "servings": 2,
+      "image": "Cauliflower-Crust-Hawaiian-Pizza-516818.jpg",
+      "imageUrls": [
+        "Cauliflower-Crust-Hawaiian-Pizza-516818.jpg"
+      ]
+    },
+    {
+      "id": 442972,
+      "title": "Sugar Cookie Fruit Pizzas",
       "readyInMinutes": 45,
-      "servings": 5,
-      "image": "healthy-salmon-quinoa-burgers-skinnytaste-690978.jpg",
+      "servings": 12,
+      "image": "Sugar-Cookie-Fruit-Pizzas-442972.jpg",
       "imageUrls": [
-        "healthy-salmon-quinoa-burgers-skinnytaste-690978.jpg"
+        "Sugar-Cookie-Fruit-Pizzas-442972.jpg"
       ]
     },
     {
-      "id": 598753,
-      "title": "Barbecue Pork Burgers",
-      "readyInMinutes": 30,
+      "id": 744065,
+      "title": "Grilled Fruit Pizzas",
+      "readyInMinutes": 125,
+      "servings": 2,
+      "image": "grilled-fruit-pizzas-744065.jpeg",
+      "imageUrls": [
+        "grilled-fruit-pizzas-744065.jpeg"
+      ]
+    },
+    {
+      "id": 723349,
+      "title": "Spaghetti Squash Pizza Pie",
+      "readyInMinutes": 75,
       "servings": 4,
-      "image": "Barbecue-Pork-Burgers-598753.jpg",
+      "image": "spaghetti-squash-pizza-pie-723349.jpg",
       "imageUrls": [
-        "Barbecue-Pork-Burgers-598753.jpg"
+        "spaghetti-squash-pizza-pie-723349.jpg"
       ]
     },
     {
-      "id": 720070,
-      "title": "Chicken Parmigiana Burgers Skinnytaste",
+      "id": 247671,
+      "title": "BBQ Ham, Bacon and Pineapple Quesadillas (aka BBQ Hawaiian Pizza Quesadillas)",
+      "readyInMinutes": 15,
+      "servings": 1,
+      "image": "BBQ-Ham--Bacon-and-Pineapple-Quesadillas-(aka-BBQ-Hawaiian-Pizza-Quesadillas)-247671.jpg",
+      "imageUrls": [
+        "BBQ-Ham--Bacon-and-Pineapple-Quesadillas-(aka-BBQ-Hawaiian-Pizza-Quesadillas)-247671.jpg"
+      ]
+    },
+    {
+      "id": 525235,
+      "title": "Hungry Girl’s English Muffin Hawaiian Pizza",
+      "readyInMinutes": 15,
+      "servings": 1,
+      "image": "Hungry-Girls-English-Muffin-Hawaiian-Pizza-525235.jpg",
+      "imageUrls": [
+        "Hungry-Girls-English-Muffin-Hawaiian-Pizza-525235.jpg"
+      ]
+    },
+    {
+      "id": 547739,
+      "title": "BBQ Chicken Deluxe Pizza",
+      "readyInMinutes": 30,
+      "servings": 1,
+      "image": "BBQ-Chicken-Deluxe-Pizza-547739.jpg",
+      "imageUrls": [
+        "BBQ-Chicken-Deluxe-Pizza-547739.jpg"
+      ]
+    },
+    {
+      "id": 590305,
+      "title": "Make Your Own Mini Pizzas",
       "readyInMinutes": 45,
-      "servings": 10,
-      "image": "chicken-parmigiana-burgers-skinnytaste-720070.jpg",
+      "servings": 18,
+      "image": "Make-Your-Own-Mini-Pizzas-590305.jpg",
       "imageUrls": [
-        "chicken-parmigiana-burgers-skinnytaste-720070.jpg"
+        "Make-Your-Own-Mini-Pizzas-590305.jpg"
       ]
     },
     {
-      "id": 895602,
-      "title": "Homemade Butter Burgers",
-      "readyInMinutes": 13,
+      "id": 523696,
+      "title": "Easy Pizza Fondue",
+      "readyInMinutes": 45,
       "servings": 4,
-      "image": "homemade-butter-burgers-895602.png",
+      "image": "Easy-Pizza-Fondue-523696.jpg",
       "imageUrls": [
-        "homemade-butter-burgers-895602.png"
+        "Easy-Pizza-Fondue-523696.jpg"
       ]
     },
     {
-      "id": 688005,
-      "title": "Sweet Potato Chickpea Burgers",
-      "readyInMinutes": 40,
-      "servings": 8,
-      "image": "Sweet-Potato-Chickpea-Burgers-688005.jpg",
-      "imageUrls": [
-        "Sweet-Potato-Chickpea-Burgers-688005.jpg"
-      ]
-    },
-    {
-      "id": 574946,
-      "title": "Paleo Burgers with Caramelized Balsamic Onions & Avocado",
+      "id": 449836,
+      "title": "Makeover Fruit Pizza",
       "readyInMinutes": 30,
-      "servings": 6,
-      "image": "paleo-burgers-with-caramelized-balsamic-onions-avocado-574946.jpg",
+      "servings": 16,
+      "image": "Makeover-Fruit-Pizza-449836.jpg",
       "imageUrls": [
-        "paleo-burgers-with-caramelized-balsamic-onions-avocado-574946.jpg"
-      ]
-    },
-    {
-      "id": 523865,
-      "title": "Jalapeno Chickpea Lentil Burgers with Sweet Mango Avocado Pico",
-      "readyInMinutes": 25,
-      "servings": 6,
-      "image": "Jalapeno-Chickpea-Lentil-Burgers-with-Sweet-Mango-Avocado-Pico-{vegan--gluten-free}-523865.png",
-      "imageUrls": [
-        "Jalapeno-Chickpea-Lentil-Burgers-with-Sweet-Mango-Avocado-Pico-{vegan--gluten-free}-523865.png"
-      ]
-    },
-    {
-      "id": 807443,
-      "title": "Deliciously Simple Cheeseburgers",
-      "readyInMinutes": 20,
-      "servings": 4,
-      "image": "deliciously-simple-cheeseburgers-807443.jpg",
-      "imageUrls": [
-        "deliciously-simple-cheeseburgers-807443.jpg"
-      ]
-    },
-    {
-      "id": 994291,
-      "title": "Low Carb Cheeseburger Bake",
-      "readyInMinutes": 35,
-      "servings": 6,
-      "image": "low-carb-cheeseburger-bake-994291.jpg",
-      "imageUrls": [
-        "low-carb-cheeseburger-bake-994291.jpg"
-      ]
-    },
-    {
-      "id": 473511,
-      "title": "Taco Burgers",
-      "readyInMinutes": 25,
-      "servings": 4,
-      "image": "Taco-Burgers-473511.jpg",
-      "imageUrls": [
-        "Taco-Burgers-473511.jpg"
+        "Makeover-Fruit-Pizza-449836.jpg"
       ]
     }
   ],
   "baseUri": "https://spoonacular.com/recipeImages/",
   "offset": 0,
   "number": 10,
-  "totalResults": 989,
-  "processingTimeMs": 38,
-  "expires": 1541994847533,
-  "isStale": false
+  "totalResults": 293,
+  "processingTimeMs": 31,
+  "expires": 1542076888621
 }

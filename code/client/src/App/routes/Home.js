@@ -34,10 +34,9 @@ class Home extends Component {
     })
     .then(res => res.json())
     .then(recipe => {
-      this.setState({ recipes: recipe });
-      //console.log(this.state.recipes);
+      this.setState({ recipes: recipe })
+      //console.log(this.state.recipes)
     })
-    //.then(recipes => this.setState({ recipes }))
   }
 
   getWebScrapedRecipe = (event) => {

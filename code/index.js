@@ -23,6 +23,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+// Get me some recipes
 getRecipeByName = (food, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + food
 	//console.log("URL: ",url)
@@ -51,6 +52,8 @@ getRecipeByName = (food, callback) => {
 	})
 }
 
+
+// Get me recipe instruction and ingredients
 getInstructionByID = (id, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
 	//console.log("URL: ",url)
@@ -69,7 +72,7 @@ getInstructionByID = (id, callback) => {
 			//console.log(instructions)
 			//console.log(advInstructions)
 			var data = []
-			data.push(advInstruction)
+			data.push(advInstructions)
 			data.push(ingredients)
 			return callback(data)
 		}
@@ -79,6 +82,34 @@ getInstructionByID = (id, callback) => {
 	})
 }
 
+
+// Enter url to get recipe
+scrapeRecipeByUrl = (url,callback) => {
+	var url = url.split("/")
+	//unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2Fwww.melskitchencafe.com%2Fthe-best-fudgy-brownies%2F")
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + url[0] + "%2F" + url[1] +"%2F")
+	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+	.end(function (result) {
+		//console.log(result.headers)
+		if (result.status === 200) {
+			var data = result.body
+			fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
+			return callback(data)
+		}
+		else {
+			throw err
+		}
+	})
+}
+
+/*
+scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
+	console.log(data)
+})
+*/
+
+// Ingredient substitute by id
 subIngredientsByID = (id,callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
 	//console.log("URL: ",url)
@@ -146,7 +177,6 @@ app.post('/recipeInfo', (req,res) => {
 	var recipeID = req.body.recipeID
 	console.log("Recipe ID:", recipeID)
 	getInstructionByID(recipeID,function(data){
-		console.log(data)
 		res.json(data)
 	})	
 })

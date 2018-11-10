@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Popup from 'reactjs-popup'
 
 class Recipe extends Component {
   // Initialize the state
@@ -12,11 +13,12 @@ class Recipe extends Component {
     }
   }
 
-  // Fetch the list on first mount
+  // Fetch on first mount
   componentDidMount() {
     this.getRecipeInfo()
   }
 
+  // Get Ingredients and Instructions
   getRecipeInfo = () => {
     fetch('http://localhost:3001/recipeInfo',{
       method : 'POST',
@@ -37,6 +39,27 @@ class Recipe extends Component {
   subIngredient = (onClick,ingredient) => {
     onClick.preventDefault()
   }
+
+  NestedToolTip = () => (
+    <Popup
+      trigger={<button className="button"> Trigger 1 </button>}
+      position="top center"
+      closeOnDocumentClick
+    >
+      <div>
+        Pop1
+          <div>
+            <Popup
+              trigger={<button className="button"> Trigger 2 </button>}
+              position="top left"
+              closeOnDocumentClick
+            >
+              <span> Pop2 </span>
+            </Popup>
+          </div>
+      </div>
+    </Popup>
+  )
 
   render() {
 
@@ -64,10 +87,9 @@ class Recipe extends Component {
         <div>
           {recipeName}
         </div>
-        <br/>
         <h3> Recipe Info </h3>
         <div>
-          <p> RecipeID: {id} </p>
+          <p> Recipe ID: {id} </p>
         </div>
         <h3> Ingredients: </h3>
         <div>
@@ -76,6 +98,9 @@ class Recipe extends Component {
         <h3> Steps: </h3>
         <div>
           <ol> {instructions} </ol>
+        </div>
+        <div>
+          {this.NestedToolTip()}
         </div>
       </div>
     )

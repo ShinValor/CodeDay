@@ -7,7 +7,7 @@ class Home extends Component {
     super(props)
     this.state = {
       recipes: [],
-      webScrapedRecipe: [],
+      scrapedRecipe: [],
       recipeName: "",
       url:""
     }
@@ -20,6 +20,7 @@ class Home extends Component {
 
   }
 
+  // Get recipes
   getRecipe = (event) => {
     event.preventDefault()
     const recipeName = this.recipeName.current.value
@@ -39,18 +40,19 @@ class Home extends Component {
     })
   }
 
+  // Get scraped recipes
   scrapedRecipe = (event) => {
     event.preventDefault()
     const url = this.url.current.value
     this.setState({ url : url })
-    fetch('/webScrapedRecipe')
+    fetch('/scrapedRecipe')
     .then(res => res.json())
-    .then(webScrapedRecipe => this.setState({ webScrapedRecipe }))     
+    .then(scrapedRecipe => this.setState({ scrapedRecipe }))     
   }
 
   render() {
     // const recipes = this.state.recipes.map((recipe) => <Link key={recipe.toString()} to={{pathname : "/recipe", state : { recipe : recipe}}}> {recipe} <br/> </Link>)
-    const webScrapedRecipes = this.state.webScrapedRecipe
+    const scrapedRecipes = this.state.scrapedRecipe
     const recipeName = this.state.recipeName
     const url = this.state.url
     const rec = this.state.recipes.map((recipe,index) => {

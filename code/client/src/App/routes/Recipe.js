@@ -7,7 +7,8 @@ class Recipe extends Component {
     this.state = {
       recipeName : this.props.location.state.recipe,
       recipeID : this.props.location.state.recipeID,
-      recipeInfo : []
+      instructions : [],
+      ingredients : []
     }
   }
 
@@ -25,17 +26,33 @@ class Recipe extends Component {
       }
     })
     .then(res => res.json())
-    .then(recipeInfo => {
-      this.setState({ recipeInfo : recipeInfo })
-      console.log(this.state.recipeInfo)
+    .then(data => {
+      this.setState({ instructions: data[0] })
+      this.setState({ ingredients : data[1] })
+      console.log(this.state.instructions)
+      console.log(this.state.ingredients)
     })
+  }
+
+  subIngredient = (onClick,ingredient) => {
+    onClick.preventDefault()
   }
 
   render() {
 
+    const recipeName = this.state.recipeName
     const id = this.state.recipeID
-    const info = this.state.recipeInfo.map((recipe,index) => {
-      var step = Object.values(recipe)[1].replace(/\n|\r/g, "")
+
+    // Remember to link ingredient id so I can call substitute api
+    const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
+      var ingredient = Object.values(ingredientInfo)[4]
+      return (
+        <li key={index}> {ingredient} <br/> </li>
+      )
+    })
+
+    const instructions = this.state.instructions.map((stepInfo,index) => {
+      var step = Object.values(stepInfo)[1].replace(/\n|\r/g, "")
       return (
         <li key={index}> {step} <br/> </li>
       )
@@ -45,14 +62,20 @@ class Recipe extends Component {
       <div className="App">
         <h1> Your Recipe </h1>
         <div>
-          {this.state.recipeName}
+          {recipeName}
         </div>
         <br/>
+        <h3> Recipe Info </h3>
         <div>
-          <h3> Recipe Info </h3>
-          <p> RecipeID : {id} </p>
-          <p> Steps: </p>
-          <ol> {info} </ol>
+          <p> RecipeID: {id} </p>
+        </div>
+        <h3> Ingredients: </h3>
+        <div>
+          <ol> {ingredients} </ol>
+        </div>
+        <h3> Steps: </h3>
+        <div>
+          <ol> {instructions} </ol>
         </div>
       </div>
     )

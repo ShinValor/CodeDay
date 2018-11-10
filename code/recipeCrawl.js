@@ -54,11 +54,13 @@ getInstructionByID = (id, callback) => {
 		if (result.status === 200) {
 			var data = result.body
 			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
+			var ingredients = data['extendedIngredients']
 			var instruction = data['instructions']
 			//console.log(instruction)
 			var advInstruction = data['analyzedInstructions'][0]['steps']
 			//console.log(advInstruction)
-			return callback(advInstruction)
+			//return callback(advInstruction)
+			return callback(ingredients)
 		}
 		else {
 			throw err
@@ -71,7 +73,7 @@ getInstructionByID("475182",function(instruction){
 })
 
 // Ingredient substitute by name
-subIngredientsByName = (ingredient) => {
+subIngredientsByName = (ingredient,callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/substitutes?ingredientName=" + ingredient
 	//console.log("URL: ",url)
 	unirest.get(url)
@@ -86,7 +88,7 @@ subIngredientsByName = (ingredient) => {
 			//console.log(substitutes)
 			var message = data["message"]
 			//console.log(message)
-			return substitutes
+			return callback(substitutes)
 		}
 		else {
 			throw err
@@ -94,8 +96,14 @@ subIngredientsByName = (ingredient) => {
 	})
 }
 
+/*
+subIngredientsByName("butter",function(ingredient){
+	console.log(ingredient)
+})
+*/
+
 // Ingredient substitute by id
-subIngredientsByID = (id) => {
+subIngredientsByID = (id,callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
 	unirest.get(url)
 	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
@@ -109,12 +117,19 @@ subIngredientsByID = (id) => {
 			//console.log(substitutes)
 			var message = data["message"]
 			//console.log(message)
+			return callback(substitutes)
 		}
 		else {
 			throw err
 		}
 	})
 }
+
+/*
+subIngredientsByID("11297",function(ingredient){
+	console.log(ingredient)
+})
+*/
 
 // Enter url to get recipe
 scrapeRecipeByUrl = (url) => {
@@ -137,11 +152,7 @@ scrapeRecipeByUrl = (url) => {
 }
 
 
-//getRecipeByName("Steak") // Done
-//getIngredientsByName()
-//getInstructionByID("475182")
-//subIngredientsByName("butter") // Done
-//subIngredientsByID(11297) // Done
-//scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice")
+//getIngredientsByName() // need to work on it
+//scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice") // need to work on it
 
 

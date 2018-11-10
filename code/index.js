@@ -61,11 +61,15 @@ getInstructionByID = (id, callback) => {
 		if (result.status === 200) {
 			var data = result.body
 			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
+			var ingredients = data['extendedIngredients']
 			var instruction = data['instructions']
 			//console.log(instruction)
 			var advInstruction = data['analyzedInstructions'][0]['steps']
 			//console.log(advInstruction)
-			return callback(advInstruction)
+			var data = []
+			data.push(advInstruction)
+			data.push(ingredients)
+			return callback(data)
 		}
 		else {
 			throw err
@@ -109,8 +113,9 @@ app.post('/recipeInfo', (req,res) => {
 	console.log("RecipeInfo POST")
 	var recipeID = req.body.recipeID
 	console.log("Recipe ID:", recipeID)
-	getInstructionByID(recipeID,function(instruction){
-		res.json(instruction)
+	getInstructionByID(recipeID,function(data){
+		console.log(data)
+		res.json(data)
 	})	
 })
 

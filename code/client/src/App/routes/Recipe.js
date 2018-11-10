@@ -9,7 +9,8 @@ class Recipe extends Component {
       recipeName : this.props.location.state.recipe,
       recipeID : this.props.location.state.recipeID,
       instructions : [],
-      ingredients : []
+      ingredients : [],
+      subIngredient : []
     }
   }
 
@@ -29,37 +30,62 @@ class Recipe extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({ instructions: data[0] })
+      this.setState({ instructions : data[0] })
       this.setState({ ingredients : data[1] })
       console.log(this.state.instructions)
       console.log(this.state.ingredients)
     })
   }
 
+/*
   subIngredient = (onClick,ingredient) => {
     onClick.preventDefault()
   }
+*/
 
-  NestedToolTip = () => (
-    <Popup
-      trigger={<button className="button"> Trigger 1 </button>}
-      position="top center"
-      closeOnDocumentClick
-    >
-      <div>
-        Pop1
-          <div>
-            <Popup
-              trigger={<button className="button"> Trigger 2 </button>}
-              position="top left"
-              closeOnDocumentClick
-            >
-              <span> Pop2 </span>
-            </Popup>
-          </div>
-      </div>
-    </Popup>
-  )
+/*
+fetch('http://localhost:3001/recipeInfo',{
+  method : 'POST',
+  body : JSON.stringify({'ingredient' : ingredient}),
+  headers : {
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(data => {
+  this.setState({subIngredient : data})
+  console.log(this.state.subIngredient)
+})
+*/
+
+  subIngredient = (ingredient) => {
+    const getIngredient = (ingredient) => {
+      fetch('http://localhost:3001/recipeInfo',{
+        method : 'POST',
+        body : JSON.stringify({'ingredient' : ingredient}),
+        headers : {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({subIngredient : data})
+        console.log(this.state.subIngredient)
+      })
+    }
+    return (
+      <Popup trigger={<button className="button"> {ingredient} </button>} position="right center" closeOnDocumentClick>
+        <div>
+          Select Ingredient
+            <div>
+              <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
+                <span> Pop2 </span>
+              </Popup>
+            </div>
+        </div>
+      </Popup>
+    )
+  }
 
   render() {
 
@@ -70,14 +96,18 @@ class Recipe extends Component {
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
       var ingredient = Object.values(ingredientInfo)[4]
       return (
-        <li key={index}> {ingredient} <br/> </li>
+        <a key={index}> {this.subIngredient(ingredient)} <br/> </a>
       )
     })
 
     const instructions = this.state.instructions.map((stepInfo,index) => {
       var step = Object.values(stepInfo)[1].replace(/\n|\r/g, "")
       return (
-        <li key={index}> {step} <br/> </li>
+        <div key={index}>
+          <a> <strong> Step {index+1}: </strong> <br/> {step} </a>
+          <br/>
+          <br/>
+        </div>
       )
     })
 
@@ -93,14 +123,11 @@ class Recipe extends Component {
         </div>
         <h3> Ingredients: </h3>
         <div>
-          <ol> {ingredients} </ol>
+          {ingredients}
         </div>
-        <h3> Steps: </h3>
+        <br/>
         <div>
-          <ol> {instructions} </ol>
-        </div>
-        <div>
-          {this.NestedToolTip()}
+          {instructions}
         </div>
       </div>
     )

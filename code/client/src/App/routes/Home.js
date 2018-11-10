@@ -51,80 +51,55 @@ class Home extends Component {
   }
 
   render() {
-    // const recipes = this.state.recipes.map((recipe) => <Link key={recipe.toString()} to={{pathname : "/recipe", state : { recipe : recipe}}}> {recipe} <br/> </Link>)
-    const scrapedRecipes = this.state.scrapedRecipe
     const recipeName = this.state.recipeName
-    const url = this.state.url
-    const rec = this.state.recipes.map((recipe,index) => {
+    const recipes = this.state.recipes.map((recipe,index) => {
       return (<Link key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> <p> {Object.keys(recipe)[0]} <br/> </p> </Link>)
     })
+    const scrapedRecipes = this.state.scrapedRecipe
+    const url = this.state.url
 
-    if (recipeName.length)
-    {
-      return (
-        <div className="App">
-          <h1> PieceMeal </h1>
-          <div>
-            <form onSubmit={this.getRecipe}>
-              <label>
-                Enter Food Name:
-                <br/>
-                <input type="text" ref={this.recipeName}/>
-              </label>
-              <br/>
-              <button className="button" type="submit"> Search </button>
-            </form>
-            <br/>
-            <form onSubmit={this.scrapedRecipe}>
-              <label>
-                Enter Url:
-                <br/>
-                <input type="text" ref={this.url}/>
-              </label>
-              <br/>
-              <button className="button" type="submit"> Search </button>
-            </form>
-          </div>
-          <br/>
-          <div>
-            You searched for {recipeName}
-          </div>
-          <br/>
-          <div>
-            {rec}
-          </div>
-        </div>
-      )
+    const displayRecipeName = () => {
+      if (this.state.recipeName.length) {
+        return (
+          <a> You searched for {this.state.recipeName} </a>
+        )
+      }
     }
-    else
-    {
-      return (
-        <div className="App">
-          <h1> PieceMeal </h1>
-          <div onSubmit={this.getRecipe}>
-            <form>
-              <label>
-                Enter Food Name:
-                <br/>
-                <input type="text" ref={this.recipeName}/>
-              </label>
+
+    return (
+      <div className="App">
+        <h1> PieceMeal </h1>
+        <div>
+          <form onSubmit={this.getRecipe}>
+            <label>
+              Enter Food Name:
               <br/>
-              <button className="button" type="submit"> Search </button>
-            </form>
+              <input type="text" ref={this.recipeName}/>
+            </label>
             <br/>
-            <form onSubmit={this.scrapedRecipe}>
-              <label>
-                Enter Url:
-                <br/>
-                <input type="text" ref={this.url}/>
-              </label>
+            <button className="button" type="submit"> Search </button>
+          </form>
+          <br/>
+          <form onSubmit={this.scrapedRecipe}>
+            <label>
+              Enter Url:
               <br/>
-              <button className="button" type="submit"> Search </button>
-            </form>
-          </div>
+              <input type="text" ref={this.url}/>
+            </label>
+            <br/>
+            <button className="button" type="submit"> Search </button>
+          </form>
         </div>
-      )      
-    }
+        <br/>
+        <div>
+          {displayRecipeName()}
+        </div>
+        <br/>
+        <div>
+          {recipes}
+        </div>
+      </div>
+    )
   }
 }
 export default Home

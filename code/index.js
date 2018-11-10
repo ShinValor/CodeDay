@@ -52,6 +52,32 @@ getRecipeByName = (food, callback) => {
 	})
 }
 
+// Enter url to get recipe
+scrapeRecipeByUrl = (url,callback) => {
+	var url = url.split("/")
+	//unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2Fwww.melskitchencafe.com%2Fthe-best-fudgy-brownies%2F")
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + url[0] + "%2F" + url[1] +"%2F")
+	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+	.end(function (result) {
+		//console.log(result.headers)
+		if (result.status === 200) {
+			var data = result.body
+			fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
+			return callback(data)
+		}
+		else {
+			throw err
+		}
+	})
+}
+
+/*
+scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
+	console.log(data)
+})
+*/
+
 
 // Get me recipe instruction and ingredients
 getInstructionByID = (id, callback) => {
@@ -82,32 +108,6 @@ getInstructionByID = (id, callback) => {
 	})
 }
 
-
-// Enter url to get recipe
-scrapeRecipeByUrl = (url,callback) => {
-	var url = url.split("/")
-	//unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2Fwww.melskitchencafe.com%2Fthe-best-fudgy-brownies%2F")
-	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + url[0] + "%2F" + url[1] +"%2F")
-	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
-	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-	.end(function (result) {
-		//console.log(result.headers)
-		if (result.status === 200) {
-			var data = result.body
-			fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
-			return callback(data)
-		}
-		else {
-			throw err
-		}
-	})
-}
-
-/*
-scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
-	console.log(data)
-})
-*/
 
 // Ingredient substitute by id
 subIngredientsByID = (id,callback) => {
@@ -174,11 +174,21 @@ app.get('/recipeInfo', (req,res) => {
 
 app.post('/recipeInfo', (req,res) => {
 	console.log("Recipe Info POST")
-	var recipeID = req.body.recipeID
-	console.log("Recipe ID:", recipeID)
-	getInstructionByID(recipeID,function(data){
+	if (req.body.recipeID) {
+		var recipeID = req.body.recipeID
+		console.log("Recipe ID:", recipeID)
+		getInstructionByID(recipeID,function(data){
+			res.json(data)
+		})
+	}
+	else if (req.body.ingredient){
+		var ingredient = req.body.ingredient
+		console.log("Ingredient:", ingredient)
+		data = []
+		data.push(ingredient)
+		console.log(data)
 		res.json(data)
-	})	
+	}
 })
 
 // Handles any requests that don't match the ones above

@@ -39,7 +39,7 @@ class Home extends Component {
     })
   }
 
-  getWebScrapedRecipe = (event) => {
+  scrapedRecipe = (event) => {
     event.preventDefault()
     const url = this.url.current.value
     this.setState({ url : url })
@@ -73,7 +73,7 @@ class Home extends Component {
               <button className="button" type="submit"> Search </button>
             </form>
             <br/>
-            <form onSubmit={this.getWebScrapedRecipe}>
+            <form onSubmit={this.scrapedRecipe}>
               <label>
                 Enter Url:
                 <br/>
@@ -110,7 +110,7 @@ class Home extends Component {
               <button className="button" type="submit"> Search </button>
             </form>
             <br/>
-            <form onSubmit={this.getWebScrapedRecipe}>
+            <form onSubmit={this.scrapedRecipe}>
               <label>
                 Enter Url:
                 <br/>

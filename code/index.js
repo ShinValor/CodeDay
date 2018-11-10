@@ -42,6 +42,7 @@ getRecipeByName = (food, callback) => {
 				obj[recipeName] = recipeID;
 				recipes.push(obj)
 			}
+			//console.log(recipes)
 			callback(recipes)
 		}
 		else {
@@ -62,10 +63,11 @@ getInstructionByID = (id, callback) => {
 			var data = result.body
 			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
 			var ingredients = data['extendedIngredients']
-			var instruction = data['instructions']
-			//console.log(instruction)
-			var advInstruction = data['analyzedInstructions'][0]['steps']
-			//console.log(advInstruction)
+			var instructions = data['instructions']
+			var advInstructions = data['analyzedInstructions'][0]['steps']
+			//console.log(ingredients)
+			//console.log(instructions)
+			//console.log(advInstructions)
 			var data = []
 			data.push(advInstruction)
 			data.push(ingredients)
@@ -77,10 +79,41 @@ getInstructionByID = (id, callback) => {
 	})
 }
 
+subIngredientsByID = (id,callback) => {
+	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
+	//console.log("URL: ",url)
+	unirest.get(url)
+	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+	.end(function (result) {
+		//console.log(result.headers)
+		if (result.status === 200) {
+			var data = result.body
+			fs.writeFileSync("./jsonFiles/substitutesByID.json", JSON.stringify(data,null,2))
+			var substitutes = data["substitutes"]
+			var message = data["message"]
+			//console.log(substitutes)
+			//console.log(message)
+			var data = []
+			data.push(substitutes)
+			data.push(message)
+			return callback(data)
+		}
+		else {
+			throw err
+		}
+	})
+}
+
+/*
+subIngredientsByID("11297",function(data){
+	console.log(data)
+})
+*/
+
 app.get('/recipe', (req,res) => {
 	console.log("Recipe GET")
-	var listOfRecipes = ["Chicken","Rice","Egg","Bacon"]
-	res.json(listOfRecipes)
+	// Nothing
 })
 
 app.post('/recipe', (req,res) => {
@@ -92,25 +125,24 @@ app.post('/recipe', (req,res) => {
 	})
 })
 
-app.get('/webScrapedRecipe', (req,res) => {
-	console.log("Web GET")
-	var listOfRecipes = ["webRecipe1", "webRecipe2", "webRecipe3"]
-	res.json(listOfRecipes)
+app.get('/scrapedRecipe', (req,res) => {
+	console.log("Scrape GET")
+	// Nothing
 })
 
-app.post('/webScrapedRecipe', (req,res) => {
-	console.log("Web POST")
+app.post('/scrapedRecipe', (req,res) => {
+	console.log("Scrape POST")
 	var listOfRecipes = ["webRecipe1", "webRecipe2", "webRecipe3"]
 	res.json(listOfRecipes)
 })
 
 app.get('/recipeInfo', (req,res) => {
-	console.log("RecipeInfo GET")
+	console.log("Recipe Info GET")
 	// Nothing
 })
 
 app.post('/recipeInfo', (req,res) => {
-	console.log("RecipeInfo POST")
+	console.log("Recipe Info POST")
 	var recipeID = req.body.recipeID
 	console.log("Recipe ID:", recipeID)
 	getInstructionByID(recipeID,function(data){
@@ -121,7 +153,7 @@ app.post('/recipeInfo', (req,res) => {
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
-	console.log("Nothing")
+	console.log("Wrong Path")
 	res.sendFile(path.join(__dirname+'/client/build/index.html'))
 })
 

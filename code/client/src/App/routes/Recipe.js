@@ -10,7 +10,8 @@ class Recipe extends Component {
       recipeID : this.props.location.state.recipeID,
       ingredients : [],
       instructions : [],
-      subIngredient : []
+      subIngredients : [],
+      message : ""
     }
   }
 
@@ -50,17 +51,27 @@ class Recipe extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({subIngredient : data})
-      console.log(this.state.subIngredient)
+      this.setState({subIngredients : data[0]})
+      this.setState({message : data[1]})
+      console.log(this.state.subIngredients)
+      console.log(this.state.message)
     })
   }
 
   render() {
 
+    const display = () => {
+      const substitutes = this.state.subIngredients
+      if (substitutes != null) {
+        for (let i = 0; i <= substitutes.length; i++) {
+          return (<button className="button"> {substitutes[i]} </button>)
+        }
+      }
+    }
+
     const recipeName = this.state.recipeName
     const id = this.state.recipeID
 
-    // Remember to link ingredient id so I can call substitute api
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
       var ingredient = Object.values(ingredientInfo)[4]
       return (
@@ -75,16 +86,21 @@ class Recipe extends Component {
             closeOnDocumentClick
             onOpen={this.getSubIngredient.bind(this,ingredient)}
             >
-
             <div>
               Select Ingredients
                 <div>
-                  <Popup trigger={<button onClick={()=> console.log("HELLO")} className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
-                    <span > Pop2 </span>
+                  <Popup 
+                    trigger={
+                      display()
+                    } 
+                    position="top left"
+                    closeOnDocumentClick>
+                    <span> 
+                      Pop2
+                    </span>
                   </Popup>
                 </div>
             </div>
-
           </Popup>
         </div>
       )

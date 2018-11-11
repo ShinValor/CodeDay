@@ -1,9 +1,9 @@
 {
   "status": "success",
-  "ingredient": "zucchini squash",
+  "ingredient": "worcestershire",
   "substitutes": [
-    "1 cup = 1 cup pattypan squash",
-    "1 cup = 1 cup yellow squash"
+    "1 tsp = 1 tsp bottled steak sauce",
+    "1 tsp = 2 tsp soy sauce + 4 drops hot pepper sauce + 1/4 lemon juice + 1/4 tsp granulated sugar"
   ],
   "message": "Found 2 substitutes for the ingredient."
 }

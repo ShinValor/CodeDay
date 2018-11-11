@@ -26,3 +26,4 @@ In order to run this project node.js and npm both need to have been installed.
 * [Express.js](https://expressjs.com/)
 * [React-Router](https://reacttraining.com/react-router/core/guides/philosophy)
 * [Reactjs-Popup](https://react-popup.elazizi.com/)
+* [Spoonacular](https://spoonacular.com/food-api)

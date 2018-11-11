@@ -461,18 +461,18 @@
       "cabernet sauvignon",
       "pinot noir"
     ],
-    "pairingText": "Merlot, Cabernet Sauvignon, and Pinot Noir are great choices for Steak. After all, beef and red wine are a classic combination. Generally, leaner steaks go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier steaks can handle a bold red, such as cabernet sauvingnon. The Clos Du Val Merlot with a 4.1 out of 5 star rating seems like a good match. It costs about 30 dollars per bottle.",
+    "pairingText": "Steak works really well with Merlot, Cabernet Sauvignon, and Pinot Noir. After all, beef and red wine are a classic combination. Generally, leaner steaks go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier steaks can handle a bold red, such as cabernet sauvingnon. The Robert Mondavi Napa Merlot with a 4 out of 5 star rating seems like a good match. It costs about 30 dollars per bottle.",
     "productMatches": [
       {
-        "id": 433037,
-        "title": "Clos Du Val Merlot",
-        "description": "A dense, inky color and rich aromas of intense black currant and blackberry pervade our 2002 Merlot. Hints of herbs, black olives and toast are also present in the nose, leading to a well-structured wine with an abundance of dark red and black fruit flavors, balanced with sweet toast and some spice. The wine's soft tannins, lingering finish, and rich, complex taste make this a delightful accompaniment to roast chicken, pork, or beef.",
+        "id": 438573,
+        "title": "Robert Mondavi Napa Merlot",
+        "description": "The wine's multi-dimensional flavors come from grapes grown in distinctly different terroirs of Napa Valley, including the Carneros, Stags Leap and Oakville districts. Traditional techniques, including native yeasts, extended maceration, aging in French oak barrels and bottling without filtration, enhanced the wine's complexity. This wine is delicious with many entrees and cheeses. One of our favorite food pairings is roast turkey with a wild mushroom and walnut stuffing. Roast leg of lamb, rubbed with fragrant herbs and spices, or grilled pork loin also marry perfectly with the wine's luscious flavors.",
         "price": "$29.99",
-        "imageUrl": "https://spoonacular.com/productImages/433037-312x231.jpg",
-        "averageRating": 0.82,
-        "ratingCount": 9,
-        "score": 0.7842857142857143,
-        "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Fclos-du-val-merlot-2002%2F83430"
+        "imageUrl": "https://spoonacular.com/productImages/438573-312x231.jpg",
+        "averageRating": 0.8,
+        "ratingCount": 6,
+        "score": 0.7473684210526317,
+        "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Frobert-mondavi-napa-merlot-1999%2F51817"
       }
     ]
   },

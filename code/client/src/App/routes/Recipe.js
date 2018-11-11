@@ -37,9 +37,9 @@ class Recipe extends Component {
     })
   }
 
-  getSubIngredient = (event) => {
-    event.preventDefault()
-    const ingredient = event.target.textContent
+  getSubIngredient = (ingredient) => {
+    //event.preventDefault()
+    //const ingredient = event.target.textContent
     console.log("Substitute: ", ingredient)
     fetch('http://localhost:3001/recipeInfo',{
       method : 'POST',
@@ -67,21 +67,24 @@ class Recipe extends Component {
         <div key={index}>
           <Popup
             trigger={
-              <button onClick={this.getSubIngredient} className="button"> 
+              <button className="button"> 
                 {ingredient}
               </button>
             } 
             position="right center" 
             closeOnDocumentClick
-          >
+            onOpen={this.getSubIngredient.bind(this,ingredient)}
+            >
+
             <div>
               Select Ingredients
                 <div>
-                  <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
-                    <span> Pop2 </span>
+                  <Popup trigger={<button onClick={()=> console.log("HELLO")} className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
+                    <span > Pop2 </span>
                   </Popup>
                 </div>
             </div>
+
           </Popup>
         </div>
       )

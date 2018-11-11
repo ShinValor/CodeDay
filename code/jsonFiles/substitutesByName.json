@@ -1,8 +1,9 @@
 {
   "status": "success",
-  "ingredient": "balsamic vinegar",
+  "ingredient": "zucchini squash",
   "substitutes": [
-    "1 tbsp = 1 tbsp sherry or cider vinegar"
+    "1 cup = 1 cup pattypan squash",
+    "1 cup = 1 cup yellow squash"
   ],
-  "message": "Found 1 substitutes for the ingredient."
+  "message": "Found 2 substitutes for the ingredient."
 }

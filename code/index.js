@@ -184,7 +184,7 @@ app.post('/recipeInfo', (req,res) => {
 	else if (req.body.ingredient){
 		var ingredient = req.body.ingredient
 		console.log("Ingredient:", ingredient)
-		data = []
+		data = ["buttery milk","cake"]
 		data.push(ingredient)
 		console.log(data)
 		res.json(data)

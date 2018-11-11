@@ -8,10 +8,11 @@ class Recipe extends Component {
     this.state = {
       recipeName : this.props.location.state.recipe,
       recipeID : this.props.location.state.recipeID,
-      instructions : [],
       ingredients : [],
+      instructions : [],
       subIngredient : []
     }
+    this.selectIngredient = React.createRef()
   }
 
   // Fetch on first mount
@@ -37,54 +38,22 @@ class Recipe extends Component {
     })
   }
 
-/*
-  subIngredient = (onClick,ingredient) => {
-    onClick.preventDefault()
-  }
-*/
-
-/*
-fetch('http://localhost:3001/recipeInfo',{
-  method : 'POST',
-  body : JSON.stringify({'ingredient' : ingredient}),
-  headers : {
-    'Content-Type': 'application/json'
-  }
-})
-.then(res => res.json())
-.then(data => {
-  this.setState({subIngredient : data})
-  console.log(this.state.subIngredient)
-})
-*/
-
-  subIngredient = (ingredient) => {
-    const getIngredient = (ingredient) => {
-      fetch('http://localhost:3001/recipeInfo',{
-        method : 'POST',
-        body : JSON.stringify({'ingredient' : ingredient}),
-        headers : {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({subIngredient : data})
-        console.log(this.state.subIngredient)
-      })
-    }
-    return (
-      <Popup trigger={<button className="button"> {ingredient} </button>} position="right center" closeOnDocumentClick>
-        <div>
-          Select Ingredient
-            <div>
-              <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
-                <span> Pop2 </span>
-              </Popup>
-            </div>
-        </div>
-      </Popup>
-    )
+  getSubIngredient = (event) => {
+    event.preventDefault()
+    const ingredient = this.selectIngredient.current.value
+    console.log("BLAH: ", this.selectIngredient.current.value)
+    fetch('http://localhost:3001/recipeInfo',{
+      method : 'POST',
+      body : JSON.stringify({'ingredient' : ingredient}),
+      headers : {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({subIngredient : data})
+      console.log(this.state.subIngredient)
+    })
   }
 
   render() {
@@ -96,7 +65,27 @@ fetch('http://localhost:3001/recipeInfo',{
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
       var ingredient = Object.values(ingredientInfo)[4]
       return (
-        <a key={index}> {this.subIngredient(ingredient)} <br/> </a>
+        <div key={index}>
+          <Popup 
+            trigger={
+              <form onSubmit={this.getSubIngredient}>
+                <button ref={this.selectIngredient} className="button"> 
+                  {ingredient}
+                </button>
+              </form>} 
+            position="right center" 
+            closeOnDocumentClick
+          >
+            <div>
+              Select Ingredient
+                <div>
+                  <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
+                    <span> Pop2 </span>
+                  </Popup>
+                </div>
+            </div>
+          </Popup>
+        </div>
       )
     })
 

@@ -109,9 +109,9 @@ getInstructionByID = (id, callback) => {
 }
 
 
-// Ingredient substitute by id
-subIngredientsByID = (id,callback) => {
-	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
+// Ingredient substitute by name
+subIngredientsByName = (ingredient,callback) => {
+	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/substitutes?ingredientName=" + ingredient
 	//console.log("URL: ",url)
 	unirest.get(url)
 	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
@@ -120,7 +120,7 @@ subIngredientsByID = (id,callback) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./jsonFiles/substitutesByID.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/substitutesByName.json", JSON.stringify(data,null,2))
 			var substitutes = data["substitutes"]
 			var message = data["message"]
 			//console.log(substitutes)
@@ -136,11 +136,6 @@ subIngredientsByID = (id,callback) => {
 	})
 }
 
-/*
-subIngredientsByID("11297",function(data){
-	console.log(data)
-})
-*/
 
 app.get('/recipe', (req,res) => {
 	console.log("Recipe GET")
@@ -184,10 +179,9 @@ app.post('/recipeInfo', (req,res) => {
 	else if (req.body.ingredient){
 		var ingredient = req.body.ingredient
 		console.log("Ingredient:", ingredient)
-		data = ["buttery milk","cake"]
-		data.push(ingredient)
-		console.log(data)
-		res.json(data)
+		subIngredientsByName(ingredient,function(data){
+			res.json(data)
+		})
 	}
 })
 

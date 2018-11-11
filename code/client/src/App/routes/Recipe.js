@@ -12,7 +12,6 @@ class Recipe extends Component {
       instructions : [],
       subIngredient : []
     }
-    this.selectIngredient = React.createRef()
   }
 
   // Fetch on first mount
@@ -40,8 +39,8 @@ class Recipe extends Component {
 
   getSubIngredient = (event) => {
     event.preventDefault()
-    const ingredient = this.selectIngredient.current.value
-    console.log("BLAH: ", this.selectIngredient.current.value)
+    const ingredient = event.target.textContent
+    console.log("Substitute: ", ingredient)
     fetch('http://localhost:3001/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
@@ -66,18 +65,17 @@ class Recipe extends Component {
       var ingredient = Object.values(ingredientInfo)[4]
       return (
         <div key={index}>
-          <Popup 
+          <Popup
             trigger={
-              <form onSubmit={this.getSubIngredient}>
-                <button ref={this.selectIngredient} className="button"> 
-                  {ingredient}
-                </button>
-              </form>} 
+              <button onClick={this.getSubIngredient} className="button"> 
+                {ingredient}
+              </button>
+            } 
             position="right center" 
             closeOnDocumentClick
           >
             <div>
-              Select Ingredient
+              {this.state.subIngredient}
                 <div>
                   <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
                     <span> Pop2 </span>

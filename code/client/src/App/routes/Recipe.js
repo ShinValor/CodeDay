@@ -75,7 +75,7 @@ class Recipe extends Component {
             closeOnDocumentClick
           >
             <div>
-              {this.state.subIngredient}
+              Select Ingredients
                 <div>
                   <Popup trigger={<button className="button"> Trigger 2 </button>} position="top left" closeOnDocumentClick>
                     <span> Pop2 </span>

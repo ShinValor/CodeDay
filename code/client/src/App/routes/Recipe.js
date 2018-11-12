@@ -60,13 +60,13 @@ class Recipe extends Component {
 
   render() {
 
-    const display = () => {
-      const substitutes = this.state.subIngredients
-      if (substitutes != null) {
-        for (let i = 0; i <= substitutes.length; i++) {
-          return (<button className="button"> {substitutes[i]} </button>)
-        }
-      }
+    var display;
+    if (this.state.subIngredients != null) {
+      display = this.state.subIngredients.map((ingredient,index) => {
+        return (
+          <button key={index} className="button"> {ingredient} </button>
+        )
+      })
     }
 
     const recipeName = this.state.recipeName
@@ -88,18 +88,10 @@ class Recipe extends Component {
             >
             <div>
               Select Ingredients
-                <div>
-                  <Popup 
-                    trigger={
-                      display()
-                    } 
-                    position="top left"
-                    closeOnDocumentClick>
-                    <span> 
-                      Pop2
-                    </span>
-                  </Popup>
-                </div>
+              <br/>
+              {display}
+              <br/>
+              {this.state.message}
             </div>
           </Popup>
         </div>

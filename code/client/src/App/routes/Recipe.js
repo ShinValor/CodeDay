@@ -11,7 +11,8 @@ class Recipe extends Component {
       ingredients : [],
       instructions : [],
       subIngredients : [],
-      message : ""
+      message : "",
+      swapWith : ""
     }
   }
 
@@ -41,6 +42,7 @@ class Recipe extends Component {
   getSubIngredient = (ingredient) => {
     //event.preventDefault()
     //const ingredient = event.target.textContent
+    this.setState({swapWith : ingredient})
     console.log("Substitute: ", ingredient)
     fetch('http://localhost:3001/recipeInfo',{
       method : 'POST',
@@ -58,13 +60,31 @@ class Recipe extends Component {
     })
   }
 
+
+  swapIngredients = (subIngredient) => {
+    //console.log("What I'm swapping: ", this.swapWith.current.textContent)
+    //console.log("Swap the ingredient with this: ", subIngredient)
+    //console.log("Current Ingredients: ", this.state.ingredients)
+    var temp = this.state.ingredients
+    for (let key in temp){
+      //console.log(temp[key]['name'])
+      if (temp[key]['name'] === this.state.swapWith){
+        console.log("WHY: ",temp[key]['name'])
+        temp[key]['name'] = subIngredient
+        console.log(temp)
+      }
+    }
+    this.setState({ingredients : temp})
+    //console.log("Updated ingredients: " ,this.state.ingredients)
+  }
+
   render() {
 
-    var display;
+    var displayOptions;
     if (this.state.subIngredients != null) {
-      display = this.state.subIngredients.map((ingredient,index) => {
+      displayOptions = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="button"> {ingredient} </button>
+          <button key={index} className="button" onClick={this.swapIngredients.bind(this,subIngredient)}> {subIngredient} </button>
         )
       })
     }
@@ -78,7 +98,7 @@ class Recipe extends Component {
         <div key={index}>
           <Popup
             trigger={
-              <button className="button"> 
+              <button className="button" ref={this.swapWith}> 
                 {ingredient}
               </button>
             } 
@@ -89,7 +109,7 @@ class Recipe extends Component {
             <div>
               Select Ingredients
               <br/>
-              {display}
+              {displayOptions}
               <br/>
               {this.state.message}
             </div>

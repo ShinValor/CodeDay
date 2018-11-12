@@ -1,15 +1,9 @@
 {
   "status": "success",
-  "ingredient": "dry breadcrumbs",
+  "ingredient": "worcestershire",
   "substitutes": [
-    "1 cup = 1 cup crushed cornflakes",
-    "1 cup = 1 cup ground oats",
-    "1 cup = 1 cup crushed dry stuffing mix",
-    "1 cup = 1 cup matzo meal",
-    "1 cup = 1 cup cracker crumbs",
-    "1 cup = 1 cup crushed potato chips",
-    "1 cup = 1 cup crushed pretzels",
-    "1 cup = 1 cup crushed tortilla chips"
+    "1 tsp = 1 tsp bottled steak sauce",
+    "1 tsp = 2 tsp soy sauce + 4 drops hot pepper sauce + 1/4 lemon juice + 1/4 tsp granulated sugar"
   ],
-  "message": "Found 8 substitutes for the ingredient."
+  "message": "Found 2 substitutes for the ingredient."
 }

@@ -402,18 +402,18 @@
       "cabernet sauvignon",
       "pinot noir"
     ],
-    "pairingText": "Merlot, Cabernet Sauvignon, and Pinot Noir are great choices for Steak. After all, beef and red wine are a classic combination. Generally, leaner steaks go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier steaks can handle a bold red, such as cabernet sauvingnon. The Sterling Vineyards Merlot with a 5 out of 5 star rating seems like a good match. It costs about 29 dollars per bottle.",
+    "pairingText": "Merlot, Cabernet Sauvignon, and Pinot Noir are my top picks for Steak. After all, beef and red wine are a classic combination. Generally, leaner steaks go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier steaks can handle a bold red, such as cabernet sauvingnon. The Ghost Pines Napa County Sonoma County Merlot with a 5 out of 5 star rating seems like a good match. It costs about 27 dollars per bottle.",
     "productMatches": [
       {
-        "id": 428278,
-        "title": "Sterling Vineyards Merlot",
-        "description": null,
-        "price": "$28.99",
-        "imageUrl": "https://spoonacular.com/productImages/428278-312x231.jpg",
+        "id": 428399,
+        "title": "Ghost Pines Napa County Sonoma County Merlot",
+        "description": "Working without sourcing constraints, our winemakers selected Merlot clusters contributing layered flavors of dark berries, licorice and espresso alongside lots of richness, full-bodied structure, and desirable length. In addition to these flavors, you'll taste hints of cigar paper, cocoa, caramel and nutmeg wrapped around a remarkably smooth mid-palate full of velvety texture and depth. On the long finish, you'll find suggestions of toasty oak, mouth-filling black fruit, and cola framed by plush tannins.",
+        "price": "$26.65",
+        "imageUrl": "https://spoonacular.com/productImages/428399-312x231.jpg",
         "averageRating": 1,
         "ratingCount": 1,
         "score": 0.75,
-        "link": "https://www.amazon.com/2014-Sterling-Vineyards-Valley-Merlot/dp/B071FP8NPG?tag=spoonacular-20"
+        "link": "https://www.amazon.com/Ghost-Pines-County-Sonoma-Merlot/dp/B01A8WOVRW?tag=spoonacular-20"
       }
     ]
   },

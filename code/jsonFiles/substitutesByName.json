@@ -1,4 +1,9 @@
 {
-  "status": "failure",
-  "message": "Could not find any substitutes for that ingredient."
+  "status": "success",
+  "ingredient": "zucchini squash",
+  "substitutes": [
+    "1 cup = 1 cup pattypan squash",
+    "1 cup = 1 cup yellow squash"
+  ],
+  "message": "Found 2 substitutes for the ingredient."
 }

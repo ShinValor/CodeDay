@@ -13,7 +13,9 @@ const corsOptions = {
 const app = express()
 
 const port = process.env.PORT || 3001
+
 app.listen(port)
+
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')))
@@ -52,6 +54,7 @@ getRecipeByName = (food, callback) => {
 	})
 }
 
+
 // Enter url to get recipe
 scrapeRecipeByUrl = (url,callback) => {
 	var url = url.split("/")
@@ -71,12 +74,6 @@ scrapeRecipeByUrl = (url,callback) => {
 		}
 	})
 }
-
-/*
-scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
-	console.log(data)
-})
-*/
 
 
 // Get me recipe instruction and ingredients
@@ -142,6 +139,7 @@ app.get('/recipe', (req,res) => {
 	// Nothing
 })
 
+
 app.post('/recipe', (req,res) => {
 	console.log("Recipe POST")
 	var recipeName = req.body.recipeName
@@ -151,21 +149,29 @@ app.post('/recipe', (req,res) => {
 	})
 })
 
+
 app.get('/scrapedRecipe', (req,res) => {
 	console.log("Scrape GET")
 	// Nothing
 })
 
+
 app.post('/scrapedRecipe', (req,res) => {
 	console.log("Scrape POST")
-	var listOfRecipes = ["webRecipe1", "webRecipe2", "webRecipe3"]
-	res.json(listOfRecipes)
+	var url = req.body.url
+	console.log("Passed Url: ", url)
+	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
+		console.log(data)
+		res.json(["randomdata1","randomdata2","randomdata3"])
+	})
 })
+
 
 app.get('/recipeInfo', (req,res) => {
 	console.log("Recipe Info GET")
 	// Nothing
 })
+
 
 app.post('/recipeInfo', (req,res) => {
 	console.log("Recipe Info POST")
@@ -185,10 +191,12 @@ app.post('/recipeInfo', (req,res) => {
 	}
 })
 
+
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
 	console.log("Wrong Path")
 	res.sendFile(path.join(__dirname + '/client/public/index.html'))
 })
+
 
 console.log('App is listening on port ' + port)

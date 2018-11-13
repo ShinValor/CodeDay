@@ -80,16 +80,19 @@ class Recipe extends Component {
 
   render() {
 
-    var displayOptions;
+    var displaySubstitutes;
     if (this.state.subIngredients != null) {
-      displayOptions = this.state.subIngredients.map((subIngredient,index) => {
+      displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="button" onClick={this.swapIngredients.bind(this,subIngredient)}> {subIngredient} </button>
+          <button key={index} className="button" onClick={this.swapIngredients.bind(this,subIngredient)}> 
+            {subIngredient} 
+          </button>
         )
       })
     }
 
     const recipeName = this.state.recipeName
+    
     const id = this.state.recipeID
 
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
@@ -109,7 +112,7 @@ class Recipe extends Component {
             <div>
               Select Ingredients
               <br/>
-              {displayOptions}
+              {displaySubstitutes}
               <br/>
               {this.state.message}
             </div>
@@ -127,7 +130,7 @@ class Recipe extends Component {
           <br/>
         </div>
       )
-    })
+    })    
 
     return (
       <div className="App">

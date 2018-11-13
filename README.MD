@@ -19,7 +19,7 @@ Node.js
 Spoonacular API
 Ingredients Substitution Chart
 Postgresql
-(Maybe Websockets) IDK HOW REACT WORKS 
+(Maybe Websockets)
 
 
 ### React

@@ -23,7 +23,7 @@ class Recipe extends Component {
 
   // Get Ingredients and Instructions
   getRecipeInfo = () => {
-    fetch('http://localhost:3001/recipeInfo',{
+    fetch('/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'recipeID' : this.state.recipeID}),
       headers : {
@@ -44,7 +44,7 @@ class Recipe extends Component {
     //const ingredient = event.target.textContent
     this.setState({swapWith : ingredient})
     console.log("Substitute: ", ingredient)
-    fetch('http://localhost:3001/recipeInfo',{
+    fetch('/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
       headers : {
@@ -98,7 +98,7 @@ class Recipe extends Component {
         <div key={index}>
           <Popup
             trigger={
-              <button className="button" ref={this.swapWith}> 
+              <button className="button"> 
                 {ingredient}
               </button>
             } 
@@ -131,16 +131,18 @@ class Recipe extends Component {
 
     return (
       <div className="App">
-        <h1> Your Recipe </h1>
         <div>
+          <h2> Your Recipe </h2>
           {recipeName}
         </div>
-        <h3> Recipe Info </h3>
+        <br/>
+        <br/>
         <div>
+          <h4> Recipe Info </h4>
           <p> Recipe ID: {id} </p>
         </div>
-        <h3> Ingredients: </h3>
         <div>
+          <h4> Ingredients: </h4>
           {ingredients}
         </div>
         <br/>

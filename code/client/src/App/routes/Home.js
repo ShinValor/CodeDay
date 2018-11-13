@@ -26,7 +26,7 @@ class Home extends Component {
     const recipeName = this.recipeName.current.value
     this.setState({ recipeName : recipeName })
     console.log("Recipe name is: ", recipeName)
-    fetch('http://localhost:3001/recipe',{
+    fetch('/recipe',{
       method : 'POST',
       body : JSON.stringify({'recipeName' : recipeName}),
       headers : {
@@ -68,11 +68,11 @@ class Home extends Component {
 
     return (
       <div className="App">
-        <h1> PieceMeal </h1>
+        <h2> PieceMeal </h2>
         <div>
           <form onSubmit={this.getRecipe}>
             <label>
-              Enter Food Name:
+              Enter Food:
               <br/>
               <input type="text" ref={this.recipeName}/>
             </label>

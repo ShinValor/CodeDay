@@ -188,7 +188,7 @@ app.post('/recipeInfo', (req,res) => {
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
 	console.log("Wrong Path")
-	res.sendFile(path.join(__dirname+'/client/build/index.html'))
+	res.sendFile(path.join(__dirname + '/client/public/index.html'))
 })
 
 console.log('App is listening on port ' + port)

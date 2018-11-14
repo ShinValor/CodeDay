@@ -38,7 +38,7 @@ getRecipeByName("Steak",function(recipes){
 */
 
 // Get me recipe instruction and ingredients
-getInstructionByID = (id, callback) => {
+getRecipeInfoByID = (id, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
 	//console.log("URL: ",url)
 	unirest.get(url)
@@ -48,7 +48,7 @@ getInstructionByID = (id, callback) => {
 		//console.log(result.headers)
 		if (result.status === 200) {
 			var data = result.body
-			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
+			fs.writeFileSync("./jsonFiles/reciceInfo.json", JSON.stringify(data,null,2))
 			var ingredients = data['extendedIngredients']
 			var instructions = data['instructions']
 			var advInstructions = data['analyzedInstructions'][0]['steps']
@@ -67,7 +67,7 @@ getInstructionByID = (id, callback) => {
 }
 
 /*
-getInstructionByID("475182",function(data){
+getRecipeInfoByID("475182",function(data){
 	console.log(data)
 })
 */

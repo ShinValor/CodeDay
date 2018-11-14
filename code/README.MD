@@ -15,7 +15,7 @@ npm run server
 ### Run the React client only
 npm run client
 
-### Server runs on http://localhost:3001 and client on http://localhost:3000
+### Server runs on http://localhost:5000 and client on http://localhost:3000
 
 ### Prerequisites
 In order to run this project node.js and npm both need to have been installed.

@@ -23,7 +23,7 @@ class Recipe extends Component {
 
   // Get Ingredients and Instructions
   getRecipeInfo = () => {
-    fetch('/recipeInfo',{
+    fetch('http://localhost:5000/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'recipeID' : this.state.recipeID}),
       headers : {
@@ -44,7 +44,7 @@ class Recipe extends Component {
     //const ingredient = event.target.textContent
     this.setState({swapWith : ingredient})
     console.log("Substitute: ", ingredient)
-    fetch('/recipeInfo',{
+    fetch('http://localhost:5000/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
       headers : {
@@ -61,30 +61,30 @@ class Recipe extends Component {
   }
 
 
-  swapIngredients = (subIngredient) => {
-    //console.log("What I'm swapping: ", this.swapWith.current.textContent)
-    //console.log("Swap the ingredient with this: ", subIngredient)
-    //console.log("Current Ingredients: ", this.state.ingredients)
-    var temp = this.state.ingredients
-    for (let key in temp){
-      //console.log(temp[key]['name'])
-      if (temp[key]['name'] === this.state.swapWith){
-        console.log("WHY: ",temp[key]['name'])
-        temp[key]['name'] = subIngredient
-        console.log(temp)
-      }
-    }
-    this.setState({ingredients : temp})
-    //console.log("Updated ingredients: " ,this.state.ingredients)
-  }
-
   render() {
 
-    var displaySubstitutes;
+    const swapIngredients = (subIngredient) => {
+      //console.log("What I'm swapping: ", this.swapWith.current.textContent)
+      //console.log("Swap the ingredient with this: ", subIngredient)
+      //console.log("Current Ingredients: ", this.state.ingredients)
+      var temp = this.state.ingredients
+      for (let key in temp){
+        //console.log(temp[key]['name'])
+        if (temp[key]['name'] === this.state.swapWith){
+          console.log("WHY: ",temp[key]['name'])
+          temp[key]['name'] = subIngredient
+          console.log(temp)
+        }
+      }
+      this.setState({ingredients : temp})
+      //console.log("Updated ingredients: " ,this.state.ingredients)
+    }
+
+    var displaySubstitutes
     if (this.state.subIngredients != null) {
       displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="button" onClick={this.swapIngredients.bind(this,subIngredient)}> 
+          <button key={index} className="button" onClick={swapIngredients.bind(this,subIngredient)}> 
             {subIngredient} 
           </button>
         )
@@ -92,8 +92,6 @@ class Recipe extends Component {
     }
 
     const recipeName = this.state.recipeName
-    
-    const id = this.state.recipeID
 
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
       var ingredient = Object.values(ingredientInfo)[4]
@@ -101,7 +99,7 @@ class Recipe extends Component {
         <div key={index}>
           <Popup
             trigger={
-              <button className="button"> 
+              <button className="ingredientButton"> 
                 {ingredient}
               </button>
             } 
@@ -121,33 +119,33 @@ class Recipe extends Component {
       )
     })
 
-    const instructions = this.state.instructions.map((stepInfo,index) => {
-      var step = Object.values(stepInfo)[1].replace(/\n|\r/g, "")
+    const instructions = this.state.instructions.map((instruction,index) => {
+      var instruction = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
         <div key={index}>
-          <a> <strong> Step {index+1}: </strong> <br/> {step} </a>
+          <text className="instructions"> 
+            <strong> Step {index+1} </strong> 
+            <br/>
+            {instruction}
+          </text>
           <br/>
           <br/>
         </div>
       )
-    })    
+    })
 
     return (
       <div className="App">
         <div>
-          <h2> Your Recipe </h2>
-          {recipeName}
-        </div>
-        <br/>
-        <br/>
-        <div>
-          <h4> Recipe Info </h4>
-          <p> Recipe ID: {id} </p>
+          <br/>
+          <h2> {recipeName} </h2>
+          <br/>
         </div>
         <div>
-          <h4> Ingredients: </h4>
+          <h4> Ingredients </h4>
           {ingredients}
         </div>
+        <br/>
         <br/>
         <div>
           {instructions}

@@ -1,9 +1,8 @@
 {
   "status": "success",
-  "ingredient": "zucchini squash",
+  "ingredient": "beef broth",
   "substitutes": [
-    "1 cup = 1 cup pattypan squash",
-    "1 cup = 1 cup yellow squash"
+    "1 cup = 1 tsp beef bouillon granules dissolved in 1 cup boiling water"
   ],
-  "message": "Found 2 substitutes for the ingredient."
+  "message": "Found 1 substitutes for the ingredient."
 }

@@ -12,7 +12,7 @@ const corsOptions = {
 
 const app = express()
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5000
 
 app.listen(port)
 
@@ -55,6 +55,35 @@ getRecipeByName = (food, callback) => {
 }
 
 
+// Get me recipe instruction and ingredients
+getRecipeInfoByID = (id, callback) => {
+	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
+	//console.log("URL: ",url)
+	unirest.get(url)
+	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+	.end(function (result) {
+		//console.log(result.headers)
+		if (result.status === 200) {
+			var data = result.body
+			fs.writeFileSync("./jsonFiles/recipeInfo.json", JSON.stringify(data,null,2))
+			var ingredients = data['extendedIngredients']
+			var instructions = data['instructions']
+			var advInstructions = data['analyzedInstructions'][0]['steps']
+			//console.log(ingredients)
+			//console.log(instructions)
+			//console.log(advInstructions)
+			var data = []
+			data.push(advInstructions)
+			data.push(ingredients)
+			return callback(data)
+		}
+		else {
+			throw err
+		}
+	})
+}
+
 // Enter url to get recipe
 scrapeRecipeByUrl = (url,callback) => {
 	var url = url.split("/")
@@ -67,36 +96,6 @@ scrapeRecipeByUrl = (url,callback) => {
 		if (result.status === 200) {
 			var data = result.body
 			fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
-			return callback(data)
-		}
-		else {
-			throw err
-		}
-	})
-}
-
-
-// Get me recipe instruction and ingredients
-getInstructionByID = (id, callback) => {
-	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
-	//console.log("URL: ",url)
-	unirest.get(url)
-	.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
-	.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-	.end(function (result) {
-		//console.log(result.headers)
-		if (result.status === 200) {
-			var data = result.body
-			fs.writeFileSync("./jsonFiles/instruction.json", JSON.stringify(data,null,2))
-			var ingredients = data['extendedIngredients']
-			var instructions = data['instructions']
-			var advInstructions = data['analyzedInstructions'][0]['steps']
-			//console.log(ingredients)
-			//console.log(instructions)
-			//console.log(advInstructions)
-			var data = []
-			data.push(advInstructions)
-			data.push(ingredients)
 			return callback(data)
 		}
 		else {
@@ -178,7 +177,7 @@ app.post('/recipeInfo', (req,res) => {
 	if (req.body.recipeID) {
 		var recipeID = req.body.recipeID
 		console.log("Recipe ID:", recipeID)
-		getInstructionByID(recipeID,function(data){
+		getRecipeInfoByID(recipeID,function(data){
 			res.json(data)
 		})
 	}
@@ -192,11 +191,12 @@ app.post('/recipeInfo', (req,res) => {
 })
 
 
+/*
 // Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
-	console.log("Wrong Path")
+app.get('/*', (req,res) =>{
 	res.sendFile(path.join(__dirname + '/client/public/index.html'))
 })
+*/
 
 
 console.log('App is listening on port ' + port)

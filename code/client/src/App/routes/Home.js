@@ -25,7 +25,7 @@ class Home extends Component {
     const recipeName = this.recipeName.current.value
     this.setState({ recipeName : recipeName })
     console.log("Recipe name is: ", recipeName)
-    fetch('/recipe',{
+    fetch('http://localhost:5000/recipe',{
       method : 'POST',
       body : JSON.stringify({'recipeName' : recipeName}),
       headers : {
@@ -44,7 +44,7 @@ class Home extends Component {
     const url = this.url.current.value
     console.log("Url: ", url)
     this.setState({ url : url })
-    fetch('/scrapedRecipe',{
+    fetch('http://localhost:5000/scrapedRecipe',{
      method : 'POST',
       body : JSON.stringify({'url' : url}),
       headers : {

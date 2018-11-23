@@ -9,7 +9,7 @@ class Home extends Component {
       recipeName: "",
       url:"",
       recipes: [],
-      scrapedRecipes: []
+      scrapedRecipe: {}
     }
     this.recipeName = React.createRef()
     this.url = React.createRef()
@@ -24,7 +24,7 @@ class Home extends Component {
     event.preventDefault()
     const recipeName = this.recipeName.current.value
     this.setState({ recipeName : recipeName })
-    console.log("Recipe name is: ", recipeName)
+    //console.log("Recipe name is: ", recipeName)
     fetch('http://localhost:5000/recipe',{
       method : 'POST',
       body : JSON.stringify({'recipeName' : recipeName}),
@@ -39,10 +39,10 @@ class Home extends Component {
     })
   }
 
-  getScrapedRecipes = (event) => {
+  getScrapedRecipe = (event) => {
     event.preventDefault()
     const url = this.url.current.value
-    console.log("Url: ", url)
+    //console.log("Url: ", url)
     this.setState({ url : url })
     fetch('http://localhost:5000/scrapedRecipe',{
      method : 'POST',
@@ -52,8 +52,8 @@ class Home extends Component {
       }
     })
     .then(res => res.json())
-    .then(scrapedRecipes => {
-      this.setState({ scrapedRecipes })
+    .then(scrapedRecipe => {
+      this.setState({ scrapedRecipe })
     })
   }
 
@@ -73,7 +73,8 @@ class Home extends Component {
       )
     })
 
-    const scrapedRecipes = this.state.scrapedRecipes.map((recipe,index) => {
+/*
+    const scrapedRecipe = this.state.scrapedRecipe.map((recipe,index) => {
       return (
         <Link key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
           <p>
@@ -83,6 +84,9 @@ class Home extends Component {
         </Link>        
       )
     })
+*/
+    
+    const title = this.state.scrapedRecipe['title']
 
     const displayRecipeName = () => {
       if (recipeName.length) {
@@ -108,7 +112,7 @@ class Home extends Component {
           <br/>
           <input type="text" ref={this.url}/>
           <br/>
-          <button onClick={this.getScrapedRecipes} className="button" type="submit"> Search </button>
+          <button onClick={this.getScrapedRecipe} className="button" type="submit"> Search </button>
         </div>
         <br/>
         <div>
@@ -117,7 +121,8 @@ class Home extends Component {
         <br/>
         <div>
           {recipes}
-          {scrapedRecipes}
+          {/*scrapedRecipe*/}
+          {title}
         </div>
       </div>
     )

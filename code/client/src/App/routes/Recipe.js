@@ -32,18 +32,16 @@ class Recipe extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({ instructions : data[0] })
-      this.setState({ ingredients : data[1] })
-      console.log(this.state.instructions)
-      console.log(this.state.ingredients)
+      this.setState({instructions : data[0]})
+      this.setState({ingredients : data[1]})
+      //console.log(this.state.instructions)
+      //console.log(this.state.ingredients)
     })
   }
 
   getSubIngredient = (ingredient) => {
-    //event.preventDefault()
-    //const ingredient = event.target.textContent
     this.setState({swapWith : ingredient})
-    console.log("Substitute: ", ingredient)
+    //console.log("Substitute: ", ingredient)
     fetch('http://localhost:5000/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
@@ -55,8 +53,8 @@ class Recipe extends Component {
     .then(data => {
       this.setState({subIngredients : data[0]})
       this.setState({message : data[1]})
-      console.log(this.state.subIngredients)
-      console.log(this.state.message)
+      //console.log(this.state.subIngredients)
+      //console.log(this.state.message)
     })
   }
 
@@ -64,16 +62,10 @@ class Recipe extends Component {
   render() {
 
     const swapIngredients = (subIngredient) => {
-      //console.log("What I'm swapping: ", this.swapWith.current.textContent)
-      //console.log("Swap the ingredient with this: ", subIngredient)
-      //console.log("Current Ingredients: ", this.state.ingredients)
       var temp = this.state.ingredients
-      for (let key in temp){
-        //console.log(temp[key]['name'])
+      for (let key in temp) {
         if (temp[key]['name'] === this.state.swapWith){
-          console.log("WHY: ",temp[key]['name'])
           temp[key]['name'] = subIngredient
-          console.log(temp)
         }
       }
       this.setState({ingredients : temp})

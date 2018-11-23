@@ -56,8 +56,8 @@ getRecipeInfoByID = (id, callback) => {
 			//console.log(instructions)
 			//console.log(advInstructions)
 			var data = []
-			data.push(advInstruction)
 			data.push(ingredients)
+			data.push(advInstruction)
 			return callback(data)
 		}
 		else {
@@ -163,6 +163,3 @@ scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
 	console.log(data)
 })
 */
-
-
-

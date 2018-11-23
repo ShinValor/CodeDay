@@ -4,6 +4,7 @@ const fs = require('fs')
 const unirest = require('unirest')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const myApi = require('./spoonacularApi')
 
 const corsOptions = {
     credentials: true,
@@ -22,10 +23,85 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true })) 
 
 
-// Get me some recipes
+let getRecipeByName = myApi.getRecipeByName
+let scrapeRecipeByUrl = myApi.scrapedRecipeByUrl
+let getRecipeInfoByID = myApi.getRecipeInfoByID
+let subIngredientsByName = myApi.subIngredientsByName
+
+
+app.get('/recipe', (req,res) => {
+	console.log("Recipe GET")
+	// Nothing
+})
+
+
+app.post('/recipe', (req,res) => {
+	console.log("Recipe POST")
+	var recipeName = req.body.recipeName
+	console.log("Passed RecipeName:", recipeName)
+	getRecipeByName(recipeName,function(listOfRecipes) {
+		res.json(listOfRecipes)
+	})
+})
+
+
+app.get('/scrapedRecipe', (req,res) => {
+	console.log("Scrape GET")
+	// Nothing
+})
+
+
+app.post('/scrapedRecipe', (req,res) => {
+	console.log("Scrape POST")
+	var url = req.body.url
+	console.log("Passed Url: ", url)
+	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
+		console.log(data)
+		res.json(["randomdata1","randomdata2","randomdata3"])
+	})
+})
+
+
+app.get('/recipeInfo', (req,res) => {
+	console.log("Recipe Info GET")
+	// Nothing
+})
+
+
+app.post('/recipeInfo', (req,res) => {
+	console.log("Recipe Info POST")
+	if (req.body.recipeID) {
+		var recipeID = req.body.recipeID
+		console.log("Recipe ID:", recipeID)
+		getRecipeInfoByID(recipeID,function(data){
+			res.json(data)
+		})
+	}
+	else if (req.body.ingredient){
+		var ingredient = req.body.ingredient
+		console.log("Ingredient:", ingredient)
+		subIngredientsByName(ingredient,function(data){
+			res.json(data)
+		})
+	}
+})
+
+
+/*
+// Handles any requests that don't match the ones above
+app.get('/*', (req,res) =>{
+	res.sendFile(path.join(__dirname + '/client/public/index.html'))
+})
+*/
+
+
+console.log('App is listening on port ' + port)
+
+
+/*// Get me some recipes
 getRecipeByName = (food, callback) => {
 	var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + food
 	//console.log("URL: ",url)
@@ -131,72 +207,4 @@ subIngredientsByName = (ingredient,callback) => {
 		}
 	})
 }
-
-
-app.get('/recipe', (req,res) => {
-	console.log("Recipe GET")
-	// Nothing
-})
-
-
-app.post('/recipe', (req,res) => {
-	console.log("Recipe POST")
-	var recipeName = req.body.recipeName
-	console.log("Passed RecipeName:", recipeName)
-	getRecipeByName(recipeName,function(listOfRecipes) {
-		res.json(listOfRecipes)
-	})
-})
-
-
-app.get('/scrapedRecipe', (req,res) => {
-	console.log("Scrape GET")
-	// Nothing
-})
-
-
-app.post('/scrapedRecipe', (req,res) => {
-	console.log("Scrape POST")
-	var url = req.body.url
-	console.log("Passed Url: ", url)
-	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
-		console.log(data)
-		res.json(["randomdata1","randomdata2","randomdata3"])
-	})
-})
-
-
-app.get('/recipeInfo', (req,res) => {
-	console.log("Recipe Info GET")
-	// Nothing
-})
-
-
-app.post('/recipeInfo', (req,res) => {
-	console.log("Recipe Info POST")
-	if (req.body.recipeID) {
-		var recipeID = req.body.recipeID
-		console.log("Recipe ID:", recipeID)
-		getRecipeInfoByID(recipeID,function(data){
-			res.json(data)
-		})
-	}
-	else if (req.body.ingredient){
-		var ingredient = req.body.ingredient
-		console.log("Ingredient:", ingredient)
-		subIngredientsByName(ingredient,function(data){
-			res.json(data)
-		})
-	}
-})
-
-
-/*
-// Handles any requests that don't match the ones above
-app.get('/*', (req,res) =>{
-	res.sendFile(path.join(__dirname + '/client/public/index.html'))
-})
 */
-
-
-console.log('App is listening on port ' + port)

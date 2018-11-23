@@ -95,12 +95,14 @@ class Recipe extends Component {
 
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
       var ingredient = Object.values(ingredientInfo)[4]
+      var measurement = Object.values(ingredientInfo)[8]
+      var unit = Object.values(ingredientInfo)[9]
       return (
         <div key={index}>
           <Popup
             trigger={
               <button className="ingredientButton"> 
-                {ingredient}
+                {measurement} {unit} of {ingredient}
               </button>
             } 
             position="right center" 

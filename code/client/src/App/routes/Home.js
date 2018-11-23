@@ -7,17 +7,10 @@ class Home extends Component {
     super(props)
     this.state = {
       recipeName: "",
-      url:"",
-      recipes: [],
-      scrapedRecipe: {}
+      recipes: []
     }
     this.recipeName = React.createRef()
     this.url = React.createRef()
-  }
-
-  // Fetch on first mount
-  componentDidMount() {
-
   }
 
   getRecipes = (event) => {
@@ -39,28 +32,7 @@ class Home extends Component {
     })
   }
 
-  getScrapedRecipe = (event) => {
-    event.preventDefault()
-    const url = this.url.current.value
-    //console.log("Url: ", url)
-    this.setState({ url : url })
-    fetch('http://localhost:5000/scrapedRecipe',{
-     method : 'POST',
-      body : JSON.stringify({'url' : url}),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(scrapedRecipe => {
-      this.setState({ scrapedRecipe })
-    })
-  }
-
   render() {
-    const recipeName = this.state.recipeName
-
-    const url = this.state.url
 
     const recipes = this.state.recipes.map((recipe,index) => {
       return (
@@ -72,29 +44,6 @@ class Home extends Component {
         </Link>
       )
     })
-
-/*
-    const scrapedRecipe = this.state.scrapedRecipe.map((recipe,index) => {
-      return (
-        <Link key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
-          <p>
-            {Object.keys(recipe)[0]} 
-            <br/> 
-          </p> 
-        </Link>        
-      )
-    })
-*/
-    
-    const title = this.state.scrapedRecipe['title']
-
-    const displayRecipeName = () => {
-      if (recipeName.length) {
-        return (
-          <a> You searched for {this.state.recipeName} </a>
-        )
-      }
-    }
 
     return (
       <div className="App">
@@ -112,22 +61,19 @@ class Home extends Component {
           <br/>
           <input type="text" ref={this.url}/>
           <br/>
-          <button onClick={this.getScrapedRecipe} className="button" type="submit"> Search </button>
-        </div>
-        <br/>
-        <div>
-          {displayRecipeName()}
+          <Link to={{ pathname : "/ScrapedRecipe", state : {recipeUrl : this.url} }}>
+            <button className="button" type="submit">
+              Search
+            </button>
+          </Link>
         </div>
         <br/>
         <div>
           {recipes}
-          {/*scrapedRecipe*/}
-          {title}
         </div>
       </div>
     )
   }
 }
-export default Home
 
- 
+export default Home

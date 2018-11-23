@@ -114,13 +114,13 @@ class Recipe extends Component {
     })
 
     const instructions = this.state.instructions.map((instruction,index) => {
-      var instruction = Object.values(instruction)[1].replace(/\n|\r/g, "")
+      var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
         <div key={index}>
           <text className="instructions"> 
             <strong> Step {index+1} </strong> 
             <br/>
-            {instruction}
+            {step}
           </text>
           <br/>
           <br/>

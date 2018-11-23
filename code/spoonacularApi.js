@@ -16,7 +16,6 @@ module.exports = {
 			//console.log(result.headers)
 			if (result.status === 200) {
 				var data = result.body
-				//fs.writeFileSync("./jsonFiles/recipe.json", JSON.stringify(data,null,2))
 				var recipes = []
 				for (index in data['results']) {
 					var recipeName = data['results'][index]['title']
@@ -43,7 +42,6 @@ module.exports = {
 			//console.log(result.headers)
 			if (result.status === 200) {
 				var data = result.body
-				//fs.writeFileSync("./jsonFiles/recipeInfo.json", JSON.stringify(data,null,2))
 				var ingredients = data['extendedIngredients']
 				var instructions = data['instructions']
 				var advInstructions = data['analyzedInstructions'][0]['steps']
@@ -71,7 +69,6 @@ module.exports = {
 			//console.log(result.headers)
 			if (result.status === 200) {
 				var data = result.body
-				//fs.writeFileSync("./jsonFiles/scrapeRecipe.json", JSON.stringify(data,null,2))
 				callback(data)
 			}
 			else {
@@ -90,7 +87,6 @@ module.exports = {
 			//console.log(result.headers)
 			if (result.status === 200) {
 				var data = result.body
-				//fs.writeFileSync("./jsonFiles/substitutesByName.json", JSON.stringify(data,null,2))
 				var substitutes = data["substitutes"]
 				var message = data["message"]
 				//console.log(substitutes)

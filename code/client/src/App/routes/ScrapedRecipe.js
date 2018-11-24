@@ -14,7 +14,6 @@ class ScrapedRecipe extends Component {
 
 	// Fetch on first mount
 	componentDidMount() {
-		//console.log("Passed Url: " ,this.state.recipeUrl)
 		this.getScrapedRecipe()
 	}
 
@@ -36,13 +35,16 @@ class ScrapedRecipe extends Component {
 	render() {
 
 		const url = this.state.recipeUrl
-		const info = this.state.recipeInfo['title']
+		const title = this.state.recipeInfo['title']
+		const info = this.state.recipeInfo['extendedIngredients']
+
+		console.log("Passed Url:",url)
 
 		return (
-			<div> 
-				<h2> {url} </h2>
+			<div>
 				<br/>
-				<h2> {info} </h2>
+				<h2> {title} </h2>
+				<br/>
 			</div>
 		)
 	}

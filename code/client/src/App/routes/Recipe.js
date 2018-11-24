@@ -64,7 +64,7 @@ class Recipe extends Component {
     const swapIngredients = (subIngredient) => {
       var temp = this.state.ingredients
       for (let key in temp) {
-        if (temp[key]['name'] === this.state.swapWith){
+        if (temp[key]['name'] === this.state.swapWith) {
           temp[key]['name'] = subIngredient
         }
       }
@@ -92,15 +92,11 @@ class Recipe extends Component {
       return (
         <div key={index}>
           <Popup
-            trigger={
-              <button className="ingredientButton"> 
-                {measurement} {unit} of {ingredient}
-              </button>
-            } 
+            trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
             position="right center" 
             closeOnDocumentClick
             onOpen={this.getSubIngredient.bind(this,ingredient)}
-            >
+            on="hover">
             <div>
               Select Ingredients
               <br/>
@@ -117,12 +113,11 @@ class Recipe extends Component {
       var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
         <div key={index}>
-          <text className="instructions"> 
+          <p className="instructions"> 
             <strong> Step {index+1} </strong> 
             <br/>
             {step}
-          </text>
-          <br/>
+          </p>
           <br/>
         </div>
       )
@@ -139,7 +134,6 @@ class Recipe extends Component {
           <h4> Ingredients </h4>
           {ingredients}
         </div>
-        <br/>
         <br/>
         <div>
           {instructions}

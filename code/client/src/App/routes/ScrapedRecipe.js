@@ -14,8 +14,8 @@ class ScrapedRecipe extends Component {
 
 	// Fetch on first mount
 	componentDidMount() {
-		console.log("lala: " ,this.state.recipeUrl)
-		//this.getScrapedRecipe()
+		//console.log("Passed Url: " ,this.state.recipeUrl)
+		this.getScrapedRecipe()
 	}
 
 	getScrapedRecipe = () => {
@@ -35,11 +35,15 @@ class ScrapedRecipe extends Component {
 
 	render() {
 
-		//const title = this.state.scrapedRecipe['title']
+		const url = this.state.recipeUrl
+		const info = this.state.recipeInfo['title']
 
 		return (
-
-			<h1> Hello </h1>
+			<div> 
+				<h2> {url} </h2>
+				<br/>
+				<h2> {info} </h2>
+			</div>
 		)
 	}
 }

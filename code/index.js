@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const fs = require('fs')
 const unirest = require('unirest')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -34,7 +33,6 @@ let subIngredientsByName = myApi.subIngredientsByName
 
 app.get('/recipe', (req,res) => {
 	console.log("Recipe GET")
-	// Nothing
 })
 
 
@@ -50,7 +48,6 @@ app.post('/recipe', (req,res) => {
 
 app.get('/scrapedRecipe', (req,res) => {
 	console.log("Scrape GET")
-	// Nothing
 })
 
 
@@ -66,7 +63,6 @@ app.post('/scrapedRecipe', (req,res) => {
 
 app.get('/recipeInfo', (req,res) => {
 	console.log("Recipe Info GET")
-	// Nothing
 })
 
 

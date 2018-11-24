@@ -12,7 +12,7 @@ As a cook I can easily find substitutes for ingredients I may not have at home. 
 ### Future Development 
 As a user I can learn what a cooking term means easily by clicking on it. As a user I can save all my favorite recipes to my virtual cookbook and retrieve them at any time. 
 
-### Technologies/Tools
+## Technologies/Tools
 * [Node.js](https://nodejs.org/en/)
 * [React.js](https://reactjs.org/)
 * [Express.js](https://expressjs.com/)

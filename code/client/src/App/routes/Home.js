@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class Home extends Component {
   // Initialize the state
   constructor(props) {
     super(props)
     this.state = {
-      recipeName: "",
-      recipes: []
+      recipeName : "",
+      recipes : [],
+      url : ""
     }
     this.recipeName = React.createRef()
     this.url = React.createRef()
@@ -45,6 +46,15 @@ class Home extends Component {
       )
     })
 
+    const setUrl = () => {
+      this.setState({url : this.url.current.value})
+    }
+
+    if (this.state.url) {
+      return (
+        <Redirect to={{ pathname : '/ScrapedRecipe', state : {recipeUrl : this.state.url} }}/>
+      )
+    }
     return (
       <div className="App">
         <h2> PieceMeal </h2>
@@ -61,11 +71,7 @@ class Home extends Component {
           <br/>
           <input type="text" ref={this.url}/>
           <br/>
-          <Link to={{ pathname : "/ScrapedRecipe", state : {recipeUrl : this.url} }}>
-            <button className="button" type="submit">
-              Search
-            </button>
-          </Link>
+          <button onClick={setUrl} className="button" type="submit"> Search </button>
         </div>
         <br/>
         <div>

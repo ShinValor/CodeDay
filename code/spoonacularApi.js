@@ -1,7 +1,4 @@
 /* Spoonacular Api */
-const express = require('express')
-const path = require('path')
-const fs = require('fs')
 const unirest = require('unirest')
 
 module.exports = {

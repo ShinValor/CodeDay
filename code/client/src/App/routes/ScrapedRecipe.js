@@ -8,7 +8,12 @@ class ScrapedRecipe extends Component {
     super(props)
     this.state = {
       recipeUrl : this.props.location.state.recipeUrl,
-      recipeInfo : {}
+      recipeName: "",
+      ingredients : [],
+      instructions : [],
+      subIngredients : [],
+      message : "",
+      swapWith : ""
     }
   }
 
@@ -26,19 +31,19 @@ class ScrapedRecipe extends Component {
       }
     })
     .then(res => res.json())
-    .then(scrapedRecipe => {
-      this.setState({ recipeInfo : scrapedRecipe })
-      //console.log(this.state.recipeInfo)
+    .then(data => {
+      this.setState({ recipeName : data[0] })
+      this.setState({ instructions : data[1] })
+      this.setState({ ingredients : data[2] })
     })
   }
 
   render() {
 
     const url = this.state.recipeUrl
-    const title = this.state.recipeInfo['title']
-    const info = this.state.recipeInfo['extendedIngredients']
-
-    console.log("Passed Url:",url)
+    const title = this.state.recipeName
+    const ingredients = this.state.ingredients
+    const instructions = this.state.instructions
 
     return (
       <div>

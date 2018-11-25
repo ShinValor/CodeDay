@@ -54,7 +54,7 @@ app.get('/scrapedRecipe', (req,res) => {
 app.post('/scrapedRecipe', (req,res) => {
   console.log("Scrape POST")
   var url = req.body.url
-  console.log("Passed Url: ", url)
+  console.log("Passed Url:", url)
   scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
     res.json(data)
   })

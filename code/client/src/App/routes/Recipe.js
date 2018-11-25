@@ -34,14 +34,11 @@ class Recipe extends Component {
     .then(data => {
       this.setState({instructions : data[0]})
       this.setState({ingredients : data[1]})
-      //console.log(this.state.instructions)
-      //console.log(this.state.ingredients)
     })
   }
 
   getSubIngredient = (ingredient) => {
     this.setState({swapWith : ingredient})
-    //console.log("Substitute: ", ingredient)
     fetch('http://localhost:5000/recipeInfo',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
@@ -53,8 +50,6 @@ class Recipe extends Component {
     .then(data => {
       this.setState({subIngredients : data[0]})
       this.setState({message : data[1]})
-      //console.log(this.state.subIngredients)
-      //console.log(this.state.message)
     })
   }
 
@@ -69,7 +64,6 @@ class Recipe extends Component {
         }
       }
       this.setState({ingredients : temp})
-      //console.log("Updated ingredients: " ,this.state.ingredients)
     }
 
     var displaySubstitutes

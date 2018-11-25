@@ -14,11 +14,9 @@ class Home extends Component {
     this.url = React.createRef()
   }
 
-  getRecipes = (event) => {
-    event.preventDefault()
+  getRecipes = () => {
     const recipeName = this.recipeName.current.value
     this.setState({ recipeName : recipeName })
-    //console.log("Recipe name is: ", recipeName)
     fetch('http://localhost:5000/recipe',{
       method : 'POST',
       body : JSON.stringify({'recipeName' : recipeName}),
@@ -29,7 +27,6 @@ class Home extends Component {
     .then(res => res.json())
     .then(recipe => {
       this.setState({ recipes: recipe })
-      //console.log(this.state.recipes)
     })
   }
 

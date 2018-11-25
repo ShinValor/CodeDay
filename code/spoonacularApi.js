@@ -79,5 +79,23 @@ module.exports = {
         throw err
       }
     })
-  } 
+  },
+
+  subIngredientsByID: function(id,callback) {
+    const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
+    unirest.get(url)
+    .header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+    .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+    .end(function (result) {
+      //console.log(result.headers)
+      if (result.status === 200) {
+        var substitutes = result.body["substitutes"]
+        var message = result.body["message"]
+        callback([substitutes,message])
+      }
+      else {
+        throw err
+      }
+    })
+  }
 }

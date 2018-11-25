@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import './App.css';
-import Home from './routes/Home';
-import Recipe from './routes/Recipe';
-import ScrapedRecipe from './routes/ScrapedRecipe';
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import './App.css'
+import Home from './routes/Home'
+import Recipe from './routes/Recipe'
+import ScrapedRecipe from './routes/ScrapedRecipe'
 
 class App extends Component {
   render() {
@@ -20,8 +20,8 @@ class App extends Component {
       <Switch>
         <App/>
       </Switch>
-    );
+    )
   }
 }
 
-export default App;
+export default App

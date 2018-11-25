@@ -6,8 +6,8 @@ const cors = require('cors')
 const myApi = require('./spoonacularApi')
 
 const corsOptions = {
-    credentials: true,
-    origin: true
+  credentials: true,
+  origin: true
 }
 
 const app = express()
@@ -32,62 +32,62 @@ let subIngredientsByName = myApi.subIngredientsByName
 
 
 app.get('/recipe', (req,res) => {
-	console.log("Recipe GET")
+  console.log("Recipe GET")
 })
 
 
 app.post('/recipe', (req,res) => {
-	console.log("Recipe POST")
-	var recipeName = req.body.recipeName
-	console.log("Passed RecipeName:", recipeName)
-	getRecipeByName(recipeName,function(listOfRecipes) {
-		res.json(listOfRecipes)
-	})
+  console.log("Recipe POST")
+  var recipeName = req.body.recipeName
+  console.log("Passed RecipeName:", recipeName)
+  getRecipeByName(recipeName,function(listOfRecipes) {
+    res.json(listOfRecipes)
+  })
 })
 
 
 app.get('/scrapedRecipe', (req,res) => {
-	console.log("Scrape GET")
+  console.log("Scrape GET")
 })
 
 
 app.post('/scrapedRecipe', (req,res) => {
-	console.log("Scrape POST")
-	var url = req.body.url
-	console.log("Passed Url: ", url)
-	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
-		res.json(data)
-	})
+  console.log("Scrape POST")
+  var url = req.body.url
+  console.log("Passed Url: ", url)
+  scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
+    res.json(data)
+  })
 })
 
 
 app.get('/recipeInfo', (req,res) => {
-	console.log("Recipe Info GET")
+  console.log("Recipe Info GET")
 })
 
 
 app.post('/recipeInfo', (req,res) => {
-	console.log("Recipe Info POST")
-	if (req.body.recipeID) {
-		var recipeID = req.body.recipeID
-		console.log("Recipe ID:", recipeID)
-		getRecipeInfoByID(recipeID,function(data){
-			res.json(data)
-		})
-	}
-	else if (req.body.ingredient){
-		var ingredient = req.body.ingredient
-		console.log("Ingredient:", ingredient)
-		subIngredientsByName(ingredient,function(data){
-			res.json(data)
-		})
-	}
+  console.log("Recipe Info POST")
+  if (req.body.recipeID) {
+    var recipeID = req.body.recipeID
+    console.log("Recipe ID:", recipeID)
+    getRecipeInfoByID(recipeID,function(data){
+      res.json(data)
+    })
+  }
+  else if (req.body.ingredient){
+    var ingredient = req.body.ingredient
+    console.log("Ingredient:", ingredient)
+    subIngredientsByName(ingredient,function(data){
+      res.json(data)
+    })
+  }
 })
 
 
 // Handles any requests that don't match the ones above
 app.get('/*', (req,res) =>{
-	res.sendFile(path.join(__dirname + '/client/public/index.html'))
+  res.sendFile(path.join(__dirname + '/client/public/index.html'))
 })
 
 

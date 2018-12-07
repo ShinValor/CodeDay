@@ -6,20 +6,17 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      recipeName : "",
       recipes : [],
       url : ""
     }
-    this.recipeName = React.createRef()
-    this.url = React.createRef()
+    this.searchRecipe = React.createRef()
+    this.recipeUrl = React.createRef()
   }
 
   getRecipes = () => {
-    const recipeName = this.recipeName.current.value
-    this.setState({ recipeName : recipeName })
     fetch('http://localhost:5000/recipe',{
       method : 'POST',
-      body : JSON.stringify({'recipeName' : recipeName}),
+      body : JSON.stringify({'recipeName' : this.searchRecipe.current.value}),
       headers : {
         'Content-Type': 'application/json'
       }
@@ -44,7 +41,7 @@ class Home extends Component {
     })
 
     const setUrl = () => {
-      this.setState({url : this.url.current.value})
+      this.setState({url : this.recipeUrl.current.value})
     }
 
     if (this.state.url) {
@@ -58,7 +55,7 @@ class Home extends Component {
         <div>
           Search Recipe
           <br/>
-          <input type="text" ref={this.recipeName}/>
+          <input type="text" ref={this.searchRecipe}/>
           <br/>
           <button onClick={this.getRecipes} className="button" type="submit"> Search </button>
         </div>
@@ -66,7 +63,7 @@ class Home extends Component {
         <div>
           Enter Url
           <br/>
-          <input type="text" ref={this.url}/>
+          <input type="text" ref={this.recipeUrl}/>
           <br/>
           <button onClick={setUrl} className="button" type="submit"> Search </button>
         </div>

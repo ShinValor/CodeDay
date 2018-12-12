@@ -43,7 +43,6 @@ app.post('/recipe', (req,res) => {
 	getRecipeByName(recipeName,function(listOfRecipes) {
 		res.json(listOfRecipes)
 	})
-    // res.json(getRecipeByName(recipeName))
 })
 
 
@@ -59,7 +58,6 @@ app.post('/scrapedRecipe', (req,res) => {
 	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){
 		res.json(data)
 	})
-    // res.json(scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice"))
 })
 
 
@@ -76,7 +74,6 @@ app.post('/recipeInfo', (req,res) => {
 		getRecipeInfoByID(recipeID,function(data){
 			res.json(data)
 		})
-        // res.json(getRecipeInfoByID(recipeID))
 	}
 	else if (req.body.ingredient){
 		var ingredient = req.body.ingredient
@@ -84,7 +81,6 @@ app.post('/recipeInfo', (req,res) => {
 		subIngredientsByName(ingredient,function(data){
 			res.json(data)
 		})
-        // res.json(subIngredientsByName(ingredient))
 	}
 })
 

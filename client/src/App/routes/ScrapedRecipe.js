@@ -87,7 +87,7 @@ class ScrapedRecipe extends Component {
       return (
         <div key={index}>
           <Popup
-            trigger={ <a className="ingredientButton"> {measurement} {unit} of {ingredient} </a> } 
+            trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
             position="right center" 
             closeOnDocumentClick
             onOpen={this.getSubIngredient.bind(this,ingredient)}

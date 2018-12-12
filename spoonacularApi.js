@@ -13,13 +13,13 @@ module.exports = {
 			if (result.status === 200) {
 				var recipes = []
 				for (index in result.body['results']) {
-                    var recipeName = ""
-                    var recipeID = ""
-                    if (typeof result.body['results'][index]['title'] != undefined){
-                        recipeName = result.body['results'][index]['title']
+                    try {
+                        var recipeName = result.body['results'][index]['title']
+                        var recipeID = result.body['results'][index]['id']
                     }
-                    if (typeof result.body['results'][index]['id'] != undefined){
-                        recipeID = result.body['results'][index]['id']
+                    catch{
+                        var recipeName = ""
+                        var recipeID = ""
                     }
 					recipes.push({[recipeName]:recipeID})
 				}
@@ -39,13 +39,13 @@ module.exports = {
 		.end(function (result) {
 			//console.log(result.headers)
 			if (result.status === 200) {
-				var ingredients
-                var instructions
-                if (typeof result.body['extendedIngredients'] != undefined){
-                    ingredients = result.body['extendedIngredients']
+                try {
+    				var ingredients = result.body['extendedIngredients']
+                    var instructions = result.body['analyzedInstructions'][0]['steps']
                 }
-                if (typeof result.body['analyzedInstructions'][0]['steps'] != undefined){
-                    instructions = result.body['analyzedInstructions'][0]['steps']
+                catch{
+                    var ingredients = []
+                    var instructions = []
                 }
 				callback([instructions,ingredients])
 			}
@@ -63,17 +63,15 @@ module.exports = {
 		.end(function (result) {
 			//console.log(result.headers)
 			if (result.status === 200) {
-				var title
-				var ingredients
-				var instructions
-                if (typeof result.body['title'] != undefined){
-                    title = result.body['title']
+                try {
+    				var title = result.body['title']
+    				var ingredients = result.body['extendedIngredients']
+    				var instructions = result.body['analyzedInstructions'][0]['steps']
                 }
-                if (typeof result.body['extendedIngredients']  != undefined){
-                    ingredients = result.body['extendedIngredients']
-                }
-                if (typeof result.body['analyzedInstructions'][0]['steps'] != undefined){
-                    instructions = result.body['analyzedInstructions'][0]['steps']
+                catch{
+                    var title = ""
+                    var ingredients = []
+                    var instructions = []
                 }
 				callback([title,instructions,ingredients])
 			}
@@ -91,13 +89,13 @@ module.exports = {
 		.end(function (result) {
 			//console.log(result.headers)
 			if (result.status === 200) {
-				var substitutes
-				var message
-                if (typeof result.body["substitutes"] != undefined){
-                    substitutes = result.body["substitutes"]
+                try {
+    				var substitutes = result.body["substitutes"]
+    				var message = result.body["message"]
                 }
-                if (typeof result.body["message"] != undefined){
-                    message = result.body["message"]
+                catch{
+                    var substitutes = []
+                    var message = ""              
                 }
 				callback([substitutes,message])
 			}
@@ -115,13 +113,13 @@ module.exports = {
 		.end(function (result) {
 			//console.log(result.headers)
 			if (result.status === 200) {
-                var substitutes
-                var message
-                if (typeof result.body["substitutes"] != undefined){
-                    substitutes = result.body["substitutes"]
+                try {
+                    var substitutes = result.body["substitutes"]
+                    var message = result.body["message"]
                 }
-                if (typeof result.body["message"] != undefined){
-                    message = result.body["message"]
+                catch{
+                    var substitutes = []
+                    var message = ""
                 }
 				callback([substitutes,message])
 			}

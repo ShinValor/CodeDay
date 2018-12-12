@@ -2,12 +2,12 @@
   "name": "piecemeal",
   "version": "1.0.0",
   "description": "Cuny Tech Prep Project",
-  "main": "index.js",
+  "main": "server.js",
   "author": "John Poon",
   "scripts": {
     "client-install": "cd client && npm install",
-    "start": "node index.js",
-    "server": "nodemon index.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"

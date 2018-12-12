@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { Parallax, Background } from 'react-parallax'
 
 class Home extends Component {
   // Initialize the state
@@ -48,7 +49,8 @@ class Home extends Component {
     return (
       <div className="App">
         <br/>
-        <h2> PieceMeal </h2>
+        <h1 className="title"> PieceMeal </h1>
+        <br/>
         <br/>
         <div>
             <MuiThemeProvider>
@@ -64,6 +66,7 @@ class Home extends Component {
                 />
             </MuiThemeProvider>
         </div>
+        <br/>
         <br/>
         <br/>
         <div>
@@ -82,7 +85,7 @@ class Home extends Component {
         </div>
         <br/>
         <br/>
-        <div>
+        <div className="box-text">
             {recipes}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
+import { Parallax, Background } from 'react-parallax'
 
 class Recipe extends Component {
   // Initialize the state
@@ -58,6 +59,8 @@ class Recipe extends Component {
 
     const swapIngredients = (subIngredient) => {
       var temp = this.state.ingredients
+      console.log("BABABABA:",temp)
+      console.log("LALALALA:",subIngredient)
       for (let key in temp) {
         if (temp[key]['name'] === this.state.swapWith) {
           temp[key]['name'] = subIngredient
@@ -70,7 +73,7 @@ class Recipe extends Component {
     if (this.state.subIngredients != null) {
       displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="button" onClick={swapIngredients.bind(this,subIngredient)}> 
+          <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
             {subIngredient} 
           </button>
         )
@@ -121,7 +124,7 @@ class Recipe extends Component {
       <div className="App">
         <div>
           <br/>
-          <h2> {recipeName} </h2>
+          <h2 className="title"> {recipeName} </h2>
           <br/>
         </div>
         <div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
+import { Parallax, Background } from 'react-parallax'
 
 class UrlRecipe extends Component {
   // Initialize the state
@@ -72,7 +73,7 @@ class UrlRecipe extends Component {
     if (this.state.subIngredients != null) {
       displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="button" onClick={swapIngredients.bind(this,subIngredient)}> 
+          <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
             {subIngredient} 
           </button>
         )
@@ -121,7 +122,7 @@ class UrlRecipe extends Component {
         <div className="App">
             <br/>
             <div>
-                <h2> {title} </h2>
+                <h2 className="title"> {title} </h2>
                 <h3> {url} </h3>
             </div>
             <br/>

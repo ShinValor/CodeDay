@@ -46,7 +46,7 @@ class Home extends Component {
 
     if (this.state.url) {
       return (
-        <Redirect to={{ pathname : '/ScrapedRecipe', state : {recipeUrl : this.state.url} }}/>
+        <Redirect to={{ pathname : '/scrapedRecipe', state : {recipeUrl : this.state.url} }}/>
       )
     }
     return (

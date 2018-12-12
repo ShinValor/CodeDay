@@ -4,7 +4,7 @@ const unirest = require('unirest')
 module.exports = {
 
 	getRecipeByName : function(food, callback) {
-		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + food
+		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + encodeURI(food)
 		unirest.get(url)
 		.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
@@ -26,7 +26,7 @@ module.exports = {
 	},
 
 	getRecipeInfoByID : function(id, callback) {
-		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information"
+		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + encodeURI(id) + "/information"
 		unirest.get(url)
 		.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
@@ -44,9 +44,8 @@ module.exports = {
 	},
 
 	scrapeRecipeByUrl : function(url,callback) {
-		const url = url.split("/")
 		//unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2Fwww.melskitchencafe.com%2Fthe-best-fudgy-brownies%2F")
-		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + url[0] + "%2F" + url[1] +"%2F")
+		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + encodeURI(url))
 		.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
 		.end(function (result) {
@@ -64,7 +63,7 @@ module.exports = {
 	},
 
 	subIngredientsByName: function(ingredient,callback) {
-		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/substitutes?ingredientName=" + ingredient
+		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/substitutes?ingredientName=" + encodeURI(ingredient)
 		unirest.get(url)
 		.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
@@ -82,7 +81,7 @@ module.exports = {
 	},
 
 	subIngredientsByID: function(id,callback) {
-		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + id + "/substitutes"
+		const url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/" + encodeURI(id) + "/substitutes"
 		unirest.get(url)
 		.header("X-Mashape-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")

@@ -19,6 +19,7 @@
     "concurrently": "^4.0.1",
     "cors": "^2.8.5",
     "express": "^4.16.3",
+    "node-fetch": "^2.3.0",
     "nodemon": "^1.18.8",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",

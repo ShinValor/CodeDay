@@ -43,7 +43,7 @@ module.exports = {
 		.end(function (result) {
 			if (result.status === 200) {
                 try {
-                    callback([result.body['extendedIngredients'],result.body['analyzedInstructions'][0]['steps']])
+                    callback([result.body['analyzedInstructions'][0]['steps'],result.body['extendedIngredients']])
                 }
                 catch(error) {
                     console.log("Can not find that recipe")
@@ -62,7 +62,7 @@ module.exports = {
 		.end(function (result) {
 			if (result.status === 200) {
                 try {
-                    callback([result.body['title'],result.body['extendedIngredients'],result.body['analyzedInstructions'][0]['steps']])
+                    callback([result.body['title'],result.body['analyzedInstructions'][0]['steps'],result.body['extendedIngredients']])
                 }
                 catch(error) {
                     console.log("Can not find that recipe")

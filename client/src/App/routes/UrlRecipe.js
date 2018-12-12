@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
 
-class ScrapedRecipe extends Component {
+class UrlRecipe extends Component {
 
   // Initialize the state
   constructor(props) {
@@ -19,11 +19,11 @@ class ScrapedRecipe extends Component {
 
   // Fetch on first mount
   componentDidMount() {
-    this.getScrapedRecipe()
+    this.getUrlRecipe()
   }
 
-  getScrapedRecipe = () => {
-    fetch('http://localhost:5000/scrapedRecipe',{
+  getUrlRecipe = () => {
+    fetch('http://localhost:5000/url_recipe',{
      method : 'POST',
      body : JSON.stringify({'url' : this.state.recipeUrl}),
      headers : {
@@ -40,7 +40,7 @@ class ScrapedRecipe extends Component {
 
     getSubIngredient = (ingredient) => {
     this.setState({swapWith : ingredient})
-    fetch('http://localhost:5000/recipeInfo',{
+    fetch('http://localhost:5000/recipe_info',{
       method : 'POST',
       body : JSON.stringify({'ingredient' : ingredient}),
       headers : {
@@ -139,4 +139,4 @@ class ScrapedRecipe extends Component {
   }
 }
 
-export default ScrapedRecipe
+export default UrlRecipe

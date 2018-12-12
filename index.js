@@ -46,12 +46,12 @@ app.post('/recipe', (req,res) => {
 })
 
 
-app.get('/scrapedRecipe', (req,res) => {
+app.get('/url_Recipe', (req,res) => {
   console.log("Scrape GET")
 })
 
 
-app.post('/scrapedRecipe', (req,res) => {
+app.post('/url_Recipe', (req,res) => {
 	console.log("Scrape POST")
 	var url = req.body.url
 	console.log("Passed Url:", url)
@@ -61,12 +61,12 @@ app.post('/scrapedRecipe', (req,res) => {
 })
 
 
-app.get('/recipeInfo', (req,res) => {
+app.get('/recipe_info', (req,res) => {
 	console.log("Recipe Info GET")
 })
 
 
-app.post('/recipeInfo', (req,res) => {
+app.post('/recipe_info', (req,res) => {
 	console.log("Recipe Info POST")
 	if (req.body.recipeID) {
 		var recipeID = req.body.recipeID

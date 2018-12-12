@@ -1,4 +1,3 @@
-/* Spoonacular Api */
 const unirest = require('unirest')
 
 /*

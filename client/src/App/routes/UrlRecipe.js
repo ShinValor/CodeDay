@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
 
 class UrlRecipe extends Component {
-
   // Initialize the state
   constructor(props) {
     super(props)

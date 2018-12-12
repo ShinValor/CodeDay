@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
+import SearchBar from 'material-ui-search-bar'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class Home extends Component {
   // Initialize the state
@@ -7,16 +9,14 @@ class Home extends Component {
     super(props)
     this.state = {
       recipes : [],
-      url : ""
+      url : "",
     }
-    this.searchRecipe = React.createRef()
-    this.recipeUrl = React.createRef()
   }
 
-  getRecipes = () => {
+  getRecipes = (recipeName) => {
     fetch('http://localhost:5000/recipe',{
       method : 'POST',
-      body : JSON.stringify({'recipeName' : this.searchRecipe.current.value}),
+      body : JSON.stringify({'recipeName' : recipeName}),
       headers : {
         'Content-Type': 'application/json'
       }
@@ -31,7 +31,7 @@ class Home extends Component {
 
     const recipes = this.state.recipes.map((recipe,index) => {
       return (
-        <Link key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
+        <Link class="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
           <p>
             {Object.keys(recipe)[0]} 
             <br/> 
@@ -40,10 +40,6 @@ class Home extends Component {
       )
     })
 
-    const setUrl = () => {
-      this.setState({url : this.recipeUrl.current.value})
-    }
-
     if (this.state.url) {
       return (
         <Redirect to={{ pathname : '/url_recipe', state : {recipeUrl : this.state.url} }}/>
@@ -51,25 +47,43 @@ class Home extends Component {
     }
     return (
       <div className="App">
+        <br/>
         <h2> PieceMeal </h2>
-        <div>
-          Search Recipe
-          <br/>
-          <input type="text" ref={this.searchRecipe}/>
-          <br/>
-          <button onClick={this.getRecipes} className="button" type="submit"> Search </button>
-        </div>
         <br/>
         <div>
-          Enter Url
-          <br/>
-          <input type="text" ref={this.recipeUrl}/>
-          <br/>
-          <button onClick={setUrl} className="button" type="submit"> Search </button>
+            <MuiThemeProvider>
+                <SearchBar
+                    placeholder="Search Recipe"
+                    value={this.state.recipeName}
+                    onChange={(newValue) => this.setState({recipeName : newValue})}
+                    onRequestSearch={this.getRecipes.bind(this,this.state.recipeName)}
+                    style={{
+                        margin: '0 auto',
+                        maxWidth: 600
+                    }}
+                />
+            </MuiThemeProvider>
         </div>
         <br/>
+        <br/>
         <div>
-          {recipes}
+            <MuiThemeProvider>
+                <SearchBar
+                    placeholder="Search Recipe Url"
+                    value={this.state.value}
+                    onChange={(newValue) => this.setState({value : newValue})}
+                    onRequestSearch={() => this.setState({url : this.state.value})}
+                    style={{
+                        margin: '0 auto',
+                        maxWidth: 600
+                    }}
+                />
+            </MuiThemeProvider>
+        </div>
+        <br/>
+        <br/>
+        <div>
+            {recipes}
         </div>
       </div>
     )

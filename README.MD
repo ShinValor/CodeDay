@@ -18,6 +18,7 @@ As a user I can learn what a cooking term means easily by clicking on it. As a u
 * [Express.js](https://expressjs.com/)
 * [React-Router](https://reacttraining.com/react-router/core/guides/philosophy)
 * [Reactjs-Popup](https://react-popup.elazizi.com/)
+* [Material-UI-Search-Bar](https://www.npmjs.com/package/material-ui-search-bar)
 * [Spoonacular Api](https://spoonacular.com/food-api)
 
 

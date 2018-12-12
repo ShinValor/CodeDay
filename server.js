@@ -47,12 +47,12 @@ app.post('/recipe', (req,res) => {
 
 
 app.get('/url_Recipe', (req,res) => {
-  console.log("Scrape GET")
+  console.log("Url GET")
 })
 
 
 app.post('/url_Recipe', (req,res) => {
-	console.log("Scrape POST")
+	console.log("Url POST")
 	var url = req.body.url
 	console.log("Passed Url:", url)
 	scrapeRecipeByUrl("chefsavvy.com/the-best-fried-rice",function(data){

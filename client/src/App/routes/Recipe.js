@@ -111,7 +111,7 @@ class Recipe extends Component {
       return (
         <div key={index}>
           <p className="instructions"> 
-            <strong> Step {index+1} </strong> 
+            <a className="smaller-title2"> <strong> Step {index+1} </strong> </a>
             <br/>
             {step}
           </p>
@@ -121,21 +121,22 @@ class Recipe extends Component {
     })
 
     return (
-      <div className="App">
-        <div>
-          <br/>
-          <h2 className="title"> {recipeName} </h2>
-          <br/>
+        <div className="App">
+            <br/>
+            <div>
+                <br/>
+                <h2 className="title"> {recipeName} </h2>
+                <br/>
+            </div>
+            <div>
+                <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
+                {ingredients}
+            </div>
+            <br/>
+            <div>
+                {instructions}
+            </div>
         </div>
-        <div>
-          <h4> Ingredients </h4>
-          {ingredients}
-        </div>
-        <br/>
-        <div>
-          {instructions}
-        </div>
-      </div>
     )
   }
 }

@@ -36,7 +36,6 @@ body {
 
 .link-btn:hover {
     color: green;
-    background: #6ab8be;
     text-decoration: none;
 }
 
@@ -61,4 +60,16 @@ body {
     font-family: "Comic Sans MS";
     color: #FDB82F;
     text-shadow: 2px 2px 4px #FCC942;
+}
+
+.smaller-title {
+    font-family: "Comic Sans MS";
+    color: green;
+    text-shadow: 2px 2px 4px #BBC0B9;
+}
+
+.smaller-title2 {
+    font-family: "Comic Sans MS";
+    color: #F1A0DD !important;
+    text-shadow: 2px 2px 4px #BBC0B9;
 }

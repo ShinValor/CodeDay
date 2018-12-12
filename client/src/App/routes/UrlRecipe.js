@@ -108,8 +108,8 @@ class UrlRecipe extends Component {
       var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
         <div key={index}>
-          <p className="instructions"> 
-            <strong> Step {index+1} </strong> 
+          <p className="instructions">
+            <a className="smaller-title2"> <strong> Step {index+1} </strong> </a>
             <br/>
             {step}
           </p>
@@ -127,7 +127,7 @@ class UrlRecipe extends Component {
             </div>
             <br/>
             <div>
-                <h4> Ingredients </h4>
+                <h4 className="smaller-title"> <strong> Ingredients </strong> </h4>
                 {ingredients}
             </div>
             <br/>

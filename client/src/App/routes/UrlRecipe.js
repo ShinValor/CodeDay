@@ -13,7 +13,8 @@ class UrlRecipe extends Component {
             instructions : [],
             subIngredients : [],
             message : "",
-            swapWith : ""
+            swapWith : "",
+            imageUrl: ""
         }
     }
 
@@ -35,6 +36,7 @@ class UrlRecipe extends Component {
           this.setState({ recipeName : data[0] })
           this.setState({ instructions : data[1] })
           this.setState({ ingredients : data[2] })
+          this.setState({ imageUrl : data[3]})
         })
     }
 
@@ -85,6 +87,7 @@ class UrlRecipe extends Component {
         var measurement = Object.values(ingredientInfo)[8]
         var unit = Object.values(ingredientInfo)[9]
         return (
+            <div key={index}>
                 <Popup
                 trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
                 position="right center" 
@@ -99,6 +102,7 @@ class UrlRecipe extends Component {
                         {this.state.message}
                     </div>
                 </Popup>
+            </div>
         )
     })
 
@@ -120,12 +124,16 @@ class UrlRecipe extends Component {
             <div>
                 <h2 className="title"> {title} </h2>
             </div>
-            <div>
-                <h4 className="smaller-title"> <strong> Ingredients </strong> </h4>
+
+            <div className="food-image">
+                <img src={this.state.imageUrl} alt="food_image"/>
+            </div>
+            <div className="ingredientDiv">
+                <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
                 {ingredients}
             </div>
-            <br/>
-            <div className="box-text2">
+
+            <div className="box-text2 instructionDiv">
                 <a className="smaller-title3"> Link </a>
                 <br/>
                 <a className="link" href={url} target="_blank"> 

@@ -49,7 +49,14 @@ class Home extends Component {
     }
     return (
         <div>
-            <div className="left-bg"> </div>
+            <div className="left-bg"> 
+                <div className="sidenav"> 
+                    <a href="#about"> About </a>
+                    <a href="#services"> Services </a>
+                    <a href="#clients"> Clients </a>
+                    <a href="#contact"> Contact </a>
+                </div>
+            </div>
             <div className="right-bg"> </div>
             <h1 className="title"> PieceMeal </h1>
             <br/>

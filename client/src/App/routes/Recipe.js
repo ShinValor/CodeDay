@@ -137,6 +137,8 @@ class Recipe extends Component {
                 {ingredients}
             </div>
 
+            <br/>
+
             <div className="box-text2 instructionDiv">
                 {instructions}
             </div>

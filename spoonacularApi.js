@@ -61,7 +61,7 @@ module.exports = {
 		.end(function (result) {
 			if (result.status === 200) {
                 try {
-                    callback([result.body['title'],result.body['analyzedInstructions'][0]['steps'],result.body['extendedIngredients']])
+                    callback([result.body['title'],result.body['analyzedInstructions'][0]['steps'],result.body['extendedIngredients'],result.body['image']])
                 }
                 catch(error) {
                     console.log("Can not find that recipe")

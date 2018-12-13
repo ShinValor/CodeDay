@@ -89,7 +89,6 @@ class Recipe extends Component {
         return (
             <div key={index}>
                 <Popup
-                className="ingredientButton-wrapper"
                 trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
                 position="right center" 
                 closeOnDocumentClick

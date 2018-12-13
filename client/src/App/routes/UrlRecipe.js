@@ -87,7 +87,6 @@ class UrlRecipe extends Component {
         return (
             <div key={index}>
                 <Popup
-                className="ingredientButton-wrapper"
                 trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
                 position="right center" 
                 closeOnDocumentClick
@@ -122,15 +121,19 @@ class UrlRecipe extends Component {
         <div>
             <div>
                 <h2 className="title"> {title} </h2>
-                <h3> {url} </h3>
             </div>
-            <br/>
             <div>
                 <h4 className="smaller-title"> <strong> Ingredients </strong> </h4>
                 {ingredients}
             </div>
             <br/>
             <div className="box-text2">
+                <h5> 
+                    <a className="link" href={url} target="_blank"> 
+                        {url}
+                    </a> 
+                </h5>
+                <br/>
                 {instructions}
             </div>
         </div>

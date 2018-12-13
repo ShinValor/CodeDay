@@ -55,7 +55,7 @@ module.exports = {
 	},
 
 	scrapeRecipeByUrl : function(url,callback) {
-		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=http%3A%2F%2F" + encodeURI(url))
+		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?url=" + encodeURI(url))
 		.header("X-Mashape-Key", "3V8xGMSKtimsh6HIewO0R8I8syHRp1VnvDbjsn1tqsqiBRQpQF")
 		.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
 		.end(function (result) {

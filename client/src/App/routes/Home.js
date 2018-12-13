@@ -51,7 +51,6 @@ class Home extends Component {
         <div>
             <div className="left-bg"> </div>
             <div className="right-bg"> </div>
-            <br/>
             <h1 className="title"> PieceMeal </h1>
             <br/>
             <br/>

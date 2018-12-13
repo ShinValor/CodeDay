@@ -15,7 +15,6 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "autocomplete": "0.0.1",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cors": "^2.8.5",

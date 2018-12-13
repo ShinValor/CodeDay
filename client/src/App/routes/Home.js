@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { Parallax, Background } from 'react-parallax'
+//import { Parallax, Background } from 'react-parallax'
 
 class Home extends Component {
   // Initialize the state
@@ -28,11 +28,12 @@ class Home extends Component {
     })
   }
 
+
   render() {
 
     const recipes = this.state.recipes.map((recipe,index) => {
       return (
-        <Link class="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
+        <Link className="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
           <p>
             {Object.keys(recipe)[0]} 
             <br/> 
@@ -47,50 +48,65 @@ class Home extends Component {
       )
     }
     return (
-      <div className="App">
-        <br/>
-        <h1 className="title"> PieceMeal </h1>
-        <br/>
-        <br/>
         <div>
-            <MuiThemeProvider>
-                <SearchBar
-                    placeholder="Search Recipe"
-                    value={this.state.recipeName}
-                    onChange={(newValue) => this.setState({recipeName : newValue})}
-                    onRequestSearch={this.getRecipes.bind(this,this.state.recipeName)}
-                    style={{
-                        margin: '0 auto',
-                        maxWidth: 600
-                    }}
-                />
-            </MuiThemeProvider>
+            <div className="left-bg"> </div>
+            <div className="right-bg"> </div>
+            <br/>
+            <h1 className="title"> PieceMeal </h1>
+            <br/>
+            <br/>
+            <div>
+                <MuiThemeProvider>
+                    <SearchBar
+                        placeholder="Search Recipe"
+                        value={this.state.recipeName}
+                        onChange={(newValue) => this.setState({recipeName : newValue})}
+                        onRequestSearch={this.getRecipes.bind(this,this.state.recipeName)}
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 600
+                        }}
+                    />
+                </MuiThemeProvider>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+                <MuiThemeProvider>
+                    <SearchBar
+                        placeholder="Search Recipe Url"
+                        value={this.state.value}
+                        onChange={(newValue) => this.setState({value : newValue})}
+                        onRequestSearch={() => this.setState({url : this.state.value})}
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 600
+                        }}
+                    />
+                </MuiThemeProvider>
+            </div>
+            <br/>
+            <br/>
+            <div className="box-text">
+                {recipes}
+            </div>
         </div>
-        <br/>
-        <br/>
-        <br/>
-        <div>
-            <MuiThemeProvider>
-                <SearchBar
-                    placeholder="Search Recipe Url"
-                    value={this.state.value}
-                    onChange={(newValue) => this.setState({value : newValue})}
-                    onRequestSearch={() => this.setState({url : this.state.value})}
-                    style={{
-                        margin: '0 auto',
-                        maxWidth: 600
-                    }}
-                />
-            </MuiThemeProvider>
-        </div>
-        <br/>
-        <br/>
-        <div className="box-text">
-            {recipes}
-        </div>
-      </div>
     )
   }
 }
 
 export default Home
+
+/*
+            <div>
+                <Parallax
+                    blur={10}
+                    bgImage={require('path/to/image.jpg')}
+                    bgImageAlt="the cat"
+                    strength={200}
+                >
+                    <div style={{ height: '200px' }} />
+                </Parallax>
+            </div>
+*/

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
-import { Parallax, Background } from 'react-parallax'
+//import { Parallax, Background } from 'react-parallax'
 
 class Recipe extends Component {
   // Initialize the state
@@ -83,46 +83,45 @@ class Recipe extends Component {
     const recipeName = this.state.recipeName
 
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
-      var ingredient = Object.values(ingredientInfo)[4]
-      var measurement = Object.values(ingredientInfo)[8]
-      var unit = Object.values(ingredientInfo)[9]
-      return (
-        <div key={index}>
-          <Popup
-            trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
-            position="right center" 
-            closeOnDocumentClick
-            onOpen={this.getSubIngredient.bind(this,ingredient)}
-            on="hover">
-            <div>
-              Select Ingredients
-              <br/>
-              {displaySubstitutes}
-              <br/>
-              {this.state.message}
+        var ingredient = Object.values(ingredientInfo)[4]
+        var measurement = Object.values(ingredientInfo)[8]
+        var unit = Object.values(ingredientInfo)[9]
+        return (
+            <div key={index}>
+                <Popup
+                className="ingredientButton-wrapper"
+                trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
+                position="right center" 
+                closeOnDocumentClick
+                onOpen={this.getSubIngredient.bind(this,ingredient)}
+                on="hover">
+                    <div>
+                        Select Ingredients
+                        <br/>
+                        {displaySubstitutes}
+                        <br/>
+                        {this.state.message}
+                    </div>
+                </Popup>
             </div>
-          </Popup>
-        </div>
-      )
+        )
     })
 
     const instructions = this.state.instructions.map((instruction,index) => {
       var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
-        <div key={index}>
-          <p className="instructions"> 
-            <a className="smaller-title2"> <strong> Step {index+1} </strong> </a>
-            <br/>
-            {step}
-          </p>
-          <br/>
+        <div key={index} className="instructions">
+            <p> 
+                <strong className="smaller-title2"> Step {index+1} </strong> 
+                <br/>
+                {step}
+            </p>
         </div>
       )
     })
 
     return (
-        <div className="App">
-            <br/>
+        <div>
             <div>
                 <br/>
                 <h2 className="title"> {recipeName} </h2>
@@ -133,7 +132,7 @@ class Recipe extends Component {
                 {ingredients}
             </div>
             <br/>
-            <div>
+            <div className="box-text2">
                 {instructions}
             </div>
         </div>

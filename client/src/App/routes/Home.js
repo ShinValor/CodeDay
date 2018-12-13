@@ -5,47 +5,47 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import { Parallax, Background } from 'react-parallax'
 
 class Home extends Component {
-  // Initialize the state
-  constructor(props) {
-    super(props)
-    this.state = {
-      recipes : [],
-      url : "",
+    // Initialize the state
+    constructor(props) {
+        super(props)
+        this.state = {
+            recipes : [],
+            url : "",
+        }
     }
-  }
 
-  getRecipes = (recipeName) => {
-    fetch('http://localhost:5000/recipe',{
-      method : 'POST',
-      body : JSON.stringify({'recipeName' : recipeName}),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(recipe => {
-      this.setState({ recipes: recipe })
-    })
-  }
+    getRecipes = (recipeName) => {
+        fetch('http://localhost:5000/recipe',{
+            method : 'POST',
+            body : JSON.stringify({'recipeName' : recipeName}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(recipe => {
+            this.setState({ recipes: recipe })
+        })
+    }
 
 
   render() {
 
     const recipes = this.state.recipes.map((recipe,index) => {
-      return (
-        <Link className="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
-          <p>
-            {Object.keys(recipe)[0]} 
-            <br/> 
-          </p> 
-        </Link>
-      )
+        return (
+            <Link className="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
+                <p>
+                    {Object.keys(recipe)[0]} 
+                    <br/> 
+                </p> 
+            </Link>
+        )
     })
 
     if (this.state.url) {
-      return (
-        <Redirect to={{ pathname : '/url_recipe', state : {recipeUrl : this.state.url} }}/>
-      )
+        return (
+            <Redirect to={{ pathname : '/url_recipe', state : {recipeUrl : this.state.url} }}/>
+        )
     }
     return (
         <div>

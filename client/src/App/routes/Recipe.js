@@ -3,81 +3,83 @@ import Popup from 'reactjs-popup'
 //import { Parallax, Background } from 'react-parallax'
 
 class Recipe extends Component {
-  // Initialize the state
-  constructor(props) {
-    super(props)
-    this.state = {
-      recipeName : this.props.location.state.recipe,
-      recipeID : this.props.location.state.recipeID,
-      ingredients : [],
-      instructions : [],
-      subIngredients : [],
-      message : "",
-      swapWith : ""
+    // Initialize the state
+    constructor(props) {
+        super(props)
+        this.state = {
+            recipeName : this.props.location.state.recipe,
+            recipeID : this.props.location.state.recipeID,
+            ingredients : [],
+            instructions : [],
+            subIngredients : [],
+            message : "",
+            swapWith : "",
+            imageUrl: ""
+        }
     }
-  }
 
-  // Fetch on first mount
-  componentDidMount() {
-    this.getRecipeInfo()
-  }
+    // Fetch on first mount
+    componentDidMount() {
+        this.getRecipeInfo()
+    }
 
-  // Get Ingredients and Instructions
-  getRecipeInfo = () => {
-    fetch('http://localhost:5000/recipe_info',{
-      method : 'POST',
-      body : JSON.stringify({'recipeID' : this.state.recipeID}),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({instructions : data[0]})
-      this.setState({ingredients : data[1]})
-    })
-  }
+    // Get Ingredients and Instructions
+    getRecipeInfo = () => {
+        fetch('http://localhost:5000/recipe_info',{
+            method : 'POST',
+            body : JSON.stringify({'recipeID' : this.state.recipeID}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({instructions : data[0]})
+            this.setState({ingredients : data[1]})
+            this.setState({imageUrl : data[2]})
+        })
+    }
 
-  getSubIngredient = (ingredient) => {
-    this.setState({swapWith : ingredient})
-    fetch('http://localhost:5000/recipe_info',{
-      method : 'POST',
-      body : JSON.stringify({'ingredient' : ingredient}),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({subIngredients : data[0]})
-      this.setState({message : data[1]})
-    })
-  }
+    getSubIngredient = (ingredient) => {
+        this.setState({swapWith : ingredient})
+        fetch('http://localhost:5000/recipe_info',{
+            method : 'POST',
+            body : JSON.stringify({'ingredient' : ingredient}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({subIngredients : data[0]})
+            this.setState({message : data[1]})
+        })
+    }
 
 
   render() {
 
     const swapIngredients = (subIngredient) => {
-      var temp = this.state.ingredients
-      console.log("BABABABA:",temp)
-      console.log("LALALALA:",subIngredient)
-      for (let key in temp) {
-        if (temp[key]['name'] === this.state.swapWith) {
-          temp[key]['name'] = subIngredient
+        var temp = this.state.ingredients
+        console.log("BABABABA:",temp)
+        console.log("LALALALA:",subIngredient)
+        for (let key in temp) {
+            if (temp[key]['name'] === this.state.swapWith) {
+                temp[key]['name'] = subIngredient
+            }
         }
-      }
-      this.setState({ingredients : temp})
+        this.setState({ingredients : temp})
     }
 
     var displaySubstitutes
     if (this.state.subIngredients != null) {
-      displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
+        displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
-            {subIngredient} 
-          </button>
+            <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
+            {subIngredient}
+            </button>
         )
-      })
+        })
     }
 
     const recipeName = this.state.recipeName
@@ -107,8 +109,8 @@ class Recipe extends Component {
     })
 
     const instructions = this.state.instructions.map((instruction,index) => {
-      var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
-      return (
+        var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
+        return (
         <div key={index} className="instructions">
             <p> 
                 <strong className="smaller-title2"> Step {index+1} </strong> 
@@ -116,7 +118,7 @@ class Recipe extends Component {
                 {step}
             </p>
         </div>
-      )
+        )
     })
 
     return (
@@ -126,14 +128,19 @@ class Recipe extends Component {
                 <h2 className="title"> {recipeName} </h2>
                 <br/>
             </div>
-            <div>
+
+            <div className="food-image">
+                <img src={this.state.imageUrl} alt="food_image"/>
+            </div>
+            <div className="ingredientDiv">
                 <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
                 {ingredients}
             </div>
-            <br/>
-            <div className="box-text2">
+
+            <div className="box-text2 instructionDiv">
                 {instructions}
             </div>
+            <br/>
         </div>
     )
   }
@@ -149,5 +156,6 @@ export default Recipe
                 bgHeight="200px"
                 strength={200}
             >
+            </Parallax>
 
 */

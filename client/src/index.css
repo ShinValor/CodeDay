@@ -15,6 +15,7 @@ body {
     border: 1px solid #555555;
     letter-spacing: 1px;
     outline: none !important;
+    margin: 2px;
 }
 
 .ingredientButton:hover {
@@ -22,7 +23,7 @@ body {
     transition: .2s ease;
 }
 
-.substituteButton { 
+.substituteButton {
     width: 175px;
     height: 1%;
     table-layout: fixed;
@@ -31,6 +32,7 @@ body {
     border: 1px solid #555555;
     letter-spacing: 1px;
     outline: none !important;
+    margin: 2px;
 }
 
 .substituteButton:active {
@@ -111,10 +113,17 @@ body {
     text-shadow: 1px 1px 3px #BBC0B9;
 }
 
+.smaller-title3 {
+    font-size: 23px;
+    font-family: "Comic Sans MS";
+    color: #B86DFB !important;
+    text-shadow: 1px 1px 3px #BBC0B9;
+}
+
 .left-bg {
     background-color: #FFD54B;
     width: 20%;
-    min-height: 100%;
+    min-height: 130%;
     position:absolute;
     top: 0;
     left: 0;
@@ -123,21 +132,38 @@ body {
 .right-bg {
     background-color: #FFD54B;
     width: 20%;
-    min-height: 100%;
+    min-height: 130%;
     position: absolute;
     top: 0;
     left: 80%;
 }
 
 .link {
-    color: #B35FE7;
+    color: black;
     text-align: center;
     align-content: center;
-    width: 80%;
-    display: inline-block;
+    max-width: 60%;
 }
 
 .link:hover {
-    color: #63BFB7;
+    color: #319FA4;
     text-decoration: none;
+}
+
+.food-image {
+    float: left;
+    margin-left: 20%;
+    margin-top: 3%;
+}
+
+.ingredientDiv {
+    margin-right: 15%;
+}
+
+.instructionDiv {
+    margin-top: 10%;
+}
+
+.sameLine {
+    display: inline;
 }

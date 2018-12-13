@@ -3,55 +3,55 @@ import Popup from 'reactjs-popup'
 //import { Parallax, Background } from 'react-parallax'
 
 class UrlRecipe extends Component {
-  // Initialize the state
-  constructor(props) {
-    super(props)
-    this.state = {
-      recipeUrl : this.props.location.state.recipeUrl,
-      recipeName: "",
-      ingredients : [],
-      instructions : [],
-      subIngredients : [],
-      message : "",
-      swapWith : ""
+    // Initialize the state
+    constructor(props) {
+        super(props)
+        this.state = {
+            recipeUrl : this.props.location.state.recipeUrl,
+            recipeName: "",
+            ingredients : [],
+            instructions : [],
+            subIngredients : [],
+            message : "",
+            swapWith : ""
+        }
     }
-  }
 
-  // Fetch on first mount
-  componentDidMount() {
-    this.getUrlRecipe()
-  }
+    // Fetch on first mount
+    componentDidMount() {
+        this.getUrlRecipe()
+    }
 
-  getUrlRecipe = () => {
-    fetch('http://localhost:5000/url_recipe',{
-     method : 'POST',
-     body : JSON.stringify({'url' : this.state.recipeUrl}),
-     headers : {
-      'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({ recipeName : data[0] })
-      this.setState({ instructions : data[1] })
-      this.setState({ ingredients : data[2] })
-    })
-  }
+    getUrlRecipe = () => {
+        fetch('http://localhost:5000/url_recipe',{
+            method : 'POST',
+            body : JSON.stringify({'url' : this.state.recipeUrl}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ recipeName : data[0] })
+          this.setState({ instructions : data[1] })
+          this.setState({ ingredients : data[2] })
+        })
+    }
 
     getSubIngredient = (ingredient) => {
-    this.setState({swapWith : ingredient})
-    fetch('http://localhost:5000/recipe_info',{
-      method : 'POST',
-      body : JSON.stringify({'ingredient' : ingredient}),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({subIngredients : data[0]})
-      this.setState({message : data[1]})
-    })
+        this.setState({swapWith : ingredient})
+        fetch('http://localhost:5000/recipe_info',{
+            method : 'POST',
+            body : JSON.stringify({'ingredient' : ingredient}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({subIngredients : data[0]})
+            this.setState({message : data[1]})
+        })
     }  
 
   render() {
@@ -60,22 +60,22 @@ class UrlRecipe extends Component {
     const url = this.state.recipeUrl
 
     const swapIngredients = (subIngredient) => {
-      var temp = this.state.ingredients
-      for (let key in temp) {
-        if (temp[key]['name'] === this.state.swapWith) {
-          temp[key]['name'] = subIngredient
+        var temp = this.state.ingredients
+        for (let key in temp) {
+            if (temp[key]['name'] === this.state.swapWith) {
+              temp[key]['name'] = subIngredient
+            }
         }
-      }
-      this.setState({ingredients : temp})
+        this.setState({ingredients : temp})
     }
 
     var displaySubstitutes
     if (this.state.subIngredients != null) {
       displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
-          <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
-            {subIngredient} 
-          </button>
+            <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
+            {subIngredient}
+            </button>
         )
       })
     }
@@ -85,7 +85,6 @@ class UrlRecipe extends Component {
         var measurement = Object.values(ingredientInfo)[8]
         var unit = Object.values(ingredientInfo)[9]
         return (
-            <div key={index}>
                 <Popup
                 trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
                 position="right center" 
@@ -100,7 +99,6 @@ class UrlRecipe extends Component {
                         {this.state.message}
                     </div>
                 </Popup>
-            </div>
         )
     })
 
@@ -128,11 +126,12 @@ class UrlRecipe extends Component {
             </div>
             <br/>
             <div className="box-text2">
-                <h5> 
-                    <a className="link" href={url} target="_blank"> 
-                        {url}
-                    </a> 
-                </h5>
+                <a className="smaller-title3"> Link </a>
+                <br/>
+                <a className="link" href={url} target="_blank"> 
+                    {url}
+                </a> 
+                <br/>
                 <br/>
                 {instructions}
             </div>

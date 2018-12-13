@@ -27,15 +27,22 @@
 
     <title>PieceMeal</title>
 
+    <style>
+        #icon:hover {
+            opacity: 0.65;
+            transition: .2s ease;
+        }
+    </style>
+
   </head>
-  <body style="background-color: #FFFCF2">
+  <body>
 
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
 
-    <img src="icon.png" alt="Mascot" width="180" height="180">
-
+    <a href="/"><img id="icon" src="icon.png" alt="icon" width="180" height="180" style="border-radius: 60px;"></a>
+    
     <div id="root"></div>
 
     <!--

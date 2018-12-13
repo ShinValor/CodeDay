@@ -141,3 +141,14 @@ class Recipe extends Component {
 }
 
 export default Recipe
+
+/*
+            <Parallax
+                bgImage={require('./icon.png')}
+                bgImageAlt="icon"
+                bgWidth="200px"
+                bgHeight="200px"
+                strength={200}
+            >
+
+*/

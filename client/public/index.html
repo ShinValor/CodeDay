@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
 
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
+        <!--
+          manifest.json provides metadata used when your web app is added to the
+          homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+        -->
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+        <!--
+          Notice the use of %PUBLIC_URL% in the tags above.
+          It will be replaced with the URL of the `public` folder during the build.
+          Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+          Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+          work correctly both with client-side routing and a non-root public URL.
+          Learn how to configure a non-root public URL by running `npm run build`.
+        -->
 
-    <link rel="stylesheet" href= "bootstrap/maxcdn.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <title>PieceMeal</title>
+        <title>PieceMeal</title>
 
-    <style>
-        #icon {
-            border-radius: 50px;
-            width: 180px;
-            height: 180px;
-        }
-        #icon:hover {
-            opacity: 0.65;
-            transition: .2s ease;
-        }
-    </style>
+    </head>
 
-  </head>
-  <body>
+    <body>
 
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+        <noscript>
+          You need to enable JavaScript to run this app.
+        </noscript>
 
-    <br/>
-    <a href="/"> <img id="icon" src="icon.png" alt="icon"> </a>
-    <br/>
-    <br/>
+        <!-- Page Content -->
+        <div class="w3-brown">
+            <h4 class="menu"> <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()"> Menu </button> </h4>
+        </div>
 
-    <div id="root"></div>
+        <!-- Sidebar -->
+        <div class="w3-sidebar w3-bar-block w3-border-right w3-orange" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" class="w3-bar-item w3-large w3-teal"> Close &times </button>
+            <a href="/" class="w3-bar-item w3-button"> Home </a>
+            <a href="https://github.com/ShinValor/piecemeal#piecemeal" target="_blank" class="w3-bar-item w3-button"> About Us </a>
+            <a href="https://github.com/ShinValor/piecemeal#user-types" class="w3-bar-item w3-button"> Services </a>
+            <a href="https://github.com/ShinValor/piecemeal#contributors" target="_blank" class="w3-bar-item w3-button"> Contact </a>
+        </div>
 
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        <script>
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>    
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <br/>
+        <a href="/"> <img class="icon" src="icon.png" alt="icon"> </a>
+        <br/>
+        <br/>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        <div id="root"></div>
 
-  </body>
+        <!--
+          This HTML file is a template.
+          If you open it directly in the browser, you will see an empty page.
+
+          You can add webfonts, meta tags, or analytics to this file.
+          The build step will place the bundled scripts into the <body> tag.
+
+          To begin the development, run `npm start` or `yarn start`.
+          To create a production bundle, use `npm run build` or `yarn build`.
+        -->
+
+    </body>
 </html>

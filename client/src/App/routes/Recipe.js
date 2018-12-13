@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
-//import { Parallax, Background } from 'react-parallax'
 
 class Recipe extends Component {
     // Initialize the state
@@ -14,7 +13,8 @@ class Recipe extends Component {
             subIngredients : [],
             message : "",
             swapWith : "",
-            imageUrl: ""
+            imageUrl: "",
+            sourceUrl: ""
         }
     }
 
@@ -37,6 +37,7 @@ class Recipe extends Component {
             this.setState({instructions : data[0]})
             this.setState({ingredients : data[1]})
             this.setState({imageUrl : data[2]})
+            this.setState({sourceUrl : data[3]})
         })
     }
 
@@ -130,14 +131,13 @@ class Recipe extends Component {
             </div>
 
             <div className="food-image">
-                <img src={this.state.imageUrl} alt="food_image"/>
+                <a href={this.state.sourceUrl} target="_blank"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
+            
             <div className="ingredientDiv">
                 <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
                 {ingredients}
             </div>
-
-            <br/>
 
             <div className="box-text2 instructionDiv">
                 {instructions}
@@ -149,15 +149,3 @@ class Recipe extends Component {
 }
 
 export default Recipe
-
-/*
-            <Parallax
-                bgImage={require('./icon.png')}
-                bgImageAlt="icon"
-                bgWidth="200px"
-                bgHeight="200px"
-                strength={200}
-            >
-            </Parallax>
-
-*/

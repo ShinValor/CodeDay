@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-//import { Parallax, Background } from 'react-parallax'
 
 class Home extends Component {
     // Initialize the state
@@ -49,15 +48,6 @@ class Home extends Component {
     }
     return (
         <div>
-            <div className="left-bg"> 
-                <div className="sidenav"> 
-                    <a href="#about"> About </a>
-                    <a href="#services"> Services </a>
-                    <a href="#clients"> Clients </a>
-                    <a href="#contact"> Contact </a>
-                </div>
-            </div>
-            <div className="right-bg"> </div>
             <h1 className="title"> PieceMeal </h1>
             <br/>
             <br/>
@@ -103,16 +93,3 @@ class Home extends Component {
 }
 
 export default Home
-
-/*
-            <div>
-                <Parallax
-                    blur={10}
-                    bgImage={require('path/to/image.jpg')}
-                    bgImageAlt="the cat"
-                    strength={200}
-                >
-                    <div style={{ height: '200px' }} />
-                </Parallax>
-            </div>
-*/

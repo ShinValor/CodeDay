@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
-//import { Parallax, Background } from 'react-parallax'
 
 class UrlRecipe extends Component {
     // Initialize the state
@@ -14,7 +13,8 @@ class UrlRecipe extends Component {
             subIngredients : [],
             message : "",
             swapWith : "",
-            imageUrl: ""
+            imageUrl: "",
+            sourceUrl: ""
         }
     }
 
@@ -33,10 +33,11 @@ class UrlRecipe extends Component {
         })
         .then(res => res.json())
         .then(data => {
-          this.setState({ recipeName : data[0] })
-          this.setState({ instructions : data[1] })
-          this.setState({ ingredients : data[2] })
-          this.setState({ imageUrl : data[3]})
+            this.setState({ recipeName : data[0] })
+            this.setState({ instructions : data[1] })
+            this.setState({ ingredients : data[2] })
+            this.setState({ imageUrl : data[3]})
+            this.setState({sourceUrl : data[4]})
         })
     }
 
@@ -126,13 +127,14 @@ class UrlRecipe extends Component {
             </div>
 
             <div className="food-image">
-                <img src={this.state.imageUrl} alt="food_image"/>
+                <a href={this.state.sourceUrl} target="_blank"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
+            
             <div className="ingredientDiv">
                 <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
                 {ingredients}
             </div>
-
+            
             <div className="box-text2 instructionDiv">
                 <a className="smaller-title3"> Link </a>
                 <br/>

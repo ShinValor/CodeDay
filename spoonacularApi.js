@@ -1,15 +1,5 @@
 const unirest = require('unirest')
 
-/*
-Mine
-"X-Mashape-Key" : "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
-"X-Mashape-Host" : "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
-
-Someone's
-"X-Mashape-Key" : "3V8xGMSKtimsh6HIewO0R8I8syHRp1VnvDbjsn1tqsqiBRQpQF"
-"X-Mashape-Host" : "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
-*/
-
 module.exports = {
 
 	getRecipeByName : function(food, callback) {

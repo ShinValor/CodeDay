@@ -3,7 +3,7 @@ const path = require('path')
 const unirest = require('unirest')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const myApi = require('./spoonacularApi')
+const myApi = require('./spoonacular')
 
 const corsOptions = {
   credentials: true,

@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
 //import Music from './components/Music'
@@ -125,6 +126,8 @@ class Recipe extends Component {
 
     return (
         <div>
+            <div className="colorStrip"> </div>
+            <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
             <div>
                 <br/>
                 <h2 className="title"> {recipeName} </h2>
@@ -132,7 +135,7 @@ class Recipe extends Component {
             </div>
 
             <div className="food-image">
-                <a href={this.state.sourceUrl} target="_blank"> <img src={this.state.imageUrl} alt="food_image"/> </a>
+                <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
             
             <div className="ingredientDiv">
@@ -141,11 +144,17 @@ class Recipe extends Component {
             </div>
 
             <div className="box-text2 instructionDiv">
+                <a className="smaller-title3"> Link </a>
+                <br/>
+                <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
+                    {this.state.sourceUrl}
+                </a> 
+                <br/>
+                <br/>
                 {instructions}
             </div>
             <br/>
             <br/>
-
         </div>
     )
   }

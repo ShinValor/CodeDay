@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Sidebar from "react-sidebar";
+//import Sidebar from "react-sidebar";
 //import Music from './components/Music'
 
 class Home extends Component {
@@ -90,9 +90,9 @@ class Home extends Component {
             <div className="w3-sidebar w3-bar-block w3-border-right w3-orange" style={{display : 'none'}} id="mySidebar">
                 <button onClick={this.w3_close} className="w3-bar-item w3-large w3-teal"> Close </button>
                 <a href="/" className="w3-bar-item w3-button"> Home </a>
-                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#piecemeal" target="_blank"> About Us </a>
-                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#user-types" target="_blank"> Services </a>
-                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#contributors" target="_blank"> Contact </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#piecemeal" target="_blank" rel="noopener noreferrer"> About Us </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#user-types" target="_blank" rel="noopener noreferrer"> Services </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#contributors" target="_blank" rel="noopener noreferrer"> Contact </a>
             </div> 
 
 
@@ -164,7 +164,6 @@ class Home extends Component {
                 <button onClick={this.sendMessage} className="btn"> Send </button>
                 <button type="button" className="btn cancel" onClick={this.closeChatBox}> Close </button>
             </div> 
-
         </div>
     )
   }

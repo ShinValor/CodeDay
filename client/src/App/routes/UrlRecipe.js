@@ -38,7 +38,7 @@ class UrlRecipe extends Component {
             this.setState({ instructions : data[1] })
             this.setState({ ingredients : data[2] })
             this.setState({ imageUrl : data[3]})
-            this.setState({sourceUrl : data[4]})
+            this.setState({ sourceUrl : data[4] })
         })
     }
 
@@ -123,12 +123,13 @@ class UrlRecipe extends Component {
 
     return (
         <div>
+            <div className="colorStrip"></div>
             <div>
                 <h2 className="title"> {title} </h2>
             </div>
 
             <div className="food-image">
-                <a href={this.state.sourceUrl} target="_blank"> <img src={this.state.imageUrl} alt="food_image"/> </a>
+                <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
             
             <div className="ingredientDiv">
@@ -139,7 +140,7 @@ class UrlRecipe extends Component {
             <div className="box-text2 instructionDiv">
                 <a className="smaller-title3"> Link </a>
                 <br/>
-                <a className="link" href={url} target="_blank"> 
+                <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {url}
                 </a> 
                 <br/>

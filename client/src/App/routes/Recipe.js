@@ -77,11 +77,11 @@ class Recipe extends Component {
     var displaySubstitutes
     if (this.state.subIngredients != null) {
         displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
-        return (
-            <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
-            {subIngredient}
-            </button>
-        )
+            return (
+                <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
+                    {subIngredient}
+                </button>
+            )
         })
     }
 
@@ -92,35 +92,36 @@ class Recipe extends Component {
         var measurement = Object.values(ingredientInfo)[8]
         var unit = Object.values(ingredientInfo)[9]
         return (
-            <div key={index}>
-                <Popup
-                trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
-                position="right center" 
-                closeOnDocumentClick
-                onOpen={this.getSubIngredient.bind(this,ingredient)}
-                on="hover">
-                    <div>
-                        Select Ingredients
-                        <br/>
-                        {displaySubstitutes}
-                        <br/>
-                        {this.state.message}
-                    </div>
-                </Popup>
-            </div>
+            <Popup
+            key={index}
+            className="ingredients"
+            trigger={<button className="ingredientButton"> {measurement} {unit} of {ingredient} </button>} 
+            closeOnDocumentClick
+            onOpen={this.getSubIngredient.bind(this,ingredient)}
+            modal={true}
+            contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
+                <div>
+                    <a className="close2"> &times; </a>
+                    Select Ingredients
+                    <br/>
+                    {displaySubstitutes}
+                    <br/>
+                    {this.state.message})
+                </div>
+            </Popup>
         )
     })
 
     const instructions = this.state.instructions.map((instruction,index) => {
         var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
         return (
-        <div key={index} className="instructions">
-            <p> 
-                <strong className="smaller-title2"> Step {index+1} </strong> 
-                <br/>
-                {step}
-            </p>
-        </div>
+            <div key={index} className="instructions">
+                <p> 
+                    <strong className="smaller-title2"> Step {index+1} </strong> 
+                    <br/>
+                    {step}
+                </p>
+            </div>
         )
     })
 
@@ -138,20 +139,21 @@ class Recipe extends Component {
                 <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
             
-            <div className="ingredientDiv">
-                <h4 className="smaller-title"> <strong> Ingredients </strong> </h4> 
+            <div className="ingredients">
+                <h2 className="smaller-title"> <strong> Ingredients </strong> </h2> 
                 {ingredients}
             </div>
 
-            <div className="box-text2 instructionDiv">
+            <div className="box-text2">
+                <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
+                {instructions}
+                <br/>
+                <br/>
                 <a className="smaller-title3"> Link </a>
                 <br/>
                 <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {this.state.sourceUrl}
                 </a> 
-                <br/>
-                <br/>
-                {instructions}
             </div>
             <br/>
             <br/>

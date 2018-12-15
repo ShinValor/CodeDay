@@ -5,15 +5,15 @@ body{
 }
 
 .ingredientButton{ 
-    width: 200px;
-    height: 60px;
+    width: auto;
+    height: auto;
     table-layout: fixed;
     border-collapse: collapse;
-    border-radius: 12px;
+    border-radius: 6px;
     border: 1px solid #555555;
     letter-spacing: 1px;
     outline: none !important;
-    margin: 2px;
+    margin: 10px;
 }
 
 .ingredientButton:hover{
@@ -140,25 +140,30 @@ body{
 }
 
 .food-image{
-    float: left;
-    margin-left: 20%;
-    margin-top: 3%;
+    margin: 0;
     animation: shadow-pulse 1s infinite;
+    display: inline-block;
+    white-space: nowrap;
 }
 
-.ingredientDiv{
-    margin-right: 15%;
+.ingredients{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
 
-.instructionDiv{
+.instruction{
     margin-top: 5%;
 }
 
 .menu{
     font-family: "Comic Sans MS" !important;
-    font-size: 25px;
+    font-size: 25px !important;
     float: left;
     display: inline;
+    border: solid;
+    border-color: black;
 }
 
 .menu:hover{
@@ -295,7 +300,8 @@ body{
     background-color: #009688; 
     color: white;
     padding: 6.5px 20px;
-    border: none;
+    border: solid;
+    border-color: black;
     cursor: pointer;
     width: 8%;
     float: right;
@@ -376,7 +382,7 @@ span.psw {
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    border: 3px solid black;
     width: 40%; /* Could be more or less, depending on screen size */
     height: 60%;
     border-radius: 6px;
@@ -395,6 +401,20 @@ span.psw {
 .close:hover, .close:focus {
     color: red;
     cursor: pointer;
+}
+
+.close2 {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
 }
 
 /* Add Zoom Animation */

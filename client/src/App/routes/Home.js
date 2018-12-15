@@ -82,10 +82,9 @@ class Home extends Component {
         <div>
             <div className="colorStrip"> </div>
 
-            <div>
                 <button className="w3-button w3-teal w3-xlarge menu" onClick={this.w3_open}> Menu ☰ </button>
                 <button className="login-button" onClick={this.loginPopup}> Login </button>
-            </div>
+                
 
             <div className="w3-sidebar w3-bar-block w3-border-right w3-orange" style={{display : 'none'}} id="mySidebar">
                 <button onClick={this.w3_close} className="w3-bar-item w3-large w3-teal"> Close </button>
@@ -112,7 +111,7 @@ class Home extends Component {
                         <br/>
                         <label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>
                         <br/>
-                        <span className="psw"> <a href="#" onClick={this.tooBad}> Forgot password? </a> </span>
+                        <span className="psw"> <a href="/" onClick={this.tooBad}> Forgot password? </a> </span>
                     </div>
                 </form>
             </div>

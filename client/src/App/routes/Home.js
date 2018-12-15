@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Sidebar from "react-sidebar";
 //import Music from './components/Music'
 
 class Home extends Component {
@@ -28,6 +29,13 @@ class Home extends Component {
         })
     }
 
+    w3_open = () => {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+    w3_close = () => {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+
     sendMessage = () => {
         console.log("DID IT SEND MESSAGE")
     }    
@@ -36,10 +44,21 @@ class Home extends Component {
         document.getElementById("myForm").style.display = "block";
     }
 
-    closeChatBox = () =>{
+    closeChatBox = () => {
         document.getElementById("myForm").style.display = "none";
-    } 
+    }
 
+    loginPopup = () => {
+        document.getElementById('login').style.display='block'
+    }
+
+    loginPopupExit = () => {
+        document.getElementById('login').style.display='none'
+    }
+
+    tooBad = () => {
+        alert("HAHAHA TOO BAD")
+    }
 
   render() {
 
@@ -61,66 +80,76 @@ class Home extends Component {
     }
     return (
         <div>
+            <div className="colorStrip"> </div>
 
-        <button className="login-button" onClick="document.getElementById('login').style.display='block'"> Login </button>
+            <div>
+                <button className="w3-button w3-teal w3-xlarge menu" onClick={this.w3_open}> Menu ☰ </button>
+                <button className="login-button" onClick={this.loginPopup}> Login </button>
+            </div>
 
-        <div id="login" className="modal">
-            <form className="modal-content animate" action="/action_page.php">
-
-                <div className="imgcontainer">
-                    <span onClick="document.getElementById('login').style.display='none'" className="close" title="Close Modal"> &times; </span>
-                    <img src="img_avatar2.png" alt="Avatar" class="avatar"/>
-                </div>
-
-                <div>
-                    <input className="user-credential" type="text" placeholder="Enter Username" name="uname" required/>
-                    <br/>
-                    <input className="user-credential" type="password" placeholder="Enter Password" name="psw" required/>
-                    <br/>
-                    <button className="login-button2" type="submit"> Login </button>
-                    <br/>
-                    <label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>
-                </div>
-
-                <div> {/*  style={{background-color: #f1f1f1}} */}
-                    <button type="button" onClick="document.getElementById('login').style.display='none'" class="cancelbtn"> Cancel </button>
-                    <span className="psw"> <a href="#"> Forgot password? </a> </span>
-                </div>
-
-            </form>
-        </div>
+            <div className="w3-sidebar w3-bar-block w3-border-right w3-orange" style={{display : 'none'}} id="mySidebar">
+                <button onClick={this.w3_close} className="w3-bar-item w3-large w3-teal"> Close </button>
+                <a href="/" className="w3-bar-item w3-button"> Home </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#piecemeal" target="_blank"> About Us </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#user-types" target="_blank"> Services </a>
+                <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#contributors" target="_blank"> Contact </a>
+            </div> 
 
 
+            <div id="login" className="modal">
+                <form className="modal-content animate" action="/action_page.php">
+                    <div className="imgcontainer">
+                        <span onClick={this.loginPopupExit} className="close" title="Close Modal"> &times; </span>
+                        <img className="avatar" src="img_avatar2.png" alt="Avatar"/>
+                    </div>
+
+                    <div>
+                        <input className="user-credential" type="text" placeholder="Enter Username" name="uname" required/>
+                        <br/>
+                        <input className="user-credential" type="password" placeholder="Enter Password" name="psw" required/>
+                        <br/>
+                        <button className="login-button2" type="submit"> Login </button>
+                        <br/>
+                        <label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>
+                        <br/>
+                        <span className="psw"> <a href="#" onClick={this.tooBad}> Forgot password? </a> </span>
+                    </div>
+                </form>
+            </div>
+
+            <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
 
             <h1 className="title"> PieceMeal </h1>
 
-            <MuiThemeProvider>
-                <SearchBar
-                    placeholder="Search Recipe"
-                    value={this.state.recipeName}
-                    onChange={(newValue) => this.setState({recipeName : newValue})}
-                    onRequestSearch={this.getRecipes.bind(this,this.state.recipeName)}
-                    style={{
-                        margin: '0 auto',
-                        maxWidth: 600,
-                    }}
-                />
-            </MuiThemeProvider>
+            <div className="searchBox"> 
+                <MuiThemeProvider className="searchBox">
+                    <SearchBar
+                        placeholder="Search Recipe"
+                        value={this.state.recipeName}
+                        onChange={(newValue) => this.setState({recipeName : newValue})}
+                        onRequestSearch={this.getRecipes.bind(this,this.state.recipeName)}
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 600,
+                        }}
+                    />
+                </MuiThemeProvider>
+            </div>
 
-            <br/> <br/> <br/>
-
-            <MuiThemeProvider>
-                <SearchBar
-                    placeholder="Search Recipe Url"
-                    value={this.state.value}
-                    onChange={(newValue) => this.setState({value : newValue})}
-                    onRequestSearch={() => this.setState({url : this.state.value})}
-                    style={{
-                        margin: '0 auto',
-                        maxWidth: 600
-                    }}
-                />
-            </MuiThemeProvider>
+            <div className="searchBox">
+                <MuiThemeProvider>
+                    <SearchBar
+                        placeholder="Search Recipe Url"
+                        value={this.state.value}
+                        onChange={(newValue) => this.setState({value : newValue})}
+                        onRequestSearch={() => this.setState({url : this.state.value})}
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 600
+                        }}
+                    />
+                </MuiThemeProvider>
+            </div>
 
             <div className="box-text">
                 {recipes}

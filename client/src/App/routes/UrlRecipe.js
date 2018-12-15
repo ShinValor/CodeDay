@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
+//import Music from './components/Music'
 
 class UrlRecipe extends Component {
     // Initialize the state
@@ -145,6 +146,8 @@ class UrlRecipe extends Component {
                 <br/>
                 {instructions}
             </div>
+            <br/>
+            <br/>
         </div>
     )
   }

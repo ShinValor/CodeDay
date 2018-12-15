@@ -99,5 +99,23 @@ module.exports = {
 				throw err
 			}
 		})
-	}
+	},
+
+    chatBot: function(message,callback) {
+        unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/converse?contextId=342938&text=donut+recipes")
+        .header("X-RapidAPI-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+        .end(function (result) {
+            if (result.status === 200) {
+                try {
+                    callback([result.body["answerText"],result.body["media"]])
+                }
+                catch(error) {
+
+                }
+            }
+            else {
+                throw err
+            }
+        })
+    }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Popup from 'reactjs-popup'
+//import Music from './components/Music'
 
 class Recipe extends Component {
     // Initialize the state
@@ -143,6 +144,8 @@ class Recipe extends Component {
                 {instructions}
             </div>
             <br/>
+            <br/>
+
         </div>
     )
   }

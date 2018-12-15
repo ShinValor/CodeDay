@@ -59,9 +59,39 @@ class Home extends Component {
             <Redirect to={{ pathname : '/url_recipe', state : {recipeUrl : this.state.url} }}/>
         )
     }
-
     return (
         <div>
+
+        <button className="login-button" onClick="document.getElementById('login').style.display='block'"> Login </button>
+
+        <div id="login" className="modal">
+            <form className="modal-content animate" action="/action_page.php">
+
+                <div className="imgcontainer">
+                    <span onClick="document.getElementById('login').style.display='none'" className="close" title="Close Modal"> &times; </span>
+                    <img src="img_avatar2.png" alt="Avatar" class="avatar"/>
+                </div>
+
+                <div>
+                    <input className="user-credential" type="text" placeholder="Enter Username" name="uname" required/>
+                    <br/>
+                    <input className="user-credential" type="password" placeholder="Enter Password" name="psw" required/>
+                    <br/>
+                    <button className="login-button2" type="submit"> Login </button>
+                    <br/>
+                    <label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>
+                </div>
+
+                <div> {/*  style={{background-color: #f1f1f1}} */}
+                    <button type="button" onClick="document.getElementById('login').style.display='none'" class="cancelbtn"> Cancel </button>
+                    <span className="psw"> <a href="#"> Forgot password? </a> </span>
+                </div>
+
+            </form>
+        </div>
+
+
+
             <h1 className="title"> PieceMeal </h1>
 
             <MuiThemeProvider>
@@ -96,15 +126,14 @@ class Home extends Component {
                 {recipes}
             </div>
 
-            <button className="open-button w3-teal" onClick={this.openChatBox}> Chat </button>
+            <button className="open-button" onClick={this.openChatBox}> Chat </button>
 
             <div className="chat-popup form-container" id="myForm">
                 <h1> Hi, </h1>
                 <label htmlFor="msg"> <b> How can I help you? </b> </label>
-
                 <textarea placeholder={"Type message..."} name="msg" required> </textarea>
-                <button onClick={this.sendMessage} className="btn w3-teal"> Send </button>
-                <button type="button" className="btn cancel w3-teal" onClick={this.closeChatBox}> Close </button>
+                <button onClick={this.sendMessage} className="btn"> Send </button>
+                <button type="button" className="btn cancel" onClick={this.closeChatBox}> Close </button>
             </div> 
 
         </div>

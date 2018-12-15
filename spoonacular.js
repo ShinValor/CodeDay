@@ -102,8 +102,9 @@ module.exports = {
 	},
 
     chatBot: function(message,callback) {
-        unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/converse?contextId=342938&text=donut+recipes")
-        .header("X-RapidAPI-Key", "pSO0jwQNh4mshw7770dEVhfjWhMEp1XHwcKjsnCx2DHBSZ4q6C")
+        unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/converse?contextId=342938&text=" + encodeURI(message))
+        .header("X-Mashape-Key", "3V8xGMSKtimsh6HIewO0R8I8syHRp1VnvDbjsn1tqsqiBRQpQF")
+        .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
         .end(function (result) {
             if (result.status === 200) {
                 try {

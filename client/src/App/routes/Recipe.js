@@ -78,9 +78,11 @@ class Recipe extends Component {
     if (this.state.subIngredients != null) {
         displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
             return (
-                <button key={index} className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
-                    {subIngredient}
-                </button>
+                <div key={index}>
+                    <button className="substituteButton" onClick={swapIngredients.bind(this,subIngredient)}> 
+                        {subIngredient}
+                    </button>
+                </div>
             )
         })
     }
@@ -100,14 +102,12 @@ class Recipe extends Component {
             onOpen={this.getSubIngredient.bind(this,ingredient)}
             modal={true}
             contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
-                <div>
-                    <a className="close2"> &times; </a>
-                    Select Ingredients
-                    <br/>
-                    {displaySubstitutes}
-                    <br/>
-                    {this.state.message})
-                </div>
+                <a className="close2"> &times; </a>
+                Select Ingredients
+                <br/>
+                {displaySubstitutes}
+                <br/>
+                {this.state.message})
             </Popup>
         )
     })
@@ -115,7 +115,7 @@ class Recipe extends Component {
     const instructions = this.state.instructions.map((instruction,index) => {
         var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
         return (
-            <div key={index} className="instructions">
+            <div key={index}>
                 <p> 
                     <strong className="smaller-title2"> Step {index+1} </strong> 
                     <br/>
@@ -128,12 +128,10 @@ class Recipe extends Component {
     return (
         <div>
             <div className="colorStrip"> </div>
+
             <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
-            <div>
-                <br/>
-                <h2 className="title"> {recipeName} </h2>
-                <br/>
-            </div>
+
+            <h2 className="title"> {recipeName} </h2>
 
             <div className="food-image">
                 <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>
@@ -145,18 +143,15 @@ class Recipe extends Component {
             </div>
 
             <div className="box-text2">
-                <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
-                {instructions}
-                <br/>
-                <br/>
-                <a className="smaller-title3"> Link </a>
-                <br/>
+                <div className="instructions">
+                    <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
+                    {instructions}
+                </div>
+                <h4> <a className="smaller-title3"> Link </a> </h4>
                 <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {this.state.sourceUrl}
-                </a> 
+                </a>
             </div>
-            <br/>
-            <br/>
         </div>
     )
   }

@@ -125,30 +125,30 @@ class UrlRecipe extends Component {
     return (
         <div>
             <div className="colorStrip"></div>
-            <div>
-                <h2 className="title"> {title} </h2>
-            </div>
+
+            <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
+
+            <h2 className="title"> {title} </h2>
 
             <div className="food-image">
                 <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>
             </div>
             
-            <div>
+            <div className="ingredients">
                 <h2 className="smaller-title"> <strong> Ingredients </strong> </h2> 
                 {ingredients}
             </div>
             
             <div className="box-text2">
-                <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
-                {instructions}
-                <br/>
-                <br/>
-                <a className="smaller-title3"> Link </a>
-                <br/>
-                <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> {url} </a> 
+                <div className="instructions">
+                    <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
+                    {instructions}
+                </div>
+                <h4> <a className="smaller-title3"> Link </a> </h4>
+                <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
+                    {this.state.sourceUrl}
+                </a>
             </div>
-            <br/>
-            <br/>
         </div>
     )
   }

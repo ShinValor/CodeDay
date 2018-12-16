@@ -111,7 +111,7 @@ module.exports = {
                     callback([result.body["answerText"],result.body["media"]])
                 }
                 catch(error) {
-
+                    console.log("We no found")
                 }
             }
             else {

@@ -29,7 +29,7 @@ let getRecipeByName = myApi.getRecipeByName
 let scrapeRecipeByUrl = myApi.scrapeRecipeByUrl
 let getRecipeInfoByID = myApi.getRecipeInfoByID
 let subIngredientsByName = myApi.subIngredientsByName
-
+let chatBot = myApi.chatBot
 
 app.get('/recipe', (req,res) => {
 	console.log("Recipe GET")
@@ -40,8 +40,8 @@ app.post('/recipe', (req,res) => {
 	console.log("Recipe POST")
 	var recipeName = req.body.recipeName
 	console.log("Passed RecipeName:", recipeName)
-	getRecipeByName(recipeName,function(listOfRecipes) {
-		res.json(listOfRecipes)
+	getRecipeByName(recipeName,function(data) {
+		res.json(data)
 	})
 })
 
@@ -82,6 +82,15 @@ app.post('/recipe_info', (req,res) => {
 			res.json(data)
 		})
 	}
+})
+
+app.post('/message', (req,res) => {
+    console.log("Message POST")
+    var message = req.body.message
+    console.log("Passed message:", message)
+    chatBot(message,function(data){
+        res.json(data)
+    })
 })
 
 

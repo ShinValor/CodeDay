@@ -12,6 +12,9 @@ class Home extends Component {
         this.state = {
             recipes : [],
             url : "",
+            message : "",
+            reply : "",
+            feedback : []
         }
     }
 
@@ -36,8 +39,25 @@ class Home extends Component {
         document.getElementById("mySidebar").style.display = "none";
     }
 
-    sendMessage = () => {
-        console.log("DID IT SEND MESSAGE")
+    handleChange(event) {
+        this.setState({message: event.target.value})
+    }
+
+    sendMessage = (message) => {
+        fetch('http://localhost:5000/message',{
+            method : 'POST',
+            body : JSON.stringify({'message' : message}),
+            headers : {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(res => {
+            this.setState({reply : res[0]})
+            this.setState({feedback : res[1]})
+            console.log(this.state.reply)
+            console.log(this.state.feedback)
+        })        
     }    
 
     openChatBox = () => {
@@ -77,15 +97,15 @@ class Home extends Component {
     }
     return (
         <div>
-
             <div className="colorStrip">
-                <button className="w3-button w3-teal w3-xlarge menu" onClick={this.w3_open}> Menu ☰ </button>
+                <button className="menu" onClick={this.w3_open}> ☰ </button>
+                <h1 className="title"> PieceMeal </h1>
                 <button className="login-button" onClick={this.loginPopup}> Login </button>
             </div>
 
             <div className="w3-sidebar w3-bar-block w3-border-right w3-orange" style={{display : 'none'}} id="mySidebar">
-                <button onClick={this.w3_close} className="w3-bar-item w3-large w3-teal"> Close </button>
-                <a href="/" className="w3-bar-item w3-button"> Home </a>
+                <button className="w3-bar-item w3-large w3-teal" onClick={this.w3_close}> Close </button>
+                <a className="w3-bar-item w3-button" href="/"> Home </a>
                 <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#piecemeal" target="_blank" rel="noopener noreferrer"> About Us </a>
                 <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#user-types" target="_blank" rel="noopener noreferrer"> Services </a>
                 <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#contributors" target="_blank" rel="noopener noreferrer"> Contact </a>
@@ -95,8 +115,8 @@ class Home extends Component {
             <div id="login" className="modal">
                 <form className="modal-content animate" action="/action_page.php">
                     <div className="imgcontainer">
-                        <span onClick={this.loginPopupExit} className="close" title="Close Modal"> &times; </span>
-                        <img className="avatar" src="img_avatar2.png" alt="Avatar"/>
+                        <span className="close" title="Close Modal" onClick={this.loginPopupExit}> &times; </span>
+                        <img className="avatar" src="images/img_avatar1.png" alt="Avatar"/>
                     </div>
 
                     <div>
@@ -106,16 +126,14 @@ class Home extends Component {
                         <br/>
                         <button className="login-button2" type="submit"> Login </button>
                         <br/>
-                        <label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>
+                        {/*<label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>*/}
                         <br/>
                         <span className="psw"> <a href="/" onClick={this.tooBad}> Forgot password? </a> </span>
                     </div>
                 </form>
             </div>
 
-            <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
-
-            <h1 className="title"> PieceMeal </h1>
+            <a href="/"> <img className="icon" src="images/icon.png" alt="icon" href="/"/> </a>
 
             <div className="searchBox"> 
                 <MuiThemeProvider className="searchBox">
@@ -154,11 +172,11 @@ class Home extends Component {
             <button className="open-button" onClick={this.openChatBox}> Chat </button>
 
             <div className="chat-popup form-container" id="myForm">
-                <h1> Hi, </h1>
-                <label htmlFor="msg"> <b> How can I help you? </b> </label>
-                <textarea placeholder={"Type message..."} name="msg" required> </textarea>
-                <button onClick={this.sendMessage} className="btn"> Send </button>
-                <button type="button" className="btn cancel" onClick={this.closeChatBox}> Close </button>
+                <h1> Help </h1>
+                <label htmlFor="msg"> <b> Hi, how can I help you? </b> </label>
+                <textarea name="msg" value={this.state.msg} onChange={this.handleChange.bind(this)} required> </textarea>
+                <button className="btn" onClick={this.sendMessage.bind(this,this.state.message)}> Send </button>
+                <button className="btn cancel" type="button" onClick={this.closeChatBox}> Close </button>
             </div> 
         </div>
     )

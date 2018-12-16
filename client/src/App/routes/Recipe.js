@@ -127,11 +127,12 @@ class Recipe extends Component {
             <div className="colorStrip">
                 {/* Future stuff */}
                 {/*<button className="w3-button w3-teal w3-xlarge menu"> Home </button>*/}
+                <h1 className="title"> PieceMeal </h1>
             </div>
 
-            <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
+            <a href="/"> <img className="icon" src="images/icon.png" alt="icon" href="/"/> </a>
 
-            <h2 className="title"> {recipeName} </h2>
+            <h2 className="title2"> {recipeName} </h2>
 
             <div className="food-image">
                 <a href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> <img src={this.state.imageUrl} alt="food_image"/> </a>

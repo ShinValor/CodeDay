@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-//import Sidebar from "react-sidebar";
+//import Sidebar from "react-sidebar"
 //import Music from './components/Music'
 
 class Home extends Component {
@@ -33,10 +33,10 @@ class Home extends Component {
     }
 
     w3_open = () => {
-        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("mySidebar").style.display = "block"
     }
     w3_close = () => {
-        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("mySidebar").style.display = "none"
     }
 
     handleChange(event) {
@@ -61,11 +61,11 @@ class Home extends Component {
     }    
 
     openChatBox = () => {
-        document.getElementById("myForm").style.display = "block";
+        document.getElementById("myForm").style.display = "block"
     }
 
     closeChatBox = () => {
-        document.getElementById("myForm").style.display = "none";
+        document.getElementById("myForm").style.display = "none"
     }
 
     loginPopup = () => {
@@ -76,7 +76,7 @@ class Home extends Component {
         document.getElementById('login').style.display='none'
     }
 
-    tooBad = () => {
+    noPassword = () => {
         alert("HAHAHA TOO BAD")
     }
 
@@ -111,7 +111,6 @@ class Home extends Component {
                 <a className="w3-bar-item w3-button" href="https://github.com/ShinValor/piecemeal#contributors" target="_blank" rel="noopener noreferrer"> Contact </a>
             </div> 
 
-
             <div id="login" className="modal">
                 <form className="modal-content animate" action="/action_page.php">
                     <div className="imgcontainer">
@@ -128,7 +127,7 @@ class Home extends Component {
                         <br/>
                         {/*<label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>*/}
                         <br/>
-                        <span className="psw"> <a href="/" onClick={this.tooBad}> Forgot password? </a> </span>
+                        <span className="psw"> <a href="/" onClick={this.noPassword}> Forgot password? </a> </span>
                     </div>
                 </form>
             </div>
@@ -172,9 +171,10 @@ class Home extends Component {
             <button className="open-button" onClick={this.openChatBox}> Chat </button>
 
             <div className="chat-popup form-container" id="myForm">
-                <h1> Help </h1>
+                <h2> Hello </h2>
                 <label htmlFor="msg"> <b> Hi, how can I help you? </b> </label>
-                <textarea name="msg" value={this.state.msg} onChange={this.handleChange.bind(this)} required> </textarea>
+                <textarea className="botMessage" disabled={true} placeholder={this.state.reply}/>
+                <textarea className="userMessage" type="text" name="msg" value={this.state.msg} onChange={this.handleChange.bind(this)} required/>
                 <button className="btn" onClick={this.sendMessage.bind(this,this.state.message)}> Send </button>
                 <button className="btn cancel" type="button" onClick={this.closeChatBox}> Close </button>
             </div> 

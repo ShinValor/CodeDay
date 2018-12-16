@@ -111,6 +111,7 @@ body{
     font-family: "Comic Sans MS";
     color: #F1A0DD !important;
     text-shadow: 1px 1px 3px #BBC0B9;
+    display: block;
 }
 
 .smaller-title3{
@@ -118,6 +119,7 @@ body{
     font-family: "Comic Sans MS";
     color: #B86DFB !important;
     text-shadow: 1px 1px 3px #BBC0B9;
+    display: block;
 }
 
 .link{
@@ -157,7 +159,7 @@ body{
 
 .menu{
     font-family: "Comic Sans MS" !important;
-    font-size: 25px !important;
+    font-size: 26px !important;
     float: left;
     display: inline;
     border: solid;
@@ -293,17 +295,18 @@ body{
 
 /* Set a style for all buttons */
 .login-button {
-    font-family: "Comic Sans MS";
-    font-size: 25px;
+    font-family: "Comic Sans MS" !important;
+    font-size: 26px !important;
+    float: right;
     background-color: #009688; 
     color: white;
-    padding: 6.5px 20px;
+    padding: 8px 16px;
     border: solid;
     border-color: black;
     cursor: pointer;
     width: 8%;
-    float: right;
 }
+
 
 .login-button:hover {
     opacity: 0.8;

@@ -65,10 +65,7 @@ class Home extends Component {
     const recipes = this.state.recipes.map((recipe,index) => {
         return (
             <Link className="link-btn" key={index} to={{ pathname : "/recipe", state : {recipe : Object.keys(recipe)[0], recipeID : Object.values(recipe)[0]} }}> 
-                <p>
-                    {Object.keys(recipe)[0]} 
-                    <br/> 
-                </p> 
+                <p> <strong> {Object.keys(recipe)[0]} </strong> </p>
             </Link>
         )
     })
@@ -80,11 +77,11 @@ class Home extends Component {
     }
     return (
         <div>
-            <div className="colorStrip"> </div>
 
+            <div className="colorStrip">
                 <button className="w3-button w3-teal w3-xlarge menu" onClick={this.w3_open}> Menu ☰ </button>
                 <button className="login-button" onClick={this.loginPopup}> Login </button>
-                
+            </div>
 
             <div className="w3-sidebar w3-bar-block w3-border-right w3-orange" style={{display : 'none'}} id="mySidebar">
                 <button onClick={this.w3_close} className="w3-bar-item w3-large w3-teal"> Close </button>

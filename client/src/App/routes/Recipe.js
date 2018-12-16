@@ -103,11 +103,9 @@ class Recipe extends Component {
             modal={true}
             contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
                 <a className="close2"> &times; </a>
-                Select Ingredients
-                <br/>
+                <strong> Select Ingredient </strong>
                 {displaySubstitutes}
-                <br/>
-                {this.state.message})
+                {this.state.message}
             </Popup>
         )
     })
@@ -118,7 +116,6 @@ class Recipe extends Component {
             <div key={index}>
                 <p> 
                     <strong className="smaller-title2"> Step {index+1} </strong> 
-                    <br/>
                     {step}
                 </p>
             </div>
@@ -127,7 +124,10 @@ class Recipe extends Component {
 
     return (
         <div>
-            <div className="colorStrip"> </div>
+            <div className="colorStrip">
+                {/* Future stuff */}
+                {/*<button className="w3-button w3-teal w3-xlarge menu"> Home </button>*/}
+            </div>
 
             <a href="/"> <img className="icon" src="icon.png" alt="icon" href="/"/> </a>
 
@@ -138,16 +138,17 @@ class Recipe extends Component {
             </div>
             
             <div className="ingredients">
-                <h2 className="smaller-title"> <strong> Ingredients </strong> </h2> 
+                <h2> <strong className="smaller-title"> Ingredients </strong> </h2> 
                 {ingredients}
             </div>
 
             <div className="box-text2">
                 <div className="instructions">
-                    <h2 className="smaller-title2"> <strong> Instructions </strong> </h2> 
+                    <h2> <strong className="smaller-title2"> Instructions </strong> </h2> 
                     {instructions}
                 </div>
-                <h4> <a className="smaller-title3"> Link </a> </h4>
+
+                <a className="smaller-title3"> Link </a>
                 <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {this.state.sourceUrl}
                 </a>

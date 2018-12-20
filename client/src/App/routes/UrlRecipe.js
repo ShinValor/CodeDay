@@ -61,7 +61,6 @@ class UrlRecipe extends Component {
   render() {
 
     const title = this.state.recipeName
-    const url = this.state.recipeUrl
 
     const swapIngredients = (subIngredient) => {
         var temp = this.state.ingredients
@@ -97,7 +96,7 @@ class UrlRecipe extends Component {
             onOpen={this.getSubIngredient.bind(this,ingredient)}
             modal={true}
             contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
-                <a className="close2"> &times; </a>
+                <p className="close2"> &times; </p>
                 <strong> Select Ingredient </strong>
                 {displaySubstitutes}
                 {this.state.message}
@@ -144,7 +143,7 @@ class UrlRecipe extends Component {
                     {instructions}
                 </div>
 
-                <a className="smaller-title3"> Link </a>
+                <p> className="smaller-title3"> Link </p>
                 <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {this.state.sourceUrl}
                 </a>

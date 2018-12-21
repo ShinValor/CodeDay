@@ -100,7 +100,7 @@ app.post('/message', (req,res) => {
 // })
 
 app.get('/*', (req,res) =>{
-  res.sendFile(express.static(path.join(__dirname,'/client/public/index.html'))
+  res.sendFile(express.static(path.join(__dirname,'/client/public/index.html')))
 })
 
 console.log('App is listening on port ' + port)

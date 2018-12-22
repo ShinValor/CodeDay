@@ -1,10 +1,10 @@
-body{
+body {
     font-family: sans-serif;
     text-align: center;
     background-color: #FFFCF2;
 }
 
-.ingredientButton{ 
+.ingredientButton {
     width: auto;
     height: auto;
     table-layout: fixed;
@@ -16,12 +16,12 @@ body{
     margin: 10px;
 }
 
-.ingredientButton:hover{
+.ingredientButton:hover {
     opacity: 0.65;
     transition: .2s ease;
 }
 
-.substituteButton{
+.substituteButton {
     width: auto;
     height: auto;
     table-layout: fixed;
@@ -33,12 +33,12 @@ body{
     margin: 2px;
 }
 
-.substituteButton:active{
+.substituteButton:active {
     box-shadow: 0 2px #666;
     transform: translateY(2px);
 }
 
-.link-btn{
+.link-btn {
     color: #FFA200;
     text-align: center;
     align-content: center;
@@ -49,7 +49,7 @@ body{
     text-decoration: none;
 }
 
-.link-btn:hover{
+.link-btn:hover {
     color: green;
     text-decoration: none;
 }
@@ -58,7 +58,7 @@ body{
     margin-bottom: 70px;
 }
 
-.box-text{
+.box-text {
     display: inline-block;
     text-align: center;
     align-content: center;
@@ -71,11 +71,11 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.box-text:empty{
+.box-text:empty {
     display: none;
 }
 
-.box-text2{
+.box-text2 {
     display: inline-block;
     text-align: center;
     align-content: center;
@@ -88,11 +88,11 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.box-text2:empty{
+.box-text2:empty {
     display: none;    
 }
 
-.title{
+.title {
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     font-family: "Comic Sans MS";
@@ -102,7 +102,7 @@ body{
     display: inline;
 }
 
-.title2{
+.title2 {
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     font-family: "Comic Sans MS";
@@ -111,20 +111,20 @@ body{
     padding: 10px;
 }
 
-.smaller-title{
+.smaller-title {
     font-family: "Comic Sans MS";
     color: green;
     text-shadow: 2px 2px 3px #BBC0B9;
 }
 
-.smaller-title2{
+.smaller-title2 {
     font-family: "Comic Sans MS";
     color: #F1A0DD !important;
     text-shadow: 1px 1px 3px #BBC0B9;
     display: block;
 }
 
-.smaller-title3{
+.smaller-title3 {
     font-size: 23px;
     font-family: "Comic Sans MS";
     color: #B86DFB !important;
@@ -132,7 +132,7 @@ body{
     display: block;
 }
 
-.link{
+.link {
     letter-spacing: 1px;
     color: #319FA4;
     text-align: center;
@@ -141,33 +141,33 @@ body{
     text-decoration: none;
 }
 
-.link:hover{
+.link:hover {
     color: #319FA4;
     text-decoration: none;
 }
 
-.food-image{
+.food-image {
     margin: 0;
     animation: shadow-pulse 1s infinite;
     display: inline-block;
     white-space: nowrap;
 }
 
-.ingredients{
+.ingredients {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 20%;
     margin-right: 20%;
 }
 
-.instructions{
+.instructions {
     color: black;
     letter-spacing: 1px;
     margin-top: 2.5%;
     margin-bottom: 3%;
 }
 
-.menu{
+.menu {
     font-family: "Comic Sans MS" !important;
     font-size: 26px !important;
     float: left;
@@ -181,16 +181,16 @@ body{
     color: white;
 }
 
-.menu:hover{
+.menu:hover {
     text-decoration: none;
     opacity: 0.8;
 }
 
-.menu:focus{
+.menu:focus {
     outline: none;
 }
 
-.icon{
+.icon {
     margin-top: 30px;
     margin-bottom: 30px;
     border-radius: 50px;
@@ -198,12 +198,12 @@ body{
     height: 180px;
 }
 
-.icon:hover{
+.icon:hover {
     opacity: 0.65;
     transition: .2s ease;
 }
 
-@keyframes shadow-pulse{
+@keyframes shadow-pulse {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
   }
@@ -213,7 +213,7 @@ body{
 }
 
 /* Button used to open the chat form - fixed at the bottom of the page */
-.open-button{
+.open-button {
     font-family: "Comic Sans MS" !important;
     background-color: #009688; 
     color: white;
@@ -229,17 +229,17 @@ body{
     animation: shadow-pulse 1s infinite;
 }
 
-.open-button:hover{
+.open-button:hover {
     text-decoration: none;
     background-color: #319FA4 !important;
 }
 
-.open-button:focus{
+.open-button:focus {
     outline: none;
 }
 
 /* The popup chat - hidden by default */
-.chat-popup{
+.chat-popup {
     display: none;
     position: fixed;
     bottom: 0;
@@ -250,14 +250,14 @@ body{
 }
 
 /* Add styles to the form container */
-.form-container{
+.form-container {
     max-width: 300px;
     padding: 10px;
     background-color: white;
 }
 
 /* Full-width textarea */
-.form-container textarea{
+.form-container textarea {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -268,14 +268,14 @@ body{
 }
 
 /* When the textarea gets focus, do something */
-.form-container textarea:focus{
+.form-container textarea:focus {
     background-color: #ddd;
     outline: none;
     text-decoration: none;
 }
 
 /* Set a style for the submit/send button */
-.form-container .btn{
+.form-container .btn {
     background-color: #009688; 
     color: white;
     padding: 10px 15px;
@@ -288,12 +288,12 @@ body{
     font-family: "Comic Sans MS";
 }
 
-.form-container .btn:hover{
+.form-container .btn:hover {
     text-decoration: none;
     background-color: #319FA4 !important;  
 }
 
-.form-container .btn:focus{
+.form-container .btn:focus {
     outline: none;
 }
 
@@ -329,7 +329,7 @@ body{
     opacity: 0.8;
 }
 
-.login-button:focus{
+.login-button:focus {
     outline: none;
 }
 
@@ -346,7 +346,7 @@ body{
     border-radius: 6px;
 }
 
-.login-button2:focus{
+.login-button2:focus {
     outline: none;
 }
 

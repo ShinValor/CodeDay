@@ -25,7 +25,7 @@ class UrlRecipe extends Component {
     }
 
     getUrlRecipe = () => {
-        fetch('http://localhost:5000/url_recipe',{
+        fetch('/url_recipe',{
             method : 'POST',
             body : JSON.stringify({'url' : this.state.recipeUrl}),
             headers : {
@@ -44,7 +44,7 @@ class UrlRecipe extends Component {
 
     getSubIngredient = (ingredient) => {
         this.setState({swapWith : ingredient})
-        fetch('http://localhost:5000/recipe_info',{
+        fetch('/recipe_info',{
             method : 'POST',
             body : JSON.stringify({'ingredient' : ingredient}),
             headers : {

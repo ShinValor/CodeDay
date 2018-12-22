@@ -20,7 +20,7 @@ class Home extends Component {
     }
 
     getRecipes = (recipeName) => {
-        fetch('http://localhost:5000/recipe',{
+        fetch('/recipe',{
             method : 'POST',
             body : JSON.stringify({'recipeName' : recipeName}),
             headers : {
@@ -45,7 +45,7 @@ class Home extends Component {
     }
 
     sendMessage = (message) => {
-        fetch('http://localhost:5000/message',{
+        fetch('/message',{
             method : 'POST',
             body : JSON.stringify({'message' : message}),
             headers : {

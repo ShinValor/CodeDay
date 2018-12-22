@@ -26,7 +26,7 @@ class Recipe extends Component {
 
     // Get Ingredients and Instructions
     getRecipeInfo = () => {
-        fetch('http://localhost:5000/recipe_info',{
+        fetch('/recipe_info',{
             method : 'POST',
             body : JSON.stringify({'recipeID' : this.state.recipeID}),
             headers : {
@@ -44,7 +44,7 @@ class Recipe extends Component {
 
     getSubIngredient = (ingredient) => {
         this.setState({swapWith : ingredient})
-        fetch('http://localhost:5000/recipe_info',{
+        fetch('/recipe_info',{
             method : 'POST',
             body : JSON.stringify({'ingredient' : ingredient}),
             headers : {

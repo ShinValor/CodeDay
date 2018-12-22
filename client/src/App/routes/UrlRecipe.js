@@ -143,7 +143,7 @@ class UrlRecipe extends Component {
                     {instructions}
                 </div>
 
-                <p> className="smaller-title3"> Link </p>
+                <p className="smaller-title3"> Link </p>
                 <a className="link" href={this.state.sourceUrl} target="_blank" rel="noopener noreferrer"> 
                     {this.state.sourceUrl}
                 </a>

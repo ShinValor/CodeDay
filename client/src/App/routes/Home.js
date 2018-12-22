@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import SearchBar from 'material-ui-search-bar'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+//import SearchBar from 'material-ui-search-bar'
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 //import Sidebar from "react-sidebar"
 //import Music from './components/Music'
+import SearchBar from 'react-js-search';
 
 class Home extends Component {
     // Initialize the state
@@ -134,6 +135,24 @@ class Home extends Component {
 
             <a href="/"> <img className="icon" src="images/icon.png" alt="icon" href="/"/> </a>
 
+            <div className="searchBox">
+                <SearchBar 
+                    onSearchTextChange={(newValue) => this.setState({recipeName : newValue})}
+                    onSearchButtonClick={this.getRecipes.bind(this,this.state.recipeName)}
+                    placeHolderText={"Search recipe"}
+                />
+            </div>
+
+
+            <div className="searchBox">
+                <SearchBar 
+                    onSearchTextChange={(newValue) => this.setState({value : newValue})}
+                    onSearchButtonClick={() => this.setState({url : this.state.value})}
+                    placeHolderText={"Enter Url"}
+                />
+            </div>
+
+{/*
             <div className="searchBox"> 
                 <MuiThemeProvider className="searchBox">
                     <SearchBar
@@ -163,6 +182,7 @@ class Home extends Component {
                     />
                 </MuiThemeProvider>
             </div>
+*/}
 
             <div className="box-text">
                 {recipes}

@@ -11,10 +11,6 @@ We also have thought of various additions that could be added to possible future
 * [React.js](https://reactjs.org/)
 * [Express.js](https://expressjs.com/)
 * [Spoonacular Api](https://spoonacular.com/food-api)
-* [React-Router](https://reacttraining.com/react-router/core/guides/philosophy)
-* [Reactjs-Popup](https://react-popup.elazizi.com/)
-* [Material-UI-Search-Bar](https://www.npmjs.com/package/material-ui-search-bar)
-* [React-Sidebar](https://www.npmjs.com/package/react-sidebar)
 
 ## Deployment
 

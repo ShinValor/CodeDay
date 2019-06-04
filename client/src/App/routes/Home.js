@@ -18,14 +18,18 @@ class Home extends Component {
   getRecipes = (recipeName) => {
     fetch('/recipe',{
       method : 'POST',
-      body : JSON.stringify({'recipeName' : recipeName}),
+      body : JSON.stringify({
+        'recipeName' : recipeName
+      }),
       headers : {
         'Content-Type': 'application/json'
       }
     })
     .then(res => res.json())
     .then(recipe => {
-      this.setState({ recipes: recipe })
+      this.setState({
+        recipes: recipe
+      })
     })
   }
 
@@ -43,15 +47,19 @@ class Home extends Component {
   sendMessage = (message) => {
     fetch('/message',{
       method : 'POST',
-      body : JSON.stringify({'message' : message}),
+      body : JSON.stringify({
+        'message' : message
+      }),
       headers : {
-      'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       }
     })
     .then(res => res.json())
     .then(res => {
-      this.setState({reply : res[0]})
-      this.setState({feedback : res[1]})
+      this.setState({
+        reply : res[0],
+        feedback : res[1]
+      })
       console.log(this.state.reply)
       console.log(this.state.feedback)
     })        
@@ -89,7 +97,10 @@ class Home extends Component {
 
     if (this.state.url) {
       return (
-        <Redirect to={{ pathname : '/url_recipe', state : {recipeUrl : this.state.url} }}/>
+        <Redirect to={{ 
+          pathname : '/url_recipe',
+          state : {recipeUrl : this.state.url} 
+        }}/>
       )
     }
 
@@ -123,7 +134,6 @@ class Home extends Component {
               <br/>
               <button className="login-button2" type="submit"> Login </button>
               <br/>
-              {/*<label> <input type="checkbox" checked="checked" name="remember"/> Remember me </label>*/}
               <br/>
               <span className="psw"> <a href="/" onClick={this.noPassword}> Forgot password? </a> </span>
             </div>

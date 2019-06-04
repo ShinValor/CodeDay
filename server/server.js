@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000
 
 app.listen(port)
 
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '../client/public')))
 
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
@@ -88,7 +88,7 @@ app.post('/message',(req,res) => {
 
 // Handles any requests that don't match the ones above
 app.get('/*',(req,res) => {
-  res.sendFile(path.join(__dirname + '/public/index.html'))
+  res.sendFile(path.join(__dirname + '../client/public/index.html'))
 })
 
 console.log('App is listening on port ' + port)

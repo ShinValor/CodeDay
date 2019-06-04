@@ -35,11 +35,13 @@ class UrlRecipe extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({ recipeName : data[0] })
-      this.setState({ instructions : data[1] })
-      this.setState({ ingredients : data[2] })
-      this.setState({ imageUrl : data[3]})
-      this.setState({ sourceUrl : data[4] })
+      this.setState({
+        recipeName : data[0],
+        instructions : data[1],
+        ingredients : data[2],
+        imageUrl : data[3],
+        sourceUrl : data[4]
+      })
     })
   }
 
@@ -56,8 +58,10 @@ class UrlRecipe extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({subIngredients : data[0]})
-      this.setState({message : data[1]})
+      this.setState({
+        subIngredients : data[0],
+        message : data[1]
+      })
     })
   }  
 
@@ -66,16 +70,18 @@ class UrlRecipe extends Component {
     const title = this.state.recipeName
 
     const swapIngredients = (subIngredient) => {
-      var temp = this.state.ingredients
+      let temp = this.state.ingredients
       for (let key in temp) {
         if (temp[key]['name'] === this.state.swapWith) {
           temp[key]['name'] = subIngredient
         }
       }
-      this.setState({ingredients : temp})
+      this.setState({
+        ingredients : temp
+      })
     }
 
-    var displaySubstitutes
+    let displaySubstitutes
     if (this.state.subIngredients != null) {
       displaySubstitutes = this.state.subIngredients.map((subIngredient,index) => {
         return (
@@ -87,18 +93,18 @@ class UrlRecipe extends Component {
     }
 
     const ingredients = this.state.ingredients.map((ingredientInfo,index) => {
-      var ingredient = Object.values(ingredientInfo)[4]
-      var measurement = Object.values(ingredientInfo)[8]
-      var unit = Object.values(ingredientInfo)[9]
+      let ingredient = Object.values(ingredientInfo)[4]
+      let measurement = Object.values(ingredientInfo)[8]
+      let unit = Object.values(ingredientInfo)[9]
       return (
         <Popup
-        key={index}
-        className="ingredients"
-        trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
-        position="right center" 
-        onOpen={this.getSubIngredient.bind(this,ingredient)}
-        modal={true}
-        contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
+          key={index}
+          className="ingredients"
+          trigger={ <button className="ingredientButton"> {measurement} {unit} of {ingredient} </button> } 
+          position="right center" 
+          onOpen={this.getSubIngredient.bind(this,ingredient)}
+          modal={true}
+          contentStyle={{border:'solid',borderRadius:'9px',borderColor:'orange'}}>
           <p className="close2"> &times; </p>
           <strong> Select Ingredient </strong>
           {displaySubstitutes}
@@ -108,7 +114,7 @@ class UrlRecipe extends Component {
     })
 
     const instructions = this.state.instructions.map((instruction,index) => {
-      var step = Object.values(instruction)[1].replace(/\n|\r/g, "")
+      let step = Object.values(instruction)[1].replace(/\n|\r/g, "")
       return (
         <div key={index} className="instructions">
           <p> 

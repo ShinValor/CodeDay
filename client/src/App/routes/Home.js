@@ -124,7 +124,7 @@ class Home extends Component {
           <form className="modal-content animate" action="/action_page.php">
             <div className="imgcontainer">
               <span className="close" title="Close Modal" onClick={this.loginPopupExit}> &times; </span>
-              <img className="avatar" src="images/img_avatar1.png" alt="Avatar"/>
+              <img className="avatar" src="images/img_avatar.png" alt="Avatar"/>
             </div>
 
             <div>
